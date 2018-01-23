@@ -7,6 +7,8 @@ it is recommended to run this script on GPU, as recurrent networks are quite
 computationally intensive.
 
 Author: Niek Tax
+
+** Implements also the GroupID attribute to the model
 '''
 
 from __future__ import print_function, division

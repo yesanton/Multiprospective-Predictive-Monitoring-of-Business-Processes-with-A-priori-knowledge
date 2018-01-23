@@ -24,8 +24,8 @@ logNumber = 7
 train()
 
 # _6_evaluate_beseline_SUFFIX_only.runExperiments()
-#_9_cycl_SUFFIX_only.py.runExperiments()
-#_10_cycl_back_SUFFIX_only.runExperiments()
+# _9_cycl_SUFFIX_only.py.runExperiments()
+# _10_cycl_back_SUFFIX_only.runExperiments()
 
 
 # _6_evaluate_beseline_SUFFIX_only.runExperiments(logNumber,formula_used)
