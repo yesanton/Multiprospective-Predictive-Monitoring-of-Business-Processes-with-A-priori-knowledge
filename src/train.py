@@ -11,37 +11,22 @@ Author: Niek Tax
 
 from __future__ import print_function, division
 from keras.models import Model
-# from keras.models import Sequential, Model
 from keras.layers.core import Dense
 from keras.layers.recurrent import LSTM
-# from keras.layers.recurrent import LSTM, GRU, SimpleRNN
 from keras.layers import Input
-# from keras.utils.data_utils import get_file
-# from keras.regularizers import WeightRegularizer
 from keras.optimizers import Nadam
 from keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 from keras.layers.normalization import BatchNormalization
-from collections import Counter
-# import unicodecsv
 import numpy as np
-# import random
-# import sys
-# import os
 import copy
 import csv
 import time
 from itertools import izip
 from datetime import datetime
-# from math import log
 from shared_variables import getUnicode_fromInt, eventlog
-# import tensorflow as tf
 
 
-
-########################################################################################
-#
 # this part of the src opens the file, reads it into three following variables
-#
 
 def train():
     lines = [] #these are all the activity seq
@@ -93,21 +78,13 @@ def train():
     timeseqs2.append(times2)
     numlines+=1
 
-    ########   Part above is very suspicious and could be deleted
-    ########################################
-
     divisor =np.mean([item for sublist in timeseqs for item in sublist]) #average time between events
     print('divisor: {}'.format(divisor))
     divisor2 = np.mean([item for sublist in timeseqs2 for item in sublist]) #average time between current and first events
     print('divisor2: {}'.format(divisor2))
 
 
-
-
-    #########################################################################################################
-
-    # separate training data into 3 parts
-
+    # separate training data into 2(out of 3) parts
     elems_per_fold = int(round(numlines/3))
 
     many = 0
@@ -118,26 +95,9 @@ def train():
     print ("number of traces: ", len(lines))
 
     fold1 = lines[:elems_per_fold]
-    # fold1_t = timeseqs[:elems_per_fold]
-    # fold1_t2 = timeseqs2[:elems_per_fold]
-
     fold2 = lines[elems_per_fold:2*elems_per_fold]
-    # fold2_t = timeseqs[elems_per_fold:2*elems_per_fold]
-    # fold2_t2 = timeseqs2[elems_per_fold:2*elems_per_fold]
-
-    # fold3 = lines[2*elems_per_fold:]
-    # fold3_t = timeseqs[2*elems_per_fold:]
-    # fold3_t2 = timeseqs2[2*elems_per_fold:]
-
-    #leave away fold3 for now
     lines = fold1 + fold2
-    # lines_t = fold1_t + fold2_t
-    # lines_t2 = fold1_t2 + fold2_t2
 
-    # step = 1
-    # sentences = []
-    # softness = 0
-    # next_chars = []
     lines = map(lambda x: x+'!',lines) #put delimiter symbol
     maxlen = max(map(lambda x: len(x),lines)) #find maximum line size
 
@@ -149,9 +109,7 @@ def train():
     chars.remove('!')
     print('total chars: {}, target chars: {}'.format(len(chars), len(target_chars)))
     char_indices = dict((c, i) for i, c in enumerate(chars))
-    # indices_char = dict((i, c) for i, c in enumerate(chars))
     target_char_indices = dict((c, i) for i, c in enumerate(target_chars))
-    # target_indices_char = dict((i, c) for i, c in enumerate(target_chars))
 
 
     csvfile = open('../data/%s' % eventlog, 'r')
@@ -238,9 +196,6 @@ def train():
 
     fold3 = lines[2*elems_per_fold:]
     fold3_t = timeseqs[2*elems_per_fold:]
-    # fold3_t2 = timeseqs2[2*elems_per_fold:]
-    # fold3_t3 = timeseqs3[2*elems_per_fold:]
-    # fold3_t4 = timeseqs4[2*elems_per_fold:]
     with open('output_files/folds/fold3.csv', 'wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         for row, timeseq in izip(fold3, fold3_t):
@@ -272,14 +227,12 @@ def train():
                 continue
 
             #we add iteratively, first symbol of the line, then two first, three...
-
             sentences.append(line[0: i])
             sentences_t.append(line_t[0:i])
             sentences_t2.append(line_t2[0:i])
             sentences_t3.append(line_t3[0:i])
             sentences_t4.append(line_t4[0:i])
             next_chars.append(line[i])
-            print(sentences_t)
             if i==len(line)-1: # special case to deal time of end character
                 next_chars_t.append(0)
                 next_chars_t2.append(0)
