@@ -14,10 +14,10 @@ gateway = JavaGateway()                   # connect to the JVM
 random = gateway.jvm.java.util.Random()   # create a java.util.Random instance
 number1 = random.nextInt(10)              # call the Random.nextInt method
 number2 = random.nextInt(10)
-print(number1,number2)
+print(number1, number2)
 
 verificator_app = gateway.entry_point        # get the AdditionApplication instance
-print verificator_app.addition(number1,number2)
+print verificator_app.addition(number1, number2)
 print verificator_app.mama(10)
 
 # formula = "(  <>(\"tumor marker CA-19.9\") ) \\/ ( <> (\"ca-125 using meia\") )  "
@@ -155,16 +155,14 @@ print verificator_app.mama(10)
 # BPI11_weak = "<>(\"0\") /\ <>(\"15\")"
 
 
-
-
-def verify_formula_as_compliant(trace,formula,  prefix = 0):
+def verify_formula_as_compliant(trace, formula, prefix=0):
     trace_new = gateway.jvm.java.util.ArrayList()
     for i in range(prefix, len(trace)):
         trace_new.append(str(getInt_fromUnicode(trace[i])))
     if not trace_new:
         return False
     ver = verificator_app.isTraceViolated(formula, trace_new) == False
- #   print str(ver)
+    # print str(ver)
     return ver
 
 

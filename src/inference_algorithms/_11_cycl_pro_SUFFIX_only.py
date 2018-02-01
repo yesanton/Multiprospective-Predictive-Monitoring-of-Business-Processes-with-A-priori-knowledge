@@ -221,9 +221,4 @@ def runExperiments(logIdentificator, formulaType):
                     output.append(metrics.median_absolute_error([ground_truth_t], [total_predicted_time]))
                     spamwriter.writerow(output)
 
-
-
-
-
-
     print("TIME TO FINISH --- %s seconds ---" % (time.time() - start_time))

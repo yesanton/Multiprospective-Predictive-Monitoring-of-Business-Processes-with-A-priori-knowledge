@@ -120,9 +120,9 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_to = 6
 
     elif logNumber == 8:
-        eventlog = "bpi_14_detail_incident_1000_rows.csv"
+        eventlog = "helpdesk_5000_rows.csv"
         path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/' \
-                             'src/output_files/models_bpi_14_detail_incident_1000_rows/model_35-32.15.h5'
+                             'src/output_files/models_helpdesk_5000_rows/model_04-4.09.h5'
         median = 4
         if formulaType == "STRONG":
             formula = " []( ( \"8\" -> <>( \"6\" ) ) ) /\ <>\"8\""  # "[]( ( \"1\" -> <>( \"8\" ) ) )  /\ <>\"1\" "# /\
@@ -137,6 +137,6 @@ def activateSettings(logNumber, formulaType):
 
 
 # eventlog = "bpi_14_detail_incident.csv"
-eventlog = "bpi_14_detail_incident_1000_rows.csv"
+eventlog = "helpdesk_5000_rows.csv"
 path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/' \
                      'output_files/models/model.h5'

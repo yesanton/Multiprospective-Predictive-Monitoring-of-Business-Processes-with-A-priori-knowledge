@@ -1,9 +1,9 @@
-"""
+'''
 This script prepares data in the format for the testing
 algorithms to run
 
 Author: Anton Yeshchenko
-"""
+'''
 
 from __future__ import division
 
@@ -14,7 +14,9 @@ import time
 from collections import Counter
 from datetime import datetime
 from itertools import izip
+
 import numpy as np
+
 from formula_verificator import verify_formula_as_compliant
 from shared_variables import getUnicode_fromInt
 
@@ -123,20 +125,22 @@ def prepare_testing_data(eventlog):
     return lines, lines_t, lines_t2, lines_t3, maxlen, chars, char_indices,divisor, divisor2, divisor3, predict_size,target_indices_char,target_char_indices
 
 
-def selectFormulaVerifiedTraces(lines, lines_t, lines_t2, lines_t3, formula,  prefix = 0):
+def selectFormulaVerifiedTraces(lines, lines_group, lines_t, lines_t2, lines_t3, formula,  prefix = 0):
     # select only lines with formula verified
     lines_v = []
+    lines_group_v = []
     lines_t_v = []
     lines_t2_v = []
     lines_t3_v = []
-    for line, times, times2, times3 in izip(lines, lines_t, lines_t2, lines_t3):
-        if verify_formula_as_compliant(line,formula,prefix):
+    for line, line_group, times, times2, times3 in izip(lines, lines_group, lines_t, lines_t2, lines_t3):
+        if verify_formula_as_compliant(line, formula, prefix):
             lines_v.append(line)
+            lines_group_v.append(line_group)
             lines_t_v.append(times)
             lines_t2_v.append(times2)
             lines_t3_v.append(times3)
 
-    return lines_v, lines_t_v, lines_t2_v, lines_t3_v
+    return lines_v, lines_group_v, lines_t_v, lines_t2_v, lines_t3_v
 
 
 # define helper functions

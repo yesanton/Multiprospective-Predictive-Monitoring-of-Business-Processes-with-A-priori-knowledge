@@ -341,13 +341,15 @@ def train():
     l2_2 = LSTM(100, consume_less='gpu', init='glorot_uniform', return_sequences=False, dropout_W=0.2)(b1)
     b2_2 = BatchNormalization()(l2_2)
     act_output = Dense(len(target_chars), activation='softmax', init='glorot_uniform', name='act_output')(b2_1)
+    group_output = Dense(len(target_chars_group), activation='softmax', init='glorot_uniform', name='group_output')(b2_1)
     time_output = Dense(1, init='glorot_uniform', name='time_output')(b2_2)
 
-    model = Model(input=[main_input], output=[act_output, time_output])
+    model = Model(input=[main_input], output=[act_output, group_output, time_output])
 
     opt = Nadam(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=1e-08, schedule_decay=0.004, clipvalue=3)
 
-    model.compile(loss={'act_output': 'categorical_crossentropy', 'time_output': 'mae'}, optimizer=opt)
+    model.compile(loss={'act_output': 'categorical_crossentropy', 'group_output': 'categorical_crossentropy',
+                        'time_output': 'mae'}, optimizer=opt)
     early_stopping = EarlyStopping(monitor='val_loss', patience=42)
     path_to_model = 'output_files/models_' + eventlog[:-4] + '/model_{epoch:02d}-{val_loss:.2f}.h5'
     model_checkpoint = ModelCheckpoint(path_to_model, monitor='val_loss', verbose=0, save_best_only=True,
@@ -356,4 +358,4 @@ def train():
                                    cooldown=0, min_lr=0)
 
     model.fit(X, {'act_output': y_a, 'time_output': y_t, 'group_output': y_g}, validation_split=0.2, verbose=2,
-              callbacks=[early_stopping, model_checkpoint, lr_reducer], batch_size=maxlen, nb_epoch=100)
+              callbacks=[early_stopping, model_checkpoint, lr_reducer], batch_size=maxlen, nb_epoch=300)
