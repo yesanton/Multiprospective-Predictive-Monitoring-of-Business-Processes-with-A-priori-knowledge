@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="DeclareAnalyzer">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/DeclareAnalyzer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/DeclareAnalyzer.jar!/" />
+    </SOURCES>
+  </library>
+</component>

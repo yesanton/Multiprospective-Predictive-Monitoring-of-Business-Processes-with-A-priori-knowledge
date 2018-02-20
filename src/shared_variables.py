@@ -137,6 +137,6 @@ def activateSettings(logNumber, formulaType):
 
 
 # eventlog = "bpi_14_detail_incident.csv"
-eventlog = "helpdesk_5000_rows.csv"
+eventlog = "bpi_14_detail_incident_1000_rows.csv"
 path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/' \
                      'output_files/models/model.h5'

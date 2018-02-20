@@ -6,17 +6,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4172fc3-b7c0-4b4b-a9e8-d1c16872cebd" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/support_scripts/prepare_data_group.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/LTLCheckForTraces/.idea/libraries/DeclareAnalyzer.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/LTLCheckForTraces/formula_verificator/FormulaVerificatorWithData.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/LTLCheckForTraces/formula_verificator/Tester.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/LTLCheckForTraces/lib/DeclareAnalyzer.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/LTLCheckForTraces/lib/ProM-Framework-latest.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/LTLCheckForTraces/lib/Spex-1.1.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/LTLCheckForTraces/lib/Widgets-latest.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/LTLCheckForTraces/lib/jgraph-5.8.3.1.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/support_scripts/generate_declare_model.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/.idea/libraries/lib2.xml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/.idea/libraries/lib2.xml" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/.idea/misc.xml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/.idea/workspace.xml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/LTLCheckForTraces.iml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/LTLCheckForTraces.iml" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/StackEntryPoint.java" afterPath="$PROJECT_DIR$/LTLCheckForTraces/StackEntryPoint.java" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/formula_verificator/FormulaVerificator.java" afterPath="$PROJECT_DIR$/LTLCheckForTraces/formula_verificator/FormulaVerificator.java" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/.idea/libraries/lib2.xml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/.idea/libraries/lib2.xml" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/.idea/misc.xml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/.idea/workspace.xml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/LTLCheckForTraces.iml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/LTLCheckForTraces.iml" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/StackEntryPoint.class" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/StackEntryPoint.class" />
+      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/formula_verificator/FormulaVerificator.class" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/formula_verificator/FormulaVerificator.class" />
       <change beforePath="$PROJECT_DIR$/src/experiments_runner.py" afterPath="$PROJECT_DIR$/src/experiments_runner.py" />
       <change beforePath="$PROJECT_DIR$/src/formula_verificator.py" afterPath="$PROJECT_DIR$/src/formula_verificator.py" />
-      <change beforePath="$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py" afterPath="$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py" />
-      <change beforePath="$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py" afterPath="$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py" />
       <change beforePath="$PROJECT_DIR$/src/shared_variables.py" afterPath="$PROJECT_DIR$/src/shared_variables.py" />
       <change beforePath="$PROJECT_DIR$/src/support_scripts/prepare_data.py" afterPath="$PROJECT_DIR$/src/support_scripts/prepare_data.py" />
-      <change beforePath="$PROJECT_DIR$/src/train_group.py" afterPath="$PROJECT_DIR$/src/train_group.py" />
+      <change beforePath="$PROJECT_DIR$/src/support_scripts/prepare_data_group.py" afterPath="$PROJECT_DIR$/src/support_scripts/prepare_data_group.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,35 +50,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="shared_variables.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shared_variables.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="129" column="19" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formula_verificator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="formula_verificator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/formula_verificator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="157" column="31" lean-forward="false" selection-start-line="157" selection-start-column="4" selection-end-line="157" selection-end-column="31" />
+            <state relative-caret-position="216">
+              <caret line="153" column="20" lean-forward="false" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
               <folding>
                 <element signature="e#152#193#0" expanded="true" />
+                <element signature="e#382#457#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_6_evaluate_beseline_SUFFIX_only_group.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py">
+      <file leaf-file-name="experiments_runner.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/experiments_runner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3672">
-              <caret line="204" column="99" lean-forward="false" selection-start-line="204" selection-start-column="72" selection-end-line="204" selection-end-column="99" />
+            <state relative-caret-position="525">
+              <caret line="38" column="18" lean-forward="false" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
               <folding>
-                <element signature="e#210#241#0" expanded="true" />
+                <element signature="e#178#236#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,6 +94,8 @@
       <find>print</find>
       <find>fold1.csv</find>
       <find>exce</find>
+      <find>FormulaVerificator</find>
+      <find>csv</find>
       <find>formula</find>
     </findStrings>
     <replaceStrings>
@@ -119,12 +129,15 @@
         <option value="$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only.py" />
         <option value="$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py" />
         <option value="$PROJECT_DIR$/src/train_group.py" />
-        <option value="$PROJECT_DIR$/src/shared_variables.py" />
         <option value="$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py" />
         <option value="$PROJECT_DIR$/src/support_scripts/prepare_data.py" />
+        <option value="$PROJECT_DIR$/src/support_scripts/createDeclareModel" />
+        <option value="$PROJECT_DIR$/src/support_scripts/prepare_data_group.py" />
+        <option value="$PROJECT_DIR$/src/support_scripts/generateDeclareModel.py" />
+        <option value="$PROJECT_DIR$/src/shared_variables.py" />
+        <option value="$PROJECT_DIR$/src/support_scripts/generate_declare_model.py" />
         <option value="$PROJECT_DIR$/src/formula_verificator.py" />
         <option value="$PROJECT_DIR$/src/experiments_runner.py" />
-        <option value="$PROJECT_DIR$/src/support_scripts/prepare_data_group.py" />
       </list>
     </option>
   </component>
@@ -177,6 +190,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -188,31 +202,12 @@
             <path>
               <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="462c0819:PsiDirectoryNode" />
-              <item name="LTLCheckForTraces" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="inference_algorithms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="output_files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="output_files" type="462c0819:PsiDirectoryNode" />
-              <item name="results" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
@@ -224,12 +219,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
@@ -525,16 +519,15 @@
     <frame x="65" y="52" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24851751" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22318059" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3006135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-35" y="404" width="1855" height="238" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.299591" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-35" y="404" width="1855" height="238" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32822084" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32822084" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -543,6 +536,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32822084" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -566,60 +560,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/LTLCheckForTraces/LTLCheckForTraces.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/StackEntryPoint.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/support_scripts/shared_variables.py" />
-    <entry file="file://$PROJECT_DIR$/src/support_scripts/properties_of_logs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/support_scripts/shink_log_in_respect_to_prefix_size.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/support_scripts/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_5_cycles_beam_protrack_eval_suffix.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="23" column="82" lean-forward="false" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_4_cycles_beam_backtrack_eval_suffix.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -772,13 +716,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/support_scripts/bpi_14_detail_incident_extra2.csv" />
-    <entry file="file://$PROJECT_DIR$/src/support_scripts/csv_converter_extra.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="65" column="37" lean-forward="false" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/support_scripts/bpi_2014_detail_incident_non_processed.csv">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="0">
@@ -790,13 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-94">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="300" column="20" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="313" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -822,20 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_10_cycl_back_SUFFIX_only.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-756">
-          <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="222" column="0" lean-forward="true" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_9_cycl_SUFFIX_only.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -843,72 +759,154 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/support_scripts/prepare_data.py">
+    <entry file="file://$PROJECT_DIR$/src/support_scripts/properties_of_logs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="59" lean-forward="false" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="59" />
+        <state relative-caret-position="90">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LTLCheckForTraces/StackEntryPoint.java">
+    <entry file="file://$PROJECT_DIR$/src/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        <state relative-caret-position="452">
+          <caret line="295" column="19" lean-forward="true" selection-start-line="295" selection-start-column="19" selection-end-line="295" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/train_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2286">
+        <state relative-caret-position="756">
           <caret line="144" column="17" lean-forward="false" selection-start-line="144" selection-start-column="17" selection-end-line="144" selection-end-column="17" />
-          <folding>
-            <element signature="e#329#376#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/experiments_runner.py">
+    <entry file="file://$PROJECT_DIR$/LTLCheckForTraces/formula_verificator/FormulaVerificator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LTLCheckForTraces/StackEntryPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="77" column="27" lean-forward="false" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_10_cycl_back_SUFFIX_only.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1152">
+          <caret line="86" column="48" lean-forward="false" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/support_scripts/prepare_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#178#236#0" expanded="true" />
-          </folding>
+          <caret line="34" column="11" lean-forward="true" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared_variables.py">
+    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_4_cycles_beam_backtrack_eval_suffix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="129" column="19" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="19" />
+        <state relative-caret-position="774">
+          <caret line="43" column="37" lean-forward="false" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/support_scripts/csv_converter_extra.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/helpdesk_5000_rows.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="164" column="35" lean-forward="false" selection-start-line="164" selection-start-column="35" selection-end-line="164" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="208" column="12" lean-forward="false" selection-start-line="208" selection-start-column="12" selection-end-line="208" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/bpi_14_detail_incident_5000_rows.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/py4j/protocol.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="289" column="0" lean-forward="false" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/py4j/java_gateway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="1150" column="0" lean-forward="false" selection-start-line="1150" selection-start-column="0" selection-end-line="1150" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/support_scripts/prepare_data_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        <state relative-caret-position="259">
+          <caret line="137" column="32" lean-forward="true" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared_variables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="139" column="12" lean-forward="false" selection-start-line="139" selection-start-column="12" selection-end-line="139" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py">
+    <entry file="file://$PROJECT_DIR$/src/support_scripts/generate_declare_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3672">
-          <caret line="204" column="99" lean-forward="false" selection-start-line="204" selection-start-column="72" selection-end-line="204" selection-end-column="99" />
+        <state relative-caret-position="417">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <element signature="e#210#241#0" expanded="true" />
+            <element signature="e#109#119#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/formula_verificator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="157" column="31" lean-forward="false" selection-start-line="157" selection-start-column="4" selection-end-line="157" selection-end-column="31" />
+        <state relative-caret-position="216">
+          <caret line="153" column="20" lean-forward="false" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
           <folding>
             <element signature="e#152#193#0" expanded="true" />
+            <element signature="e#382#457#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/experiments_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="38" column="18" lean-forward="false" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+          <folding>
+            <element signature="e#178#236#0" expanded="true" />
           </folding>
         </state>
       </provider>

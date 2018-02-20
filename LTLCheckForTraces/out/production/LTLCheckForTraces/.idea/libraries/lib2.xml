@@ -7,8 +7,20 @@
       <root url="jar://$PROJECT_DIR$/lib/OpenXES-XStream.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/DeclareMiner.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/DeclareVisualizer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jgraph-5.8.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/DeclareAnalyzer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Widgets-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ProM-Framework-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Spex-1.1.jar!/" />
     </CLASSES>
-    <JAVADOC />
-    <SOURCES />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/Widgets-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ProM-Framework-latest.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/DeclareAnalyzer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/Widgets-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ProM-Framework-latest.jar!/" />
+    </SOURCES>
   </library>
 </component>

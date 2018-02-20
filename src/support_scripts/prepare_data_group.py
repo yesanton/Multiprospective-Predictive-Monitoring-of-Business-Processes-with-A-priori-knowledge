@@ -133,7 +133,8 @@ def selectFormulaVerifiedTraces(lines, lines_group, lines_t, lines_t2, lines_t3,
     lines_t2_v = []
     lines_t3_v = []
     for line, line_group, times, times2, times3 in izip(lines, lines_group, lines_t, lines_t2, lines_t3):
-        if verify_formula_as_compliant(line, formula, prefix):
+        if verify_formula_as_compliant(line, formula, prefix) &\
+                verify_formula_as_compliant(line_group, formula, prefix):
             lines_v.append(line)
             lines_group_v.append(line_group)
             lines_t_v.append(times)

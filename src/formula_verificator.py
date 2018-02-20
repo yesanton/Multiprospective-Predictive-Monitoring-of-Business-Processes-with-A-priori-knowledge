@@ -1,24 +1,20 @@
-'''
+"""
 the purpose of thisscript is to build gateway with
 java src that checks the LTL formula compliance with given trace
 
 Author: Anton Yeshchenko
-'''
+"""
 
 
 from py4j.java_gateway import JavaGateway
 from shared_variables import getInt_fromUnicode
+from py4j.java_collections import SetConverter, MapConverter, ListConverter
 
 
-gateway = JavaGateway()                   # connect to the JVM
-random = gateway.jvm.java.util.Random()   # create a java.util.Random instance
-number1 = random.nextInt(10)              # call the Random.nextInt method
-number2 = random.nextInt(10)
-print(number1, number2)
-
-verificator_app = gateway.entry_point        # get the AdditionApplication instance
-print verificator_app.addition(number1, number2)
-print verificator_app.mama(10)
+gateway = JavaGateway()
+verificator_app = gateway.entry_point
+# print verificator_app.addition(number1, number2)  # test if gateway works
+# print verificator_app.mama(10)
 
 # formula = "(  <>(\"tumor marker CA-19.9\") ) \\/ ( <> (\"ca-125 using meia\") )  "
 #
@@ -155,6 +151,32 @@ print verificator_app.mama(10)
 # BPI11_weak = "<>(\"0\") /\ <>(\"15\")"
 
 
+def verify_with_data():
+    verificator_app.isTraceWithDataViolated()
+
+
+def generateXLog(traces_id, activities, groups, times):
+    # Convert lists to Java compatible format
+    traces_id_java = ListConverter().convert(traces_id, gateway._gateway_client)
+
+    activities_java = []
+    for activity in activities:
+        activities_java.append(ListConverter().convert(activity, gateway._gateway_client))
+    activities_java = ListConverter().convert(activities_java, gateway._gateway_client)
+
+    groups_java = []
+    for group in groups:
+        groups_java.append(ListConverter().convert(group, gateway._gateway_client))
+    groups_java = ListConverter().convert(groups_java, gateway._gateway_client)
+
+    times_java = []
+    for time in times:
+        times_java.append(ListConverter().convert(time, gateway._gateway_client))
+    times_java = ListConverter().convert(times_java, gateway._gateway_client)
+
+    verificator_app.generateXLog(traces_id_java, activities_java, groups_java, times_java)
+
+
 def verify_formula_as_compliant(trace, formula, prefix=0):
     trace_new = gateway.jvm.java.util.ArrayList()
     for i in range(prefix, len(trace)):
@@ -164,5 +186,3 @@ def verify_formula_as_compliant(trace, formula, prefix=0):
     ver = verificator_app.isTraceViolated(formula, trace_new) == False
     # print str(ver)
     return ver
-
-

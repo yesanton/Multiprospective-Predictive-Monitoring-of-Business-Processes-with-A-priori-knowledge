@@ -72,24 +72,39 @@
 //import org.deckfour.xes.model.XTrace;
 
 import formula_verificator.FormulaVerificator;
+import formula_verificator.FormulaVerificatorWithData;
+import formula_verificator.Tester;
 import py4j.GatewayServer;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class StackEntryPoint {
 
-
-
-
-    public int addition(int first, int second) {
-        return first + second;
-    }
-
-    public int mama(int l){
-        return 10 + l;
-    }
+    FormulaVerificatorWithData verificator = new FormulaVerificatorWithData();
 
     public boolean isTraceViolated(String formula, ArrayList<String> trace){
         return FormulaVerificator.isTraceViolated(formula,trace);
+    }
+
+    public void isTraceWithDataViolated() throws Exception{
+        verificator.analyze();
+    }
+
+    public void generateXLog(ArrayList<String> tracesId,
+                             ArrayList<ArrayList<String>> activities,
+                             ArrayList<ArrayList<String>> groups,
+                             ArrayList<ArrayList<String>> times) throws Exception{
+        ArrayList<ArrayList<Date>> times_final = new ArrayList<>();
+        for (ArrayList<String> trace_times : times) {
+            ArrayList<Date> trace_times_final = new ArrayList<>();
+            for (String time : trace_times) {
+                trace_times_final.add(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time));
+            }
+            times_final.add(trace_times_final);
+        }
+        org.processmining.plugins.declareanalyzer.Tester.generateXesLog(tracesId, activities, groups, times_final);
     }
 
     public static void main(String[] args) {
