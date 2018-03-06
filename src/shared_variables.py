@@ -107,9 +107,9 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_to = 6
 
     elif logNumber == 7:
-        eventlog = "helpdesk_mini.csv"
+        eventlog = "helpdesk_mini_1000_rows.csv"
         path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/' \
-                             'src/output_files/models_helpdesk_mini/model_49-1.47.h5'
+                             'src/output_files/models_helpdesk_mini_1000_rows/model_49-1.34.h5'
         median = 4
         if formulaType == "STRONG":
             formula = " []( ( \"8\" -> <>( \"6\" ) ) ) /\ <>\"8\""  # "[]( ( \"1\" -> <>( \"8\" ) ) )  /\ <>\"1\" "# /\
@@ -120,12 +120,12 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_to = 6
 
     elif logNumber == 8:
-        eventlog = "helpdesk_5000_rows.csv"
+        eventlog = "bpi_14_detail_incident_1000_rows.csv"
         path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/' \
-                             'src/output_files/models_helpdesk_5000_rows/model_04-4.09.h5'
+                             'src/output_files/models_group/models_bpi_14_detail_incident_1000_rows/model_15-36.13.h5'
         median = 4
         if formulaType == "STRONG":
-            formula = " []( ( \"8\" -> <>( \"6\" ) ) ) /\ <>\"8\""  # "[]( ( \"1\" -> <>( \"8\" ) ) )  /\ <>\"1\" "# /\
+            formula = " []( ( \"8\" -> <>( \"6\" ) ) ) /\ <>\"8\""
         if formulaType == "WEAK":
             formula = "<>(\"8\")"
 
@@ -136,7 +136,8 @@ def activateSettings(logNumber, formulaType):
     return eventlog, path_to_model_file, beam_size, prefix_size_pred_from, prefix_size_pred_to, formula
 
 
-# eventlog = "bpi_14_detail_incident.csv"
-eventlog = "bpi_14_detail_incident_1000_rows.csv"
-path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/' \
-                     'output_files/models/model.h5'
+eventlog = "bpi_14_detail_incident_with_group.csv"
+# path_to_declare_model_file = '/media/sf_SharedFolder/newlog_model_model.xml'
+# eventlog = "helpdesk_mini_1000_rows.csv"
+# path_to_model_file = "/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/" \
+#                      "output_files/models/model.h5"

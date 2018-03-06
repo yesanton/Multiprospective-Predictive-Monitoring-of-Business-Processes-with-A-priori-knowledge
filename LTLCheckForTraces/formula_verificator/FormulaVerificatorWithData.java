@@ -4,10 +4,13 @@ import org.deckfour.xes.in.XParser;
 import org.deckfour.xes.in.XesXmlGZIPParser;
 import org.deckfour.xes.model.XLog;
 import org.deckfour.xes.model.XTrace;
+import org.processmining.plugins.declareanalyzer.Tester;
 import org.processmining.plugins.declareminer.visualizing.*;
 import org.processmining.plugins.declareanalyzer.DeclareAnalyzerSingleTracePlugin;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public class FormulaVerificatorWithData {
@@ -33,5 +36,16 @@ public class FormulaVerificatorWithData {
         AssignmentModel model = broker.readAssignment();
         DeclareMap map = new DeclareMap(model, null, null, null, broker, null);
         return map;
+    }
+
+    public boolean verifyTrace(String modelFile,
+                               String traceId,
+                               ArrayList<String> activities,
+                               ArrayList<String> groups,
+                               ArrayList<Date> times) {
+        DeclareMap model = getModel(modelFile);
+        XTrace trace = Tester.genXtrace(traceId, activities, groups, times);
+
+        return analyzer.analyze(trace, model);
     }
 }

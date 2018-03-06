@@ -88,8 +88,17 @@ public class StackEntryPoint {
         return FormulaVerificator.isTraceViolated(formula,trace);
     }
 
-    public void isTraceWithDataViolated() throws Exception{
-        verificator.analyze();
+    public boolean isTraceWithDataViolated(String modelFile,
+                                        String traceId,
+                                        ArrayList<String> activities,
+                                        ArrayList<String> groups,
+                                        ArrayList<String> times) throws Exception{
+        ArrayList<Date> times_final = new ArrayList<>();
+        for (String time : times) {
+            times_final.add(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time));
+        }
+
+        return verificator.verifyTrace(modelFile, traceId, activities, groups, times_final);
     }
 
     public void generateXLog(ArrayList<String> tracesId,

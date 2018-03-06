@@ -151,8 +151,20 @@ verificator_app = gateway.entry_point
 # BPI11_weak = "<>(\"0\") /\ <>(\"15\")"
 
 
-def verify_with_data():
-    verificator_app.isTraceWithDataViolated()
+def verify_with_data(model_file, traceId, activities, groups, times, prefix=0):
+
+    activities_java = gateway.jvm.java.util.ArrayList()
+    groups_java = gateway.jvm.java.util.ArrayList()
+    times_java = gateway.jvm.java.util.ArrayList()
+
+    for i in range(prefix, len(activities)):
+        activities_java.append(activities[i])
+        groups_java.append(groups[i])
+        times_java.append(times[i])
+    if not activities_java:
+        return False
+
+    return verificator_app.isTraceWithDataViolated(model_file, traceId, activities_java, groups_java, times_java)
 
 
 def generateXLog(traces_id, activities, groups, times):
@@ -184,5 +196,5 @@ def verify_formula_as_compliant(trace, formula, prefix=0):
     if not trace_new:
         return False
     ver = verificator_app.isTraceViolated(formula, trace_new) == False
-    # print str(ver)
+
     return ver
