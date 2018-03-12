@@ -1,4 +1,7 @@
 """
+This script takes as input the workflow, timestamps and an event attribute "resource"
+It makes predictions on the workflow & timestamps only
+
 this script trains an LSTM model on one of the data files in the data folder of
 this repository. the input file can be changed to another file from the data folder
 by changing its name in line 46.
@@ -287,7 +290,6 @@ def train():
     print('num features: {}'.format(num_features))
     X = np.zeros((len(sentences), maxlen, num_features), dtype=np.float32)
     y_a = np.zeros((len(sentences), len(target_chars)), dtype=np.float32)
-    y_g = np.zeros((len(sentences), len(target_chars_group)), dtype=np.float32)
     y_t = np.zeros((len(sentences)), dtype=np.float32)
     for i, sentence in enumerate(sentences):
         leftpad = maxlen-len(sentence)
@@ -315,11 +317,6 @@ def train():
                 y_a[i, target_char_indices[c]] = 1-softness
             else:
                 y_a[i, target_char_indices[c]] = softness/(len(target_chars)-1)
-        for g in target_chars_group:
-            if g == next_chars_group[i]:
-                y_g[i, target_char_indices_group[g]] = 1-softness
-            else:
-                y_g[i, target_char_indices_group[g]] = softness/(len(target_chars_group)-1)
         y_t[i] = next_t/divisor
         np.set_printoptions(threshold=np.nan)
 
@@ -356,15 +353,11 @@ def train():
                        activation='softmax',
                        init='glorot_uniform',
                        name='act_output')(b2_1)
-    group_output = Dense(len(target_chars_group),
-                         activation='softmax',
-                         init='glorot_uniform',
-                         name='group_output')(b2_1)
     time_output = Dense(1,
                         init='glorot_uniform',
                         name='time_output')(b2_2)
     model = Model(input=[main_input],
-                  output=[act_output, group_output, time_output])
+                  output=[act_output, time_output])
     opt = Nadam(lr=0.002,
                 beta_1=0.9,
                 beta_2=0.999,
@@ -372,7 +365,6 @@ def train():
                 schedule_decay=0.004,
                 clipvalue=3)
     model.compile(loss={'act_output': 'categorical_crossentropy',
-                        'group_output': 'categorical_crossentropy',
                         'time_output': 'mae'},
                   optimizer=opt)
     early_stopping = EarlyStopping(monitor='val_loss', patience=42)
@@ -393,8 +385,7 @@ def train():
                                    min_lr=0)
 
     model.fit(X, {'act_output': y_a,
-                  'time_output': y_t,
-                  'group_output': y_g},
+                  'time_output': y_t},
               validation_split=0.2,
               verbose=2,
               callbacks=[early_stopping, model_checkpoint, lr_reducer],
