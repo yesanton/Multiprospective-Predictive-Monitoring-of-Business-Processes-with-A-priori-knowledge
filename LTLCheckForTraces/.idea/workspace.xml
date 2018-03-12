@@ -2,24 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c066e27-a3aa-4420-8400-e9a1fbfc880a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/../src/inference_algorithms/_11_cycl_pro_SUFFIX_only_group.py" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/StackEntryPoint.java" afterPath="$PROJECT_DIR$/StackEntryPoint.java" />
-      <change beforePath="$PROJECT_DIR$/formula_verificator/FormulaVerificatorWithData.java" afterPath="$PROJECT_DIR$/formula_verificator/FormulaVerificatorWithData.java" />
       <change beforePath="$PROJECT_DIR$/lib/DeclareAnalyzer.jar" afterPath="$PROJECT_DIR$/lib/DeclareAnalyzer.jar" />
       <change beforePath="$PROJECT_DIR$/out/production/LTLCheckForTraces/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/LTLCheckForTraces/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/LTLCheckForTraces/StackEntryPoint.class" afterPath="$PROJECT_DIR$/out/production/LTLCheckForTraces/StackEntryPoint.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/LTLCheckForTraces/formula_verificator/FormulaVerificatorWithData.class" afterPath="$PROJECT_DIR$/out/production/LTLCheckForTraces/formula_verificator/FormulaVerificatorWithData.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/LTLCheckForTraces/lib/DeclareAnalyzer.jar" afterPath="$PROJECT_DIR$/out/production/LTLCheckForTraces/lib/DeclareAnalyzer.jar" />
       <change beforePath="$PROJECT_DIR$/../src/experiments_runner.py" afterPath="$PROJECT_DIR$/../src/experiments_runner.py" />
-      <change beforePath="$PROJECT_DIR$/../src/formula_verificator.py" afterPath="$PROJECT_DIR$/../src/formula_verificator.py" />
-      <change beforePath="$PROJECT_DIR$/../src/inference_algorithms/_0_evaluate_suffix_and_remaining_time.py" afterPath="$PROJECT_DIR$/../src/inference_algorithms/_0_evaluate_suffix_and_remaining_time.py" />
-      <change beforePath="$PROJECT_DIR$/../src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py" afterPath="$PROJECT_DIR$/../src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py" />
       <change beforePath="$PROJECT_DIR$/../src/shared_variables.py" afterPath="$PROJECT_DIR$/../src/shared_variables.py" />
-      <change beforePath="$PROJECT_DIR$/../src/support_scripts/csv_converter_extra.py" afterPath="$PROJECT_DIR$/../src/support_scripts/csv_converter_group.py" />
-      <change beforePath="$PROJECT_DIR$/../src/support_scripts/prepare_data_group.py" afterPath="$PROJECT_DIR$/../src/support_scripts/prepare_data_group.py" />
-      <change beforePath="$PROJECT_DIR$/../src/train_group.py" afterPath="$PROJECT_DIR$/../src/train_group.py" />
+      <change beforePath="$PROJECT_DIR$/../src/train.py" afterPath="$PROJECT_DIR$/../src/train.py" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,31 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tester.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/DeclareAnalyzer.jar!/org/processmining/plugins/declareanalyzer/Tester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1098">
-              <caret line="78" column="25" lean-forward="false" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FormulaVerificatorWithData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/formula_verificator/FormulaVerificatorWithData.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="666">
               <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeclareAnalyzerSingleTracePlugin.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/DeclareAnalyzer.jar!/org/processmining/plugins/declareanalyzer/DeclareAnalyzerSingleTracePlugin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1062">
-              <caret line="98" column="60" lean-forward="false" selection-start-line="98" selection-start-column="60" selection-end-line="98" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -127,8 +96,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -148,13 +116,44 @@
             </path>
             <path>
               <item name="LTLCheckForTraces" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LTLCheckForTraces" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="DeclareAnalyzer.jar" type="ab9368bb:PsiFileNode" />
+            </path>
+            <path>
+              <item name="LTLCheckForTraces" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LTLCheckForTraces" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="DeclareAnalyzer.jar" type="ab9368bb:PsiFileNode" />
+              <item name="processmining" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LTLCheckForTraces" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LTLCheckForTraces" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="DeclareAnalyzer.jar" type="ab9368bb:PsiFileNode" />
+              <item name="processmining" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LTLCheckForTraces" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LTLCheckForTraces" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="DeclareAnalyzer.jar" type="ab9368bb:PsiFileNode" />
+              <item name="processmining" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="declareanalyzer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LTLCheckForTraces" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -340,13 +339,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23824131" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43456033" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IvyIDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22102426" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22102426" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -792,18 +791,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/DeclareAnalyzer.jar!/org/processmining/plugins/declareanalyzer/Tester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1098">
-          <caret line="78" column="25" lean-forward="false" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/formula_verificator/FormulaVerificatorWithData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="666">
           <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/DeclareAnalyzer.jar!/org/processmining/plugins/declareanalyzer/Tester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-287">
+          <caret line="78" column="45" lean-forward="true" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
           <folding />
         </state>
       </provider>

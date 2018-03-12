@@ -6,24 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4172fc3-b7c0-4b4b-a9e8-d1c16872cebd" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only_group.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/support_scripts/csv_converter_group_bpi_2017.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/.idea/workspace.xml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/StackEntryPoint.java" afterPath="$PROJECT_DIR$/LTLCheckForTraces/StackEntryPoint.java" />
-      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/formula_verificator/FormulaVerificatorWithData.java" afterPath="$PROJECT_DIR$/LTLCheckForTraces/formula_verificator/FormulaVerificatorWithData.java" />
       <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/lib/DeclareAnalyzer.jar" afterPath="$PROJECT_DIR$/LTLCheckForTraces/lib/DeclareAnalyzer.jar" />
       <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/.idea/workspace.xml" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/StackEntryPoint.class" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/StackEntryPoint.class" />
-      <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/formula_verificator/FormulaVerificatorWithData.class" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/formula_verificator/FormulaVerificatorWithData.class" />
       <change beforePath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/lib/DeclareAnalyzer.jar" afterPath="$PROJECT_DIR$/LTLCheckForTraces/out/production/LTLCheckForTraces/lib/DeclareAnalyzer.jar" />
+      <change beforePath="$PROJECT_DIR$/data/bpi_17.csv" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/experiments_runner.py" afterPath="$PROJECT_DIR$/src/experiments_runner.py" />
-      <change beforePath="$PROJECT_DIR$/src/formula_verificator.py" afterPath="$PROJECT_DIR$/src/formula_verificator.py" />
-      <change beforePath="$PROJECT_DIR$/src/inference_algorithms/_0_evaluate_suffix_and_remaining_time.py" afterPath="$PROJECT_DIR$/src/inference_algorithms/_0_evaluate_suffix_and_remaining_time.py" />
-      <change beforePath="$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py" afterPath="$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py" />
       <change beforePath="$PROJECT_DIR$/src/shared_variables.py" afterPath="$PROJECT_DIR$/src/shared_variables.py" />
-      <change beforePath="$PROJECT_DIR$/src/support_scripts/csv_converter_extra.py" afterPath="$PROJECT_DIR$/src/support_scripts/csv_converter_group.py" />
-      <change beforePath="$PROJECT_DIR$/src/support_scripts/prepare_data_group.py" afterPath="$PROJECT_DIR$/src/support_scripts/prepare_data_group.py" />
-      <change beforePath="$PROJECT_DIR$/src/train_group.py" afterPath="$PROJECT_DIR$/src/train_group.py" />
+      <change beforePath="$PROJECT_DIR$/src/train.py" afterPath="$PROJECT_DIR$/src/train.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,54 +35,48 @@
       <file leaf-file-name="experiments_runner.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/experiments_runner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
+            <state relative-caret-position="648">
               <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding>
-                <element signature="e#178#243#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shared_variables.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/shared_variables.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="138" column="49" lean-forward="false" selection-start-line="138" selection-start-column="49" selection-end-line="138" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train_group.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/train_group.py">
+      <file leaf-file-name="shared_variables.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/shared_variables.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="378" column="46" lean-forward="false" selection-start-line="378" selection-start-column="46" selection-end-line="378" selection-end-column="46" />
-              <folding>
-                <element signature="e#329#376#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="648">
+              <caret line="78" column="33" lean-forward="false" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="prepare_data_group.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/support_scripts/prepare_data_group.py">
+      <file leaf-file-name="csv_converter_group_bpi_2017.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/support_scripts/csv_converter_group_bpi_2017.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2880">
-              <caret line="160" column="52" lean-forward="false" selection-start-line="160" selection-start-column="52" selection-end-line="160" selection-end-column="52" />
-              <folding>
-                <element signature="e#109#140#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_11_cycl_pro_SUFFIX_only.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py">
+      <file leaf-file-name="csv_converter_group.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/support_scripts/csv_converter_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-64">
-              <caret line="208" column="49" lean-forward="false" selection-start-line="208" selection-start-column="35" selection-end-line="208" selection-end-column="49" />
+            <state relative-caret-position="864">
+              <caret line="50" column="22" lean-forward="false" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_6_evaluate_beseline_SUFFIX_only_group.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3474">
+              <caret line="207" column="112" lean-forward="false" selection-start-line="207" selection-start-column="112" selection-end-line="207" selection-end-column="112" />
               <folding />
             </state>
           </provider>
@@ -99,23 +85,31 @@
       <file leaf-file-name="_11_cycl_pro_SUFFIX_only_group.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
+            <state relative-caret-position="5004">
               <caret line="297" column="77" lean-forward="false" selection-start-line="297" selection-start-column="77" selection-end-line="297" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="train_group.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/train_group.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6498">
+              <caret line="378" column="46" lean-forward="false" selection-start-line="378" selection-start-column="46" selection-end-line="378" selection-end-column="46" />
               <folding>
-                <element signature="e#212#243#0" expanded="true" />
+                <element signature="e#329#376#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formula_verificator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/formula_verificator.py">
+      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="162" column="25" lean-forward="false" selection-start-line="162" selection-start-column="19" selection-end-line="162" selection-end-column="25" />
-              <folding>
-                <element signature="e#382#457#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="144">
+              <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/calculate_accuracy_on_next_event.py" />
         <option value="$PROJECT_DIR$/src/presenting_results/graph_results.py" />
         <option value="$PROJECT_DIR$/src/support_scripts/csv_converter.py" />
-        <option value="$PROJECT_DIR$/src/train.py" />
         <option value="$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only.py" />
         <option value="$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py" />
         <option value="$PROJECT_DIR$/src/support_scripts/prepare_data.py" />
@@ -186,10 +179,12 @@
         <option value="$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py" />
         <option value="$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only_group.py" />
         <option value="$PROJECT_DIR$/src/train_group.py" />
-        <option value="$PROJECT_DIR$/src/experiments_runner.py" />
         <option value="$PROJECT_DIR$/src/support_scripts/csv_converter_extra.py" />
         <option value="$PROJECT_DIR$/src/support_scripts/csv_converter_group.py" />
+        <option value="$PROJECT_DIR$/src/train.py" />
         <option value="$PROJECT_DIR$/src/shared_variables.py" />
+        <option value="$PROJECT_DIR$/src/experiments_runner.py" />
+        <option value="$PROJECT_DIR$/src/support_scripts/csv_converter_group_bpi_2017.py" />
       </list>
     </option>
   </component>
@@ -263,7 +258,20 @@
               <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="inference_algorithms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="output_files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="output_files" type="462c0819:PsiDirectoryNode" />
+              <item name="models_group" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Process-Sequence-Prediction-with-A-priori-knowledge-master" type="b2602c69:ProjectViewProjectNode" />
@@ -300,14 +308,14 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/data" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/output_files" />
       <recent name="$PROJECT_DIR$/src/support_scripts" />
+      <recent name="$PROJECT_DIR$/src/output_files" />
       <recent name="$PROJECT_DIR$/src/inference_algorithms" />
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -322,7 +330,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.csv_converter_extra">
+  <component name="RunManager" selected="Python.csv_converter_group_bpi_2017">
     <configuration name="csv_converter_extra" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -341,6 +349,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="csv_converter_group_bpi_2017" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/support_scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Process-Sequence-Prediction-with-A-priori-knowledge-master" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/support_scripts/csv_converter_group_bpi_2017.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="experiments_runner" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -354,24 +380,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Process-Sequence-Prediction-with-A-priori-knowledge-master" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/experiments_runner.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="graph_results" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/presenting_results" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Process-Sequence-Prediction-with-A-priori-knowledge-master" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/presenting_results/graph_results.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -549,18 +557,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.experiments_runner" />
-      <item index="1" class="java.lang.String" itemvalue="Python.graph_results" />
-      <item index="2" class="java.lang.String" itemvalue="Python.csv_converter_extra" />
-      <item index="3" class="java.lang.String" itemvalue="Python.train" />
-      <item index="4" class="java.lang.String" itemvalue="Python.train_group" />
+      <item index="1" class="java.lang.String" itemvalue="Python.csv_converter_extra" />
+      <item index="2" class="java.lang.String" itemvalue="Python.train" />
+      <item index="3" class="java.lang.String" itemvalue="Python.train_group" />
+      <item index="4" class="java.lang.String" itemvalue="Python.csv_converter_group_bpi_2017" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.csv_converter_extra" />
+        <item index="0" class="java.lang.String" itemvalue="Python.csv_converter_group_bpi_2017" />
         <item index="1" class="java.lang.String" itemvalue="Python.experiments_runner" />
-        <item index="2" class="java.lang.String" itemvalue="Python.train_group" />
-        <item index="3" class="java.lang.String" itemvalue="Python.train" />
-        <item index="4" class="java.lang.String" itemvalue="Python.graph_results" />
+        <item index="2" class="java.lang.String" itemvalue="Python.csv_converter_extra" />
+        <item index="3" class="java.lang.String" itemvalue="Python.train_group" />
+        <item index="4" class="java.lang.String" itemvalue="Python.train" />
       </list>
     </recent_temporary>
   </component>
@@ -590,13 +598,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="52" width="1855" height="1056" extended-state="6" />
+    <frame x="65" y="52" width="1855" height="951" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27008086" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2208589" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-35" y="404" width="1855" height="238" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-35" y="404" width="1855" height="238" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -637,27 +645,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/output_files/table_all_results.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/calculate_accuracy_on_next_event.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="242" column="22" lean-forward="false" selection-start-line="242" selection-start-column="22" selection-end-line="242" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/presenting_results/graph_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/presenting_results/prepare_graph_results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6330">
@@ -876,35 +863,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="162" column="25" lean-forward="false" selection-start-line="162" selection-start-column="19" selection-end-line="162" selection-end-column="25" />
-          <folding>
-            <element signature="e#382#457#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="277" column="20" lean-forward="true" selection-start-line="277" selection-start-column="20" selection-end-line="279" selection-end-column="97" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-64">
+        <state relative-caret-position="3384">
           <caret line="208" column="49" lean-forward="false" selection-start-line="208" selection-start-column="35" selection-end-line="208" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only_group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="297" column="77" lean-forward="false" selection-start-line="297" selection-start-column="77" selection-end-line="297" selection-end-column="77" />
-          <folding>
-            <element signature="e#212#243#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -912,17 +877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9468">
           <caret line="526" column="32" lean-forward="false" selection-start-line="526" selection-start-column="24" selection-end-line="526" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/experiments_runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="e#178#243#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -933,53 +887,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/support_scripts/csv_converter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="42" column="54" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/support_scripts/bpi_14_detail_incident_with_group.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/support_scripts/csv_converter_group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="50" column="22" lean-forward="true" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/support_scripts/bpi_14_detail_incident_with_group.csv" />
     <entry file="file://$PROJECT_DIR$/src/support_scripts/prepare_data_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2880">
+        <state relative-caret-position="2682">
           <caret line="160" column="52" lean-forward="false" selection-start-line="160" selection-start-column="52" selection-end-line="160" selection-end-column="52" />
-          <folding>
-            <element signature="e#109#140#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="295" column="19" lean-forward="false" selection-start-line="295" selection-start-column="19" selection-end-line="295" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/train_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="6498">
           <caret line="378" column="46" lean-forward="false" selection-start-line="378" selection-start-column="46" selection-end-line="378" selection-end-column="46" />
           <folding>
             <element signature="e#329#376#0" expanded="true" />
@@ -987,10 +905,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_6_evaluate_beseline_SUFFIX_only_group.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3474">
+          <caret line="207" column="112" lean-forward="false" selection-start-line="207" selection-start-column="112" selection-end-line="207" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inference_algorithms/_11_cycl_pro_SUFFIX_only_group.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5004">
+          <caret line="297" column="77" lean-forward="false" selection-start-line="297" selection-start-column="77" selection-end-line="297" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/output_files/results/WEAK/suffix_and_remaining_time3_bpi_14_detail_incident_with_group.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/bpi_17.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/shared_variables.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="138" column="49" lean-forward="false" selection-start-line="138" selection-start-column="49" selection-end-line="138" selection-end-column="49" />
+        <state relative-caret-position="648">
+          <caret line="78" column="33" lean-forward="false" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/experiments_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/support_scripts/csv_converter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="42" column="54" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/support_scripts/csv_converter_group.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="50" column="22" lean-forward="false" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/support_scripts/csv_converter_group_bpi_2017.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
           <folding />
         </state>
       </provider>

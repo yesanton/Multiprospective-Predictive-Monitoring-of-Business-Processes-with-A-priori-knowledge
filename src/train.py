@@ -1,13 +1,13 @@
-'''
+"""
 this script trains an LSTM model on one of the data files in the data folder of
 this repository. the input file can be changed to another file from the data folder
 by changing its name in line 46.
 
-it is recommended to run this script on GPU, as recurrent networks are quite 
+it is recommended to run this script on GPU, as recurrent networks are quite
 computationally intensive.
 
 Author: Niek Tax
-'''
+"""
 
 from __future__ import print_function, division
 from keras.models import Model
@@ -311,4 +311,4 @@ def train():
     model.fit(X, {'act_output': y_a, 'time_output': y_t}, validation_split=0.2, verbose=2, callbacks=[early_stopping,
                                                                                                       model_checkpoint,
                                                                                                       lr_reducer],
-              batch_size=maxlen, nb_epoch=100)
+              batch_size=maxlen, nb_epoch=300)
