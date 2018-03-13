@@ -15,7 +15,7 @@ Author; Anton Yeshchenko
 # from inference_algorithms import _11_cycl_pro_SUFFIX_only_group
 # from shared_variables import activateSettings, eventlog
 # from train import train
-# from train_group import train
+from train1 import train
 # from formula_verificator import verify_with_data
 # from support_scripts.generate_declare_model import generateDeclareModel
 
@@ -24,7 +24,7 @@ formula2 = "STRONG"
 formula_used = formula1
 logNumber = 8
 
-# train()
+train()
 # _6_evaluate_beseline_SUFFIX_only.runExperiments()
 # _9_cycl_SUFFIX_only.py.runExperiments()
 # _10_cycl_back_SUFFIX_only.runExperiments()
