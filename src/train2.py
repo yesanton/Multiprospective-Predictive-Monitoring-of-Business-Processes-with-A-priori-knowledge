@@ -341,6 +341,7 @@ def train():
               return_sequences=True,
               dropout_W=0.2)(main_input)
     b1 = BatchNormalization()(l1)
+
     # the layer specialized in activity prediction
     l2_1 = LSTM(100,
                 consume_less='gpu',
@@ -348,6 +349,7 @@ def train():
                 return_sequences=False,
                 dropout_W=0.2)(b1)
     b2_1 = BatchNormalization()(l2_1)
+
     # the layer specialized in time prediction
     l2_2 = LSTM(100,
                 consume_less='gpu',
@@ -355,6 +357,15 @@ def train():
                 return_sequences=False,
                 dropout_W=0.2)(b1)
     b2_2 = BatchNormalization()(l2_2)
+
+    # the layer specialized in resource prediction
+    l2_3 = LSTM(100,
+                consume_less='gpu',
+                init='glorot_uniform',
+                return_sequences=False,
+                dropout_W=0.2)(b1)
+    b2_3 = BatchNormalization()(l2_3)
+
     act_output = Dense(len(target_chars),
                        activation='softmax',
                        init='glorot_uniform',
@@ -362,7 +373,7 @@ def train():
     group_output = Dense(len(target_chars_group),
                          activation='softmax',
                          init='glorot_uniform',
-                         name='group_output')(b2_1)
+                         name='group_output')(b2_3)
     time_output = Dense(1,
                         init='glorot_uniform',
                         name='time_output')(b2_2)

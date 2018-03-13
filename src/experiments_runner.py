@@ -15,14 +15,14 @@ Author; Anton Yeshchenko
 # from inference_algorithms import _11_cycl_pro_SUFFIX_only_group
 # from shared_variables import activateSettings, eventlog
 # from train import train
-from train1 import train
+from train2 import train
 # from formula_verificator import verify_with_data
 # from support_scripts.generate_declare_model import generateDeclareModel
 
 formula1 = "WEAK"
 formula2 = "STRONG"
 formula_used = formula1
-logNumber = 8
+logNumber = 4
 
 train()
 # _6_evaluate_beseline_SUFFIX_only.runExperiments()
@@ -32,7 +32,7 @@ train()
 # _6_evaluate_beseline_SUFFIX_only.runExperiments(logNumber, formula_used)
 # _9_cycl_SUFFIX_only.runExperiments(logNumber,formula_used)
 # _10_cycl_back_SUFFIX_only.runExperiments(logNumber,formula_used)
-# _11_cycl_pro_SUFFIX_only.runExperiments(logNumber,formula_used)
+# _11_cycl_pro_SUFFIX_only.runExperiments(logNumber, formula_used)
 # _11_cycl_pro_SUFFIX_only_group.runExperiments(logNumber, formula_used)
 
 # generateDeclareModel(eventlog)

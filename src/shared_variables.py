@@ -69,9 +69,9 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_to = 6
 
     elif logNumber == 4:
-        eventlog = "bpi_17.csv"
-        path_to_model_file = '/home/yeshch/PycharmProjects/ProcessSequencePrediction/src/output_files/' \
-                             'models_bpi_17/model.h5'
+        eventlog = "bpi_17_group_50k.csv"
+        path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/'\
+                             'output_files/models_bpi_17_group_50k/model_54-1.15.h5'
         median = 17
         if formulaType == "STRONG":
             formula = "[]( ( \"5\" -> <>( \"6\" ) ) )  /\ <>\"5\" "

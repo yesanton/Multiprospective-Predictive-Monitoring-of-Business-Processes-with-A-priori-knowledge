@@ -20,7 +20,7 @@ import time
 from datetime import datetime, timedelta
 from collections import Counter
 from shared_variables import getUnicode_fromInt, activateSettings
-from support_scripts.prepare_data_group import selectFormulaVerifiedTraces
+from support_scripts.prepare_data_resource import selectFormulaVerifiedTraces
 
 
 # noinspection PyShadowingNames,PyUnusedLocal

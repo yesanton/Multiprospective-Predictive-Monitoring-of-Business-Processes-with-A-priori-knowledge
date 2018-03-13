@@ -16,7 +16,7 @@ from inspect import getsourcefile
 from datetime import datetime, timedelta
 from shared_variables import activateSettings, path_to_declare_model_file
 from formula_verificator import verify_formula_as_compliant, verify_with_data
-from support_scripts.prepare_data_group import amplify, getSymbolAmpl, selectFormulaVerifiedTraces, \
+from support_scripts.prepare_data_resource import amplify, getSymbolAmpl, selectFormulaVerifiedTraces, \
                                                encode, prepare_testing_data
 
 import csv
