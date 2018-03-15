@@ -13,7 +13,7 @@ from itertools import izip
 from formula_verificator import generateXLog
 
 
-def generateDeclareModel(eventlog):
+def generateXesLog(eventlog):
     csvfile = open('../data/%s' % eventlog, 'r')
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     next(spamreader, None)  # skip the headers

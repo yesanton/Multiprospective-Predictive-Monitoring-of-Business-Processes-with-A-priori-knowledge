@@ -9,7 +9,7 @@ from __future__ import division
 from collections import Counter
 from datetime import datetime
 from itertools import izip
-from formula_verificator import verify_with_data
+from formula_verificator import verify_with_data, verify_formula_as_compliant
 from shared_variables import getUnicode_fromInt, getInt_fromUnicode
 
 import copy
@@ -157,7 +157,8 @@ def prepare_testing_data(eventlog):
         target_char_indices_group
 
 
-def selectFormulaVerifiedTraces(path_to_declare_model_file, lines, lines_id, lines_group, lines_t, lines_t2, lines_t3,
+# selects traces verified by a declare model
+def selectDeclareVerifiedTraces(path_to_declare_model_file, lines, lines_id, lines_group, lines_t, lines_t2, lines_t3,
                                 lines_t4, prefix=0):
     # select only lines with formula verified
     lines_v = []
@@ -192,8 +193,40 @@ def selectFormulaVerifiedTraces(path_to_declare_model_file, lines, lines_id, lin
             lines_t2_v.append(times2)
             lines_t3_v.append(times3)
             lines_t4_v.append(times4)
+            print("Trace verified!")
         else:
             print("Trace not verified!")
+
+    return lines_v, lines_id_v, lines_group_v, lines_t_v, lines_t2_v, lines_t3_v, lines_t4_v
+
+
+# selects traces verified by LTL formula
+def selectFormulaVerifiedTraces(lines, lines_id, lines_group, lines_t, lines_t2, lines_t3,
+                                lines_t4, formula, prefix=0):
+    # select only lines with formula verified
+    lines_v = []
+    lines_id_v = []
+    lines_group_v = []
+    lines_t_v = []
+    lines_t2_v = []
+    lines_t3_v = []
+    lines_t4_v = []
+
+    for line, line_id, line_group, times, times2, times3, times4 in izip(lines,
+                                                                         lines_id,
+                                                                         lines_group,
+                                                                         lines_t,
+                                                                         lines_t2,
+                                                                         lines_t3,
+                                                                         lines_t4):
+        if verify_formula_as_compliant(line, formula, prefix):
+            lines_v.append(line)
+            lines_id_v.append(line_id)
+            lines_group_v.append(line_group)
+            lines_t_v.append(times)
+            lines_t2_v.append(times2)
+            lines_t3_v.append(times3)
+            lines_t4_v.append(times4)
 
     return lines_v, lines_id_v, lines_group_v, lines_t_v, lines_t2_v, lines_t3_v, lines_t4_v
 

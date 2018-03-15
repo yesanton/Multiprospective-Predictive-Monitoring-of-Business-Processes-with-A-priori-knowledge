@@ -1,5 +1,5 @@
 """
-this file is build based on the code found in evaluate_suffix_and_remaining_time.py
+this file is built based on the code found in evaluate_suffix_and_remaining_time.py
 
 here the beam search (with breath-first-search) is implemented, to find compliant prediction
 
@@ -14,10 +14,10 @@ from keras.models import load_model
 from sklearn import metrics
 from inspect import getsourcefile
 from datetime import datetime, timedelta
-from shared_variables import activateSettings, path_to_declare_model_file
-from formula_verificator import verify_formula_as_compliant, verify_with_data
-from support_scripts.prepare_data_resource import amplify, getSymbolAmpl, selectFormulaVerifiedTraces, \
-                                               encode, prepare_testing_data
+from shared_variables import activateSettings
+from formula_verificator import verify_formula_as_compliant
+from support_scripts.prepare_data_resource import amplify, getSymbolAmpl, encode, prepare_testing_data, \
+    selectFormulaVerifiedTraces
 
 import csv
 import numpy as np
@@ -93,7 +93,7 @@ def runExperiments(logIdentificator, formulaType):
             self.probability_of = probability_of
 
     # make predictions
-    with open('output_files/results/'+formulaType+'/suffix_and_remaining_time3_%s' % eventlog, 'wb') as csvfile:
+    with open('output_files/results/'+formulaType+'/suffix_suffix_pro_resource_LTL_%s' % eventlog, 'wb') as csvfile:
 
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         # headers for the new file
@@ -121,14 +121,14 @@ def runExperiments(logIdentificator, formulaType):
                 lines_t_s, \
                 lines_t2_s, \
                 lines_t3_s, \
-                lines_t4_s = selectFormulaVerifiedTraces(path_to_declare_model_file,
-                                                         lines,
+                lines_t4_s = selectFormulaVerifiedTraces(lines,
                                                          lines_id,
                                                          lines_group,
                                                          lines_t,
                                                          lines_t2,
                                                          lines_t3,
                                                          lines_t4,
+                                                         formula,
                                                          prefix_size)
 
             for line, line_id, line_group, times, times2, times3, times4 in izip(lines_s,
@@ -182,12 +182,9 @@ def runExperiments(logIdentificator, formulaType):
                         _, current_prediction_premis = queue_next_steps.get()
 
                         if not found_sattisfying_constraint:
-                            if verify_with_data(path_to_declare_model_file,
-                                                current_prediction_premis.trace_id,
-                                                current_prediction_premis.cropped_line,
-                                                current_prediction_premis.cropped_line_group,
-                                                current_prediction_premis.cropped_times,
-                                                prefix_size):
+                            if verify_formula_as_compliant(current_prediction_premis.cropped_line,
+                                                           formula,
+                                                           prefix_size):
                                 # the formula verified and we can just finish the predictions
                                 # beam size is 1 because predict only sequence of events
                                 beam_size = 1
