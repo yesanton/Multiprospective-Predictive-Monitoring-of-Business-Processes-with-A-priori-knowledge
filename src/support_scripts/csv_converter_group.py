@@ -2,17 +2,17 @@ import csv
 import time
 import datetime
 
-eventlog_in = "bpi_2014_detail_incident_non_processed.csv"
-eventlog_out = "bpi_14_detail_incident_with_group.csv"
+eventlog_in = "vasyl_log.csv"
+eventlog_out = "vasyl_log_processed.csv"
 
 CASE_ID = 0
-ACTIVITY_ID = 3
-TIMESTAMP_ID = 1
-GROUP_ID = 4
+ACTIVITY_ID = 1
+TIMESTAMP_ID = 2
+GROUP_ID = 3
 
 
 csvfile_in = open('%s' % eventlog_in, 'r')
-spamreader = csv.reader(csvfile_in, delimiter=';', quotechar='|')
+spamreader = csv.reader(csvfile_in, delimiter=',', quotechar='|')
 next(spamreader, None)  # skip the headers
 
 dictionary = {}
@@ -29,9 +29,9 @@ with open('%s' % eventlog_out, 'wb') as csvfile_out:
     current_event = 0
 
     for row in spamreader:
-        timestamp = row[TIMESTAMP_ID]
-        timestamp = datetime.datetime.strptime(timestamp, "%d-%m-%Y %H:%M:%S")
-        timestamp = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+        timestamp = row[TIMESTAMP_ID].split(".")[0]
+        timestamp = datetime.datetime.strptime(timestamp, "%Y/%m/%d %H:%M:%S")
+        timestamp = timestamp.strftime("%Y/%m/%d %H:%M:%S")
 
         if row[ACTIVITY_ID] not in dictionary:
             dictionary[row[ACTIVITY_ID]] = give_number

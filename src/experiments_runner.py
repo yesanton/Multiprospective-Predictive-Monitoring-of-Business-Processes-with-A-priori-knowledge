@@ -13,7 +13,7 @@ Author; Anton Yeshchenko
 # from inference_algorithms import _10_cycl_back_SUFFIX_only
 # from inference_algorithms import _11_cycl_pro_SUFFIX_only
 # from inference_algorithms import _11_cycl_pro_SUFFIX_resource_LTL
-from inference_algorithms import _11_cycl_pro_SUFFIX_resource_declare
+# from inference_algorithms import _11_cycl_pro_SUFFIX_resource_declare
 # from shared_variables import activateSettings, eventlog
 # from train import train
 # from train2 import train
@@ -34,7 +34,7 @@ logNumber = 4
 # _9_cycl_SUFFIX_only.runExperiments(logNumber,formula_used)
 # _10_cycl_back_SUFFIX_only.runExperiments(logNumber,formula_used)
 # _11_cycl_pro_SUFFIX_resource_LTL.runExperiments(logNumber, formula_used)
-_11_cycl_pro_SUFFIX_resource_declare.runExperiments(logNumber, formula_used)
+# _11_cycl_pro_SUFFIX_resource_declare.runExperiments(logNumber, formula_used)
 
 # generateXesLog(eventlog)
 # verify_with_data()

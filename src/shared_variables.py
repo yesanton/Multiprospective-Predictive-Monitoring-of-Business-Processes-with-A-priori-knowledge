@@ -69,7 +69,7 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_to = 6
 
     elif logNumber == 4:
-        eventlog = "bpi_17_group_50k.csv"
+        eventlog = "bpi_17_no_group_50k.csv"
         path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src' \
                              '/output_files/models_bpi_17_group_50k/model_15-2.33.h5'
         median = 17
@@ -136,7 +136,7 @@ def activateSettings(logNumber, formulaType):
     return eventlog, path_to_model_file, beam_size, prefix_size_pred_from, prefix_size_pred_to, formula
 
 
-eventlog = "bpi_17_group_50k.csv"
+eventlog = "bpi_17_group_50k_with_actual_names.csv"
 path_to_declare_model_file = '/media/sf_SharedFolder/declaremodels/bpi_2017_declare_model_support_100.xml'
 # eventlog = "helpdesk_mini_1000_rows.csv"
 # path_to_model_file = "/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/" \
