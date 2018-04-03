@@ -19,7 +19,7 @@ public class FormulaVerificatorWithData {
 
     public void analyze() throws Exception {
         String logFile = "/media/sf_SharedFolder/newlog.xes.gz";
-        String modelFile = "/media/sf_SharedFolder/newlog_model_model.xml";
+        String modelFile = "/media/sf_SharedFolder/newlog_model.xml";
 
         XParser parser = new XesXmlGZIPParser();
         XLog log = parser.parse(new File(logFile)).get(0);

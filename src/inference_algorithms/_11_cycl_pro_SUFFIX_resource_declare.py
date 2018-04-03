@@ -196,6 +196,7 @@ def runExperiments(logIdentificator, formulaType):
                                 found_sattisfying_constraint = True
 
                         enc = current_prediction_premis.data
+                        current_trace_id = current_prediction_premis.trace_id
                         temp_cropped_line = current_prediction_premis.cropped_line
                         temp_cropped_line_group = current_prediction_premis.cropped_line_group
                         temp_cropped_times = current_prediction_premis.cropped_times
@@ -226,7 +227,9 @@ def runExperiments(logIdentificator, formulaType):
 
                             # end of case was just predicted, therefore, stop predicting further into the future
                             if temp_prediction == '!':
+                                print("temp cropped times: ", temp_cropped_times)
                                 if verify_with_data(path_to_declare_model_file,
+                                                    current_trace_id,
                                                     temp_cropped_line,
                                                     temp_cropped_line_group,
                                                     temp_cropped_times,
@@ -248,9 +251,9 @@ def runExperiments(logIdentificator, formulaType):
                                 current_prediction_premis.cropped_line_group + temp_prediction_group
 
                             # adds a fake timestamp to the list
-                            t = time.strptime(cropped_times4[-1], "%Y-%m-%d %H:%M:%S")
+                            t = time.strptime(cropped_times4[-1], "%Y/%m/%d %H:%M:%S")
                             new_timestamp = datetime.fromtimestamp(time.mktime(t)) + timedelta(0, 2000)
-                            cropped_times4.append(new_timestamp.strftime("%Y-%m-%d %H:%M:%S"))
+                            cropped_times4.append(new_timestamp.strftime("%Y/%m/%d %H:%M:%S"))
 
                             temp_total_predicted_time = current_prediction_premis.total_predicted_time + y_t
                             temp_state_data = encode(temp_cropped_line,

@@ -44,7 +44,7 @@ def prepare_testing_data(eventlog):
     lasteventtime = None
 
     for row in spamreader:
-        t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")
+        t = time.strptime(row[2], "%Y/%m/%d %H:%M:%S")
         if row[0] != lastcase:
             casestarttime = t
             lasteventtime = t

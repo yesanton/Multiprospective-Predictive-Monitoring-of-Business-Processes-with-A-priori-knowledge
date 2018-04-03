@@ -189,6 +189,10 @@ def generateXLog(traces_id, activities, groups, times):
     verificator_app.generateXLog(traces_id_java, activities_java, groups_java, times_java)
 
 
+def testAnalysis():
+    verificator_app.testAnalysis()
+
+
 def verify_formula_as_compliant(trace, formula, prefix=0):
     trace_new = gateway.jvm.java.util.ArrayList()
     for i in range(prefix, len(trace)):

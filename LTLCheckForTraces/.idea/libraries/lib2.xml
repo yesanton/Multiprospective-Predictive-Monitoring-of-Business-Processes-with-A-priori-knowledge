@@ -12,6 +12,9 @@
       <root url="jar://$PROJECT_DIR$/lib/Widgets-latest.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/ProM-Framework-latest.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/Spex-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jeval-0.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-16.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.4.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/Widgets-latest.jar!/" />

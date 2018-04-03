@@ -1,9 +1,10 @@
 import csv
 import time
 import datetime
+import json
 
-eventlog_in = "vasyl_log.csv"
-eventlog_out = "vasyl_log_processed.csv"
+eventlog_in = "logs/test_log7_model2_630.csv"
+eventlog_out = "converted_logs/test_log7_model2_630_converted.csv"
 
 CASE_ID = 0
 ACTIVITY_ID = 1
@@ -23,7 +24,7 @@ give_number_group = 0
 
 with open('%s' % eventlog_out, 'wb') as csvfile_out:
     writer = csv.writer(csvfile_out, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-    writer.writerow(["CaseID", "ActivityID", "CompleteTimestamp", "GroupID"])
+    writer.writerow(["CaseID", "ActivityID", "CompleteTimestamp", "Resource"])
 
     mark = True
     current_event = 0
@@ -58,3 +59,7 @@ with open('%s' % eventlog_out, 'wb') as csvfile_out:
             trace_save = [output]
         else:
             trace_save.append(output)
+
+with open('%s' % 'dictionaries/test_log7_model2_630_processed_dictionary.txt', 'w') as file:
+    file.write(json.dumps(dictionary))
+    file.write(json.dumps(dictionary_group))

@@ -132,12 +132,24 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_from = 2
         prefix_size_pred_to = 6
 
+    elif logNumber == 9:
+        eventlog = "vasyl_log_processed.csv"
+        path_to_model_file = '/media/sf_SharedFolder/rnn-models/models_vasyl_log_processed_group/model_00-2.76.h5'
+        median = 4
+        if formulaType == "STRONG":
+            formula = " []( ( \"8\" -> <>( \"6\" ) ) ) /\ <>\"8\""
+        if formulaType == "WEAK":
+            formula = "<>(\"8\")"
+
+        prefix_size_pred_from = 2
+        prefix_size_pred_to = 6
+
     beam_size = 2
     return eventlog, path_to_model_file, beam_size, prefix_size_pred_from, prefix_size_pred_to, formula
 
 
 eventlog = "bpi_17_group_50k_with_actual_names.csv"
-path_to_declare_model_file = '/media/sf_SharedFolder/declaremodels/bpi_2017_declare_model_support_100.xml'
+path_to_declare_model_file = '/media/sf_SharedFolder/declaremodels/accommodated_models/vasyl_log_test_set_converted.xml'
 # eventlog = "helpdesk_mini_1000_rows.csv"
 # path_to_model_file = "/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/" \
 #                      "output_files/models/model.h5"
