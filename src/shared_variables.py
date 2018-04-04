@@ -148,7 +148,7 @@ def activateSettings(logNumber, formulaType):
     return eventlog, path_to_model_file, beam_size, prefix_size_pred_from, prefix_size_pred_to, formula
 
 
-eventlog = "bpi_17_group_50k_with_actual_names.csv"
+eventlog = "test_log7_model2_630_converted.csv"
 path_to_declare_model_file = '/media/sf_SharedFolder/declaremodels/accommodated_models/vasyl_log_test_set_converted.xml'
 # eventlog = "helpdesk_mini_1000_rows.csv"
 # path_to_model_file = "/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/" \

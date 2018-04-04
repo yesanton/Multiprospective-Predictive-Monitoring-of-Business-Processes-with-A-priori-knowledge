@@ -48,7 +48,7 @@ def train():
     next(spamreader, None)  # skip the headers
 
     for row in spamreader:  # the rows are "CaseID,ActivityID,CompleteTimestamp"
-        t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")  # creates a datetime object from row[2]
+        t = time.strptime(row[2], "%Y/%m/%d %H:%M:%S")  # creates a datetime object from row[2]
         if row[0] != lastcase:  # 'lastcase' is to save the last executed case for the loop
             casestarttime = t
             lasteventtime = t
@@ -129,7 +129,7 @@ def train():
     casestarttime = None
     lasteventtime = None
     for row in spamreader:
-        t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")
+        t = time.strptime(row[2], "%Y/%m/%d %H:%M:%S")
         # new case starts
         if row[0] != lastcase:
             casestarttime = t
