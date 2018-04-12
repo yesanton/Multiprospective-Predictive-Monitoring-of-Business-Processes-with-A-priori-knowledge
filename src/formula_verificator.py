@@ -151,20 +151,20 @@ verificator_app = gateway.entry_point
 # BPI11_weak = "<>(\"0\") /\ <>(\"15\")"
 
 
-def verify_with_data(model_file, traceId, activities, groups, times, prefix=0):
+def verify_with_data(model_file, trace_id, activities, groups, times, prefix=0):
 
     activities_java = gateway.jvm.java.util.ArrayList()
     groups_java = gateway.jvm.java.util.ArrayList()
     times_java = gateway.jvm.java.util.ArrayList()
 
     for i in range(prefix, len(activities)):
-        activities_java.append(activities[i])
-        groups_java.append(groups[i])
+        activities_java.append(str(getInt_fromUnicode(activities[i])))
+        groups_java.append(str(getInt_fromUnicode(groups[i])))
         times_java.append(times[i])
     if not activities_java:
         return False
 
-    return verificator_app.isTraceWithDataViolated(model_file, traceId, activities_java, groups_java, times_java)
+    return verificator_app.isTraceWithDataViolated(model_file, trace_id, activities_java, groups_java, times_java)
 
 
 def generateXLog(traces_id, activities, groups, times):

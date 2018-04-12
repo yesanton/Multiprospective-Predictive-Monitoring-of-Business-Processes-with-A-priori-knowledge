@@ -44,7 +44,7 @@ def prepare_testing_data(eventlog):
     lasteventtime = None
 
     for row in spamreader:
-        t = time.strptime(row[2], "%Y/%m/%d %H:%M:%S")
+        t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")
         if row[0] != lastcase:
             casestarttime = t
             lasteventtime = t
@@ -176,16 +176,7 @@ def selectDeclareVerifiedTraces(path_to_declare_model_file, lines, lines_id, lin
                                                                          lines_t3,
                                                                          lines_t4):
 
-        line_new = []
-        line_group_new = []
-
-        for act in line:
-            line_new.append(str(getInt_fromUnicode(act)))
-
-        for group in line_group:
-            line_group_new.append(str(getInt_fromUnicode(group)))
-
-        if verify_with_data(path_to_declare_model_file, line_id, line_new, line_group_new, times4, prefix):
+        if verify_with_data(path_to_declare_model_file, line_id, line, line_group, times4, prefix):
             lines_v.append(line)
             lines_id_v.append(line_id)
             lines_group_v.append(line_group)

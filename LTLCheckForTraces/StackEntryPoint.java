@@ -95,7 +95,7 @@ public class StackEntryPoint {
                                         ArrayList<String> times) throws Exception{
         ArrayList<Date> times_final = new ArrayList<>();
         for (String time : times) {
-            times_final.add(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse(time));
+            times_final.add(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time));
         }
 
         return verificator.verifyTrace(modelFile, traceId, activities, groups, times_final);

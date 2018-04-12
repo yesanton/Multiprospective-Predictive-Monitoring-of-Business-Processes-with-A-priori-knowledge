@@ -288,6 +288,7 @@ def train():
     print('Vectorization...')
     num_features = len(chars)+len(chars_group)+5
     print('num features: {}'.format(num_features))
+    print('MaxLen: ', maxlen)
     X = np.zeros((len(sentences), maxlen, num_features), dtype=np.float32)
     y_a = np.zeros((len(sentences), len(target_chars)), dtype=np.float32)
     y_g = np.zeros((len(sentences), len(target_chars_group)), dtype=np.float32)

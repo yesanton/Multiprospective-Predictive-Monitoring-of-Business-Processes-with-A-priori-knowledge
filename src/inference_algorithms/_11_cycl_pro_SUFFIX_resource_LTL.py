@@ -6,8 +6,7 @@ here the beam search (with breath-first-search) is implemented, to find complian
 Author: Anton Yeshchenko
 """
 from __future__ import division
-from Queue import Queue, PriorityQueue
-from datetime import timedelta
+from Queue import PriorityQueue
 from itertools import izip
 from jellyfish._jellyfish import damerau_levenshtein_distance
 from keras.models import load_model
@@ -128,8 +127,7 @@ def runExperiments(logIdentificator, formulaType):
                                                          lines_t2,
                                                          lines_t3,
                                                          lines_t4,
-                                                         formula,
-                                                         prefix_size)
+                                                         formula)
 
             for line, line_id, line_group, times, times2, times3, times4 in izip(lines_s,
                                                                                  lines_id_s,

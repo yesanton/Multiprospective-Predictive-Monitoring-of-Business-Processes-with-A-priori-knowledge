@@ -6,8 +6,7 @@ here the beam search (with breath-first-search) is implemented, to find complian
 Author: Anton Yeshchenko
 """
 from __future__ import division
-from Queue import Queue, PriorityQueue
-from datetime import timedelta
+from Queue import PriorityQueue
 from itertools import izip
 from jellyfish._jellyfish import damerau_levenshtein_distance
 from keras.models import load_model
@@ -16,7 +15,7 @@ from inspect import getsourcefile
 from datetime import datetime, timedelta
 from shared_variables import activateSettings, path_to_declare_model_file
 from formula_verificator import verify_with_data
-from support_scripts.prepare_data_resource import amplify, getSymbolAmpl, selectDeclareVerifiedTraces, \
+from support_scripts.prepare_data_resource import amplify, getSymbolAmpl, selectFormulaVerifiedTraces, \
                                                encode, prepare_testing_data
 
 import csv
@@ -43,6 +42,8 @@ def runExperiments(logIdentificator, formulaType):
         prefix_size_pred_from, \
         prefix_size_pred_to, \
         formula = activateSettings(logIdentificator, formulaType)
+
+    start_time = time.time()
 
     # prepare the data
     lines, \
@@ -121,15 +122,14 @@ def runExperiments(logIdentificator, formulaType):
                 lines_t_s, \
                 lines_t2_s, \
                 lines_t3_s, \
-                lines_t4_s = selectDeclareVerifiedTraces(path_to_declare_model_file,
-                                                         lines,
+                lines_t4_s = selectFormulaVerifiedTraces(lines,
                                                          lines_id,
                                                          lines_group,
                                                          lines_t,
                                                          lines_t2,
                                                          lines_t3,
                                                          lines_t4,
-                                                         prefix_size)
+                                                         formula)
 
             for line, line_id, line_group, times, times2, times3, times4 in izip(lines_s,
                                                                                  lines_id_s,
@@ -227,7 +227,6 @@ def runExperiments(logIdentificator, formulaType):
 
                             # end of case was just predicted, therefore, stop predicting further into the future
                             if temp_prediction == '!':
-                                print("temp cropped times: ", temp_cropped_times)
                                 if verify_with_data(path_to_declare_model_file,
                                                     current_trace_id,
                                                     temp_cropped_line,
@@ -241,19 +240,16 @@ def runExperiments(logIdentificator, formulaType):
                                     queue_next_steps = PriorityQueue()
                                     break
                                 else:
-                                    print("Here")
                                     continue
-                            else:
-                                print("Here instead")
 
                             temp_cropped_line = current_prediction_premis.cropped_line + temp_prediction
                             temp_cropped_line_group = \
                                 current_prediction_premis.cropped_line_group + temp_prediction_group
 
                             # adds a fake timestamp to the list
-                            t = time.strptime(cropped_times4[-1], "%Y/%m/%d %H:%M:%S")
+                            t = time.strptime(cropped_times4[-1], "%Y-%m-%d %H:%M:%S")
                             new_timestamp = datetime.fromtimestamp(time.mktime(t)) + timedelta(0, 2000)
-                            cropped_times4.append(new_timestamp.strftime("%Y/%m/%d %H:%M:%S"))
+                            cropped_times4.append(new_timestamp.strftime("%Y-%m-%d %H:%M:%S"))
 
                             temp_total_predicted_time = current_prediction_premis.total_predicted_time + y_t
                             temp_state_data = encode(temp_cropped_line,
@@ -321,3 +317,5 @@ def runExperiments(logIdentificator, formulaType):
                     output.append(unicode(predicted_group).encode("utf-8"))
                     output.append(1 - distance.nlevenshtein(predicted_group, ground_truth_group))
                     spamwriter.writerow(output)
+
+    print("TIME TO FINISH --- %s seconds ---" % (time.time() - start_time))

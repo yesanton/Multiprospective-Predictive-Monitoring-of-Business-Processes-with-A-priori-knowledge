@@ -40,21 +40,21 @@ def prepare_testing_data(eventlog):
 
     for row in spamreader:
         t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")
-        if row[0] != lastcase:
+        if row[0] != lastcase:  # check if new case is starting
             casestarttime = t
             lasteventtime = t
             lastcase = row[0]
-            if not firstLine:
+            if not firstLine:  # add case to list of cases
                 lines.append(line)
                 timeseqs.append(times)
                 timeseqs2.append(times2)
                 timeseqs3.append(times3)
-            line = ''
+            line = ''  # reinitialize case variables, because new case is starting
             times = []
             times2 = []
             times3 = []
             numlines += 1
-        line += getUnicode_fromInt(row[1])
+        line += getUnicode_fromInt(row[1])  # add unicode represantation to case variable
         timesincelastevent = datetime.fromtimestamp(time.mktime(t)) - datetime.fromtimestamp(time.mktime(lasteventtime))
         timesincecasestart = datetime.fromtimestamp(time.mktime(t)) - datetime.fromtimestamp(time.mktime(casestarttime))
         midnight = datetime.fromtimestamp(time.mktime(t)).replace(hour=0, minute=0, second=0, microsecond=0)
@@ -119,11 +119,11 @@ def prepare_testing_data(eventlog):
     # set parameters
     predict_size = maxlen
 
+    return lines, lines_t, lines_t2, lines_t3, maxlen, chars, char_indices, divisor, divisor2, divisor3, predict_size,\
+        target_indices_char, target_char_indices
 
-    return lines, lines_t, lines_t2, lines_t3, maxlen, chars, char_indices,divisor, divisor2, divisor3, predict_size,target_indices_char,target_char_indices
 
-
-def selectFormulaVerifiedTraces(lines, lines_t, lines_t2, lines_t3, formula,  prefix = 0):
+def selectFormulaVerifiedTraces(lines, lines_t, lines_t2, lines_t3, formula,  prefix=0):
     # select only lines with formula verified
     lines_v = []
     lines_t_v = []
@@ -160,26 +160,29 @@ def encode(sentence, times, times3, maxlen, chars, char_indices, divisor, diviso
         X[0, t + leftpad, len(chars) + 4] = times3[t].weekday() / 7
     return X
 
+
 # modify to be able to get second best prediction
 def getSymbol(predictions, target_indices_char, ith_best=0):
     i = np.argsort(predictions)[len(predictions) - ith_best - 1]
     return target_indices_char[i]
 
-#modify to be able to get second best prediction
-def getSymbolAmpl(predictions, target_indices_char,target_char_indices, start_of_the_cycle_symbol, stop_symbol_probability_amplifier_current, ith_best = 0):
+
+# modify to be able to get second best prediction
+def getSymbolAmpl(predictions, target_indices_char, target_char_indices, start_of_the_cycle_symbol,
+                  stop_symbol_probability_amplifier_current, ith_best=0):
     a_pred = list(predictions)
     if start_of_the_cycle_symbol in target_char_indices:
         place_of_starting_symbol = target_char_indices[start_of_the_cycle_symbol]
-        a_pred[place_of_starting_symbol] =  a_pred[place_of_starting_symbol] / stop_symbol_probability_amplifier_current
+        a_pred[place_of_starting_symbol] = a_pred[place_of_starting_symbol] / stop_symbol_probability_amplifier_current
     i = np.argsort(a_pred)[len(a_pred) - ith_best - 1]
     return target_indices_char[i]
 
 
-#find repetitions
+# find repetitions
 def repetitions(s):
-   r = re.compile(r"(.+?)\1+")
-   for match in r.finditer(s):
-       yield (match.group(1), len(match.group(0))/len(match.group(1)))
+    r = re.compile(r"(.+?)\1+")
+    for match in r.finditer(s):
+        yield (match.group(1), len(match.group(0))/len(match.group(1)))
 
 
 def amplify(s):
@@ -187,17 +190,17 @@ def amplify(s):
     if list_of_rep:
         str_rep = list_of_rep[-1][0]
         if s.endswith(str_rep):
-            #return np.math.exp(np.math.pow(list_of_rep[-1][-1],3)), list_of_rep[-1][0][0]
+            # return np.math.exp(np.math.pow(list_of_rep[-1][-1],3)), list_of_rep[-1][0][0]
             return np.math.exp(list_of_rep[-1][-1]), list_of_rep[-1][0][0]
             # return np.math.pow(list_of_rep[-1][-1],2)
-            #return list_of_rep[-1][-1]
+            # return list_of_rep[-1][-1]
         else:
             return 1, list_of_rep[-1][0][0]
     return 1, " "
 
 
-#the match.group(0) finds the whole substring that contains 1+ cycles
-# #the match.group(1) finds the substring that indicates the cycle
+# the match.group(0) finds the whole substring that contains 1+ cycles
+# the match.group(1) finds the substring that indicates the cycle
 
 
 

@@ -3,8 +3,8 @@ import time
 import datetime
 import json
 
-eventlog_in = "logs/test_log7_model2_630.csv"
-eventlog_out = "converted_logs/test_log7_model2_630_converted.csv"
+eventlog_in = "logs/bpi_17_group_50k_with_actual_names_test_set.csv"
+eventlog_out = "converted_logs/bpi_17_group_50k_with_actual_names_converted_test_set.csv"
 
 CASE_ID = 0
 ACTIVITY_ID = 1
@@ -31,8 +31,8 @@ with open('%s' % eventlog_out, 'wb') as csvfile_out:
 
     for row in spamreader:
         timestamp = row[TIMESTAMP_ID].split(".")[0]
-        timestamp = datetime.datetime.strptime(timestamp, "%Y/%m/%d %H:%M:%S")
-        timestamp = timestamp.strftime("%Y/%m/%d %H:%M:%S")
+        timestamp = datetime.datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
+        timestamp = timestamp.strftime("%Y-%m-%d %H:%M:%S")
 
         if row[ACTIVITY_ID] not in dictionary:
             dictionary[row[ACTIVITY_ID]] = give_number
@@ -60,6 +60,6 @@ with open('%s' % eventlog_out, 'wb') as csvfile_out:
         else:
             trace_save.append(output)
 
-with open('%s' % 'dictionaries/test_log7_model2_630_processed_dictionary.txt', 'w') as file:
+with open('%s' % 'dictionaries/bpi_17_group_50k_with_actual_names_test_set_dictionary.txt', 'w') as file:
     file.write(json.dumps(dictionary))
     file.write(json.dumps(dictionary_group))

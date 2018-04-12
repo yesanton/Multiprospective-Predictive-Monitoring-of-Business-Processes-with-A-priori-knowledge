@@ -133,9 +133,10 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_to = 6
 
     elif logNumber == 9:
-        eventlog = "vasyl_log_processed.csv"
-        path_to_model_file = '/media/sf_SharedFolder/rnn-models/models_vasyl_log_processed_group/model_00-2.76.h5'
-        median = 4
+        eventlog = "test_log7_model2_630_converted.csv"
+        path_to_model_file = '/home/kaur/Documents/SharedFolder_Azure/models_no_group/' \
+                             'models_test_log7_model2_630_converted/model_13-1.62.h5'
+        median = 6
         if formulaType == "STRONG":
             formula = " []( ( \"8\" -> <>( \"6\" ) ) ) /\ <>\"8\""
         if formulaType == "WEAK":
@@ -144,12 +145,26 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_from = 2
         prefix_size_pred_to = 6
 
+    elif logNumber == 10:
+        # experiment 1
+        eventlog = "bpi_17_group_50k.csv"
+        path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/' \
+                             'src/output_files/models_bpi_17_group_50k/model_15-2.33.h5'
+        median = 7
+        if formulaType == "STRONG":
+            formula = " []( ( \"12\" -> X( \"13\" ) ) )"
+        if formulaType == "WEAK":
+            formula = "<>(\"8\")"
+
+        prefix_size_pred_from = 5
+        prefix_size_pred_to = 8
+
     beam_size = 2
     return eventlog, path_to_model_file, beam_size, prefix_size_pred_from, prefix_size_pred_to, formula
 
 
-eventlog = "test_log7_model2_630_converted.csv"
-path_to_declare_model_file = '/media/sf_SharedFolder/declaremodels/accommodated_models/vasyl_log_test_set_converted.xml'
+eventlog = "bpi_17_group_50k.csv"
+path_to_declare_model_file = '/media/sf_SharedFolder/declaremodels/accommodated_models/bpi_2017_50k_experiment_2.xml'
 # eventlog = "helpdesk_mini_1000_rows.csv"
 # path_to_model_file = "/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/" \
 #                      "output_files/models/model.h5"
