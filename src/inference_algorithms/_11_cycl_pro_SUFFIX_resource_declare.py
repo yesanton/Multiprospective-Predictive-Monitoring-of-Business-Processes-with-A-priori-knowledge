@@ -13,7 +13,7 @@ from keras.models import load_model
 from sklearn import metrics
 from inspect import getsourcefile
 from datetime import datetime, timedelta
-from shared_variables import activateSettings, path_to_declare_model_file
+from shared_variables import activateSettings, path_to_declare_model_file, getInt_fromUnicode
 from formula_verificator import verify_with_data
 from support_scripts.prepare_data_resource import amplify, getSymbolAmpl, selectFormulaVerifiedTraces, \
                                                encode, prepare_testing_data
@@ -33,7 +33,7 @@ parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
 sys.path.insert(0, parent_dir)
 
 
-def runExperiments(logIdentificator, formulaType):
+def runExperiments(log_identificator, formula_type):
 
     # get variables from the shared variables file
     eventlog, \
@@ -41,11 +41,11 @@ def runExperiments(logIdentificator, formulaType):
         beam_size, \
         prefix_size_pred_from, \
         prefix_size_pred_to, \
-        formula = activateSettings(logIdentificator, formulaType)
+        formula = activateSettings(log_identificator, formula_type)
 
     start_time = time.time()
 
-    # prepare the data
+    # prepare the data N.B. maxlen == predict_size
     lines, \
         lines_id, \
         lines_group, \
@@ -181,19 +181,19 @@ def runExperiments(logIdentificator, formulaType):
 
                         _, current_prediction_premis = queue_next_steps.get()
 
-                        if not found_sattisfying_constraint:
-                            if verify_with_data(path_to_declare_model_file,
-                                                current_prediction_premis.trace_id,
-                                                current_prediction_premis.cropped_line,
-                                                current_prediction_premis.cropped_line_group,
-                                                current_prediction_premis.cropped_times,
-                                                prefix_size):
-                                # the formula verified and we can just finish the predictions
-                                # beam size is 1 because predict only sequence of events
-                                beam_size = 1
-                                # overwrite new queue
-                                queue_next_steps_future = PriorityQueue()
-                                found_sattisfying_constraint = True
+                        # if not found_sattisfying_constraint:
+                        #     if verify_with_data(path_to_declare_model_file,
+                        #                         current_prediction_premis.trace_id,
+                        #                         current_prediction_premis.cropped_line,
+                        #                         current_prediction_premis.cropped_line_group,
+                        #                         current_prediction_premis.cropped_times,
+                        #                         prefix_size):
+                        #         # the formula verified and we can just finish the predictions
+                        #         # beam size is 1 because predict only sequence of events
+                        #         beam_size = 1
+                        #         # overwrite new queue
+                        #         queue_next_steps_future = PriorityQueue()
+                        #         found_sattisfying_constraint = True
 
                         enc = current_prediction_premis.data
                         current_trace_id = current_prediction_premis.trace_id
@@ -223,7 +223,7 @@ def runExperiments(logIdentificator, formulaType):
                                                             target_char_indices, start_of_the_cycle_symbol,
                                                             stop_symbol_probability_amplifier_current, j)
 
-                            temp_prediction_group = getSymbolGroup(y_group)
+                            temp_prediction_group = getSymbolGroup(y_group, j)
 
                             # end of case was just predicted, therefore, stop predicting further into the future
                             if temp_prediction == '!':
@@ -237,6 +237,13 @@ def runExperiments(logIdentificator, formulaType):
                                     one_ahead_gt.append(ground_truth_t)
                                     stop_symbol_probability_amplifier_current = 1
                                     print('! predicted, end case')
+                                    line_end = []
+                                    group_end = []
+                                    for h in range(len(temp_cropped_line)):
+                                        line_end.append(getInt_fromUnicode(temp_cropped_line[h]))
+                                        group_end.append(getInt_fromUnicode(temp_cropped_line_group[h]))
+                                    print('events: ', line_end)
+                                    print('groups: ', group_end)
                                     queue_next_steps = PriorityQueue()
                                     break
                                 else:

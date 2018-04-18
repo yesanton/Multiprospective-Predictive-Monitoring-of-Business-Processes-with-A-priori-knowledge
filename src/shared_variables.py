@@ -148,7 +148,7 @@ def activateSettings(logNumber, formulaType):
     elif logNumber == 10:
         # experiment 1
         eventlog = "bpi_17_group_50k.csv"
-        path_to_model_file = '/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/' \
+        path_to_model_file = '/media/sf_SharedFolder/fbk/Process-Sequence-Prediction-with-A-priori-knowledge-master/' \
                              'src/output_files/models_bpi_17_group_50k/model_15-2.33.h5'
         median = 7
         if formulaType == "STRONG":
