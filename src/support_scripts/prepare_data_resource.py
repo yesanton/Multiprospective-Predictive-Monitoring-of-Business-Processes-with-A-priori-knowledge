@@ -10,7 +10,7 @@ from collections import Counter
 from datetime import datetime
 from itertools import izip
 from formula_verificator import verify_with_data, verify_formula_as_compliant
-from shared_variables import getUnicode_fromInt, getInt_fromUnicode
+from shared_variables import getUnicode_fromInt
 
 import copy
 import csv
@@ -184,9 +184,6 @@ def selectDeclareVerifiedTraces(path_to_declare_model_file, lines, lines_id, lin
             lines_t2_v.append(times2)
             lines_t3_v.append(times3)
             lines_t4_v.append(times4)
-            print("Trace verified!")
-        else:
-            print("Trace not verified!")
 
     return lines_v, lines_id_v, lines_group_v, lines_t_v, lines_t2_v, lines_t3_v, lines_t4_v
 

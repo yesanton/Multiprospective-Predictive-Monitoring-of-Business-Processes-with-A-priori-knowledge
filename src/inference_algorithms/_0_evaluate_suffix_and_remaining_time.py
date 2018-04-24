@@ -23,7 +23,6 @@ import matplotlib.pyplot as plt
 from collections import Counter
 from shared_variables import getUnicode_fromInt, path_to_model_file, eventlog, \
     prefix_size_pred_from, prefix_size_pred_to
-from formula_verificator import verify_formula_as_compliant
 from support_scripts.prepare_data import selectFormulaVerifiedTraces
 
 start_time = time.time()

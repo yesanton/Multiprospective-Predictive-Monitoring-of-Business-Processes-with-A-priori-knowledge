@@ -148,8 +148,8 @@ def activateSettings(logNumber, formulaType):
     elif logNumber == 10:
         # experiment 1
         eventlog = "bpi_17_group_50k.csv"
-        path_to_model_file = '/media/sf_SharedFolder/fbk/Process-Sequence-Prediction-with-A-priori-knowledge-master/' \
-                             'src/output_files/models_bpi_17_group_50k/model_15-2.33.h5'
+        path_to_model_file = '/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-pri' \
+                             'ori-knowledge/src/output_files/models_group/models_bpi_17_group_50k/model_15-2.33.h5'
         median = 7
         if formulaType == "STRONG":
             formula = " []( ( \"12\" -> X( \"13\" ) ) )"
@@ -159,12 +159,28 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_from = 5
         prefix_size_pred_to = 8
 
+    elif logNumber == 11:
+        # experiment 5
+        eventlog = "generated_log_1_converted.csv"
+        path_to_model_file = '/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-' \
+                             'A-priori-knowledge/src/output_files/models_group/models_generated_log_1_converted/' \
+                             'model_07-2.20.h5'
+        median = 6
+        if formulaType == "STRONG":
+            formula = " []( ( \"5\" -> <>( \"2\" ) ) )"
+        if formulaType == "WEAK":
+            formula = "<>(\"8\")"
+
+        prefix_size_pred_from = 4
+        prefix_size_pred_to = 8
+
     beam_size = 2
     return eventlog, path_to_model_file, beam_size, prefix_size_pred_from, prefix_size_pred_to, formula
 
 
-eventlog = "bpi_17_group_50k.csv"
-path_to_declare_model_file = '/media/sf_SharedFolder/declaremodels/accommodated_models/bpi_2017_50k_experiment_2.xml'
+eventlog = "generated_log_1_converted.csv"
+path_to_declare_model_file = '/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-' \
+                             'priori-knowledge/src/declare_models/generated_log_1_experiment_2_converted.xml'
 # eventlog = "helpdesk_mini_1000_rows.csv"
-# path_to_model_file = "/home/kaur/Documents/FBK/Process-Sequence-Prediction-with-A-priori-knowledge-master/src/" \
-#                      "output_files/models/model.h5"
+# path_to_model_file = "/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-priori-" \
+#                      "knowledge/src/output_files/models_group/models_generated_log_1_converted/model_07-2.20.h5"
