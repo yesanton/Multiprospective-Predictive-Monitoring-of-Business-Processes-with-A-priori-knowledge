@@ -3,8 +3,8 @@ import time
 import datetime
 import json
 
-eventlog_in = "logs/generated_log_1.csv"
-eventlog_out = "converted_logs/generated_log_1_converted.csv"
+eventlog_in = "logs/generated_log_4.csv"
+eventlog_out = "converted_logs/generated_log_4_converted.csv"
 
 CASE_ID = 0
 ACTIVITY_ID = 1
@@ -60,6 +60,6 @@ with open('%s' % eventlog_out, 'wb') as csvfile_out:
         else:
             trace_save.append(output)
 
-with open('%s' % 'dictionaries/generated_log_1_dictionary.txt', 'w') as file:
+with open('%s' % 'dictionaries/generated_log_3_dictionary.txt', 'w') as file:
     file.write(json.dumps(dictionary))
     file.write(json.dumps(dictionary_group))

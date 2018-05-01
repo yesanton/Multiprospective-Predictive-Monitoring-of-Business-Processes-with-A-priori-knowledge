@@ -37,6 +37,8 @@ sys.path.insert(0, parent_dir)
 
 def runExperiments(logIdentificator, formulaType):
 
+    logging.info("<<<<<<<<<<<<<<<<<<<<<<   LTL    >>>>>>>>>>>>>>>>>>>>>>>")
+
     # get variables from the shared variables file
     eventlog, \
         path_to_model_file, \
@@ -99,7 +101,7 @@ def runExperiments(logIdentificator, formulaType):
             self.probability_of = probability_of
 
     # make predictions
-    with open('output_files/results/'+formulaType+'/suffix_suffix_pro_resource_LTL_%s' % eventlog, 'wb') as csvfile:
+    with open('output_files/results/LTL/'+formulaType+'/suffix_suffix_pro_resource_LTL_%s' % eventlog, 'wb') as csvfile:
 
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         # headers for the new file
@@ -198,16 +200,16 @@ def runExperiments(logIdentificator, formulaType):
 
                         _, current_prediction_premis = queue_next_steps.get()
 
-                        # if not found_sattisfying_constraint:
-                        #     if verify_formula_as_compliant(current_prediction_premis.cropped_line,
-                        #                                    formula,
-                        #                                    prefix_size):
-                        #         # the formula verified and we can just finish the predictions
-                        #         # beam size is 1 because predict only sequence of events
-                        #         beam_size = 1
-                        #         # overwrite new queue
-                        #         queue_next_steps_future = PriorityQueue()
-                        #         found_sattisfying_constraint = True
+                        if not found_sattisfying_constraint:
+                            if verify_formula_as_compliant(current_prediction_premis.cropped_line,
+                                                           formula,
+                                                           prefix_size):
+                                # the formula verified and we can just finish the predictions
+                                # beam size is 1 because predict only sequence of events
+                                beam_size = 1
+                                # overwrite new queue
+                                queue_next_steps_future = PriorityQueue()
+                                found_sattisfying_constraint = True
 
                         enc = current_prediction_premis.data
                         temp_cropped_line = current_prediction_premis.cropped_line
@@ -238,7 +240,7 @@ def runExperiments(logIdentificator, formulaType):
 
                             # end of case was just predicted, therefore, stop predicting further into the future
                             if temp_prediction == '!':
-                                if verify_formula_as_compliant(temp_cropped_line, formula, prefix_size):
+                                if verify_formula_as_compliant(temp_cropped_line, formula):
                                     one_ahead_pred.append(current_prediction_premis.total_predicted_time)
                                     one_ahead_gt.append(ground_truth_t)
                                     stop_symbol_probability_amplifier_current = 1

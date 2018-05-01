@@ -35,7 +35,9 @@ parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
 sys.path.insert(0, parent_dir)
 
 
-def runExperiments(log_identificator, formula_type):
+def runExperiments(log_identificator, formulaType):
+
+    logging.info("<<<<<<<<<<<<<<<<<<<<<<   Declare    >>>>>>>>>>>>>>>>>>>>>>>")
 
     # get variables from the shared variables file
     eventlog, \
@@ -43,7 +45,7 @@ def runExperiments(log_identificator, formula_type):
         beam_size, \
         prefix_size_pred_from, \
         prefix_size_pred_to, \
-        formula = activateSettings(log_identificator, formula_type)
+        formula = activateSettings(log_identificator, formulaType)
 
     start_time = time.time()
 
@@ -99,7 +101,7 @@ def runExperiments(log_identificator, formula_type):
             self.probability_of = probability_of
 
     # make predictions
-    with open('output_files/results/declare/suffix_pro_resource_declare_%s' % eventlog, 'wb') as csvfile:
+    with open('output_files/results/declare/'+formulaType+'/suffix_pro_resource_declare_%s' % eventlog, 'wb') as csvfile:
 
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         # headers for the new file
@@ -134,8 +136,10 @@ def runExperiments(log_identificator, formula_type):
                                                          lines_t,
                                                          lines_t2,
                                                          lines_t3,
-                                                         lines_t4)
+                                                         lines_t4,
+                                                         prefix_size)
 
+            logging.info("Prefix size: %s", str(prefix_size))
             logging.info("Traces verified: %s out of %s", str(len(lines_s)), str(len(lines)))
             logging.info("Testing set: ")
             for line, line_id, line_group in izip(lines_s, lines_id_s, lines_group_s):
@@ -196,19 +200,19 @@ def runExperiments(log_identificator, formula_type):
 
                         _, current_prediction_premis = queue_next_steps.get()
 
-                        # if not found_sattisfying_constraint:
-                        #     if verify_with_data(path_to_declare_model_file,
-                        #                         current_prediction_premis.trace_id,
-                        #                         current_prediction_premis.cropped_line,
-                        #                         current_prediction_premis.cropped_line_group,
-                        #                         current_prediction_premis.cropped_times,
-                        #                         prefix_size):
-                        #         # the formula verified and we can just finish the predictions
-                        #         # beam size is 1 because predict only sequence of events
-                        #         beam_size = 1
-                        #         # overwrite new queue
-                        #         queue_next_steps_future = PriorityQueue()
-                        #         found_sattisfying_constraint = True
+                        if not found_sattisfying_constraint:
+                            if verify_with_data(path_to_declare_model_file,
+                                                current_prediction_premis.trace_id,
+                                                current_prediction_premis.cropped_line,
+                                                current_prediction_premis.cropped_line_group,
+                                                current_prediction_premis.cropped_times,
+                                                prefix_size):
+                                # the formula verified and we can just finish the predictions
+                                # beam size is 1 because predict only sequence of events
+                                beam_size = 1
+                                # overwrite new queue
+                                queue_next_steps_future = PriorityQueue()
+                                found_sattisfying_constraint = True
 
                         enc = current_prediction_premis.data
                         current_trace_id = current_prediction_premis.trace_id

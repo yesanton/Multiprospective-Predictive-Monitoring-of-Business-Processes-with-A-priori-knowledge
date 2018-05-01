@@ -105,12 +105,12 @@ def prepare_testing_data(eventlog):
     target_indices_char = dict((i, c) for i, c in enumerate(target_chars))
 
     fold1and2lines_group = lines_group[:2 * elems_per_fold]
-    fold1and2lines_group = map(lambda x: x + '!', fold1and2lines_group)
+    # fold1and2lines_group = map(lambda x: x + '!', fold1and2lines_group)
     chars_group = map(lambda x: set(x), fold1and2lines_group)
     chars_group = list(set().union(*chars_group))
     chars_group.sort()
     target_chars_group = copy.copy(chars_group)
-    chars_group.remove('!')
+    # chars_group.remove('!')
     char_indices_group = dict((c, i) for i, c in enumerate(chars_group))
     target_char_indices_group = dict((c, i) for i, c in enumerate(target_chars_group))
     target_indices_char_group = dict((i, c) for i, c in enumerate(target_chars_group))

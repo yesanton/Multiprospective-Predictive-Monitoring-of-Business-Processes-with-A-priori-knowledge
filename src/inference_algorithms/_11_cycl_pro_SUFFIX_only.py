@@ -109,7 +109,7 @@ def runExperiments(logIdentificator, formulaType):
                                                                                      formula,
                                                                                      prefix_size)
             print("prefix size: " + str(prefix_size))
-            print("formulas verifited: " + str(len(lines_s)) + " out of : " + str(len(lines)))
+            print("formulas verified: " + str(len(lines_s)) + " out of : " + str(len(lines)))
             counterr = 0
             for line, times, times2, times3 in izip(lines_s, lines_t_s, lines_t2_s, lines_t3_s):
                 times.append(0)

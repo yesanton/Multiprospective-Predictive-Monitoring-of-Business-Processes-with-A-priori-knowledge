@@ -174,13 +174,73 @@ def activateSettings(logNumber, formulaType):
         prefix_size_pred_from = 4
         prefix_size_pred_to = 8
 
+    elif logNumber == 12:
+        # experiment 5
+        eventlog = "generated_log_2_converted.csv"
+        path_to_model_file = '/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-' \
+                             'priori-knowledge/src/output_files/models_group/models_generated_log_2_converted/model_' \
+                             '08-2.34.h5'
+        median = 6
+        if formulaType == "STRONG":
+            formula = " []( ( \"2\" -> <>( \"7\" ) ) )"
+        if formulaType == "WEAK":
+            formula = "<>(\"8\")"
+
+        prefix_size_pred_from = 2
+        prefix_size_pred_to = 6
+
+    elif logNumber == 13:
+        # experiment 5
+        eventlog = "generated_log_3_converted.csv"
+        path_to_model_file = '/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-' \
+                             'priori-knowledge/src/output_files/models_group/models_generated_log_3_converted/model_' \
+                             '13-1.88.h5'
+        median = 6
+        if formulaType == "STRONG":
+            formula = " []( ( \"3\" -> <>( \"7\" ) ) )"
+        if formulaType == "WEAK":
+            formula = "<>(\"3\")"
+
+        prefix_size_pred_from = 2
+        prefix_size_pred_to = 6
+
+    elif logNumber == 14:
+        # experiment 5
+        eventlog = "generated_log_4_converted.csv"
+        path_to_model_file = '/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-' \
+                             'priori-knowledge/src/output_files/models_group/models_generated_log_4_converted/model_' \
+                             '01-2.32.h5'
+        median = 6
+        if formulaType == "STRONG":
+            formula = " []( ( \"7\" -> <>( \"8\" ) ) )"
+        if formulaType == "WEAK":
+            formula = "<>(\"7\")"
+
+        prefix_size_pred_from = 3
+        prefix_size_pred_to = 7
+
+    elif logNumber == 15:
+        # experiment 15
+        eventlog = "generated_log_4_converted.csv"
+        path_to_model_file = '/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-' \
+                             'priori-knowledge/src/output_files/models_group/models_2generated_log_4_converted/model_' \
+                             '03-1.79.h5'
+        median = 6
+        if formulaType == "STRONG":
+            formula = " []( ( \"7\" -> <>( \"8\" ) ) )"
+        if formulaType == "WEAK":
+            formula = "<>(\"7\")"
+
+        prefix_size_pred_from = 3
+        prefix_size_pred_to = 7
+
     beam_size = 2
     return eventlog, path_to_model_file, beam_size, prefix_size_pred_from, prefix_size_pred_to, formula
 
 
-eventlog = "generated_log_1_converted.csv"
+eventlog = "generated_log_4_converted.csv"
 path_to_declare_model_file = '/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-' \
-                             'priori-knowledge/src/declare_models/generated_log_1_experiment_2_converted.xml'
+                             'priori-knowledge/src/declare_models/generated_log_4_STRONG_converted.xml'
 # eventlog = "helpdesk_mini_1000_rows.csv"
 # path_to_model_file = "/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-priori-" \
 #                      "knowledge/src/output_files/models_group/models_generated_log_1_converted/model_07-2.20.h5"

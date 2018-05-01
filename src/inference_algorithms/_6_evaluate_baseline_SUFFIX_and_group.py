@@ -29,6 +29,8 @@ logging.basicConfig(filename='baseline.log', level=logging.INFO)
 # noinspection PyShadowingNames,PyUnusedLocal
 def runExperiments(logIdentificator, formulaType):
 
+    logging.info("<<<<<<<<<<<<<<<<<<<<<<   Baseline    >>>>>>>>>>>>>>>>>>>>>>>")
+
     eventlog, \
         path_to_model_file, \
         beam_size, \
@@ -110,7 +112,7 @@ def runExperiments(logIdentificator, formulaType):
     three_ahead_gt = []
     three_ahead_pred = []
 
-    with open('output_files/results/baseline/suffix_and_remaining_time0_%s' % eventlog, 'wb') as csvfile:
+    with open('output_files/results/baseline/'+formulaType+'/suffix_and_remaining_time0_%s' % eventlog, 'wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         spamwriter.writerow(["Prefix length", "Ground truth", "Predicted", "Levenshtein", "Damerau", "Jaccard",
                              "Ground truth times", "Predicted times", "RMSE", "MAE", "Median AE", "Ground Truth Group",

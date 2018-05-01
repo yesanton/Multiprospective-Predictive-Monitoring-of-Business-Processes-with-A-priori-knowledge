@@ -25,7 +25,7 @@ from inference_algorithms import _11_cycl_pro_SUFFIX_resource_declare
 formula1 = "WEAK"
 formula2 = "STRONG"
 formula_used = formula2
-logNumber = 11
+logNumber = 15
 
 # train()
 # _6_evaluate_beseline_SUFFIX_only.runExperiments()
