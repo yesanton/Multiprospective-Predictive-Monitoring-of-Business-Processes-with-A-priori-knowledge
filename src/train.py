@@ -23,7 +23,7 @@ import csv
 import time
 from itertools import izip
 from datetime import datetime
-from shared_variables import getUnicode_fromInt, eventlog
+from shared_variables import get_unicode_from_int, eventlog
 
 
 # this part of the src opens the file, reads it into three following variables
@@ -43,12 +43,12 @@ def train():
     casestarttime = None
     lasteventtime = None
 
-    csvfile = open('../data/%s' % eventlog, 'r')
+    csvfile = open('../data/final_experiments/%s' % eventlog, 'r')
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     next(spamreader, None)  # skip the headers
 
     for row in spamreader:  # the rows are "CaseID,ActivityID,CompleteTimestamp"
-        t = time.strptime(row[2], "%Y/%m/%d %H:%M:%S")  # creates a datetime object from row[2]
+        t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")  # creates a datetime object from row[2]
         if row[0] != lastcase:  # 'lastcase' is to save the last executed case for the loop
             casestarttime = t
             lasteventtime = t
@@ -61,7 +61,7 @@ def train():
             times = []
             times2 = []
             numlines += 1
-        line += getUnicode_fromInt(row[1])
+        line += get_unicode_from_int(row[1])
         timesincelastevent = datetime.fromtimestamp(time.mktime(t))-datetime.fromtimestamp(time.mktime(lasteventtime))
         timesincecasestart = datetime.fromtimestamp(time.mktime(t))-datetime.fromtimestamp(time.mktime(casestarttime))
         timediff = 86400 * timesincelastevent.days + timesincelastevent.seconds
@@ -110,7 +110,7 @@ def train():
     char_indices = dict((c, i) for i, c in enumerate(chars))
     target_char_indices = dict((c, i) for i, c in enumerate(target_chars))
 
-    csvfile = open('../data/%s' % eventlog, 'r')
+    csvfile = open('../data/final_experiments/%s' % eventlog, 'r')
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     next(spamreader, None)  # skip the headers
     lastcase = ''
@@ -129,7 +129,7 @@ def train():
     casestarttime = None
     lasteventtime = None
     for row in spamreader:
-        t = time.strptime(row[2], "%Y/%m/%d %H:%M:%S")
+        t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")
         # new case starts
         if row[0] != lastcase:
             casestarttime = t
@@ -147,7 +147,7 @@ def train():
             times3 = []
             times4 = []
             numlines += 1
-        line += getUnicode_fromInt(row[1])
+        line += get_unicode_from_int(row[1])
         timesincelastevent = datetime.fromtimestamp(time.mktime(t))-datetime.fromtimestamp(time.mktime(lasteventtime))
         timesincecasestart = datetime.fromtimestamp(time.mktime(t))-datetime.fromtimestamp(time.mktime(casestarttime))
         midnight = datetime.fromtimestamp(time.mktime(t)).replace(hour=0, minute=0, second=0, microsecond=0)
@@ -302,7 +302,7 @@ def train():
 
     model.compile(loss={'act_output': 'categorical_crossentropy', 'time_output': 'mae'}, optimizer=opt)
     early_stopping = EarlyStopping(monitor='val_loss', patience=42)
-    path_to_model = 'output_files/models_' + eventlog[:-4] + '/model_{epoch:02d}-{val_loss:.2f}.h5'
+    path_to_model = 'output_files/final_experiments/models/CF/' + eventlog[:-4] + '/model_{epoch:02d}-{val_loss:.2f}.h5'
     model_checkpoint = ModelCheckpoint(path_to_model, monitor='val_loss', verbose=0, save_best_only=True,
                                        save_weights_only=False, mode='auto')
     lr_reducer = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=10, verbose=0, mode='auto', epsilon=0.0001,

@@ -11,12 +11,12 @@ import copy
 import csv
 import re
 import time
-from collections import Counter
+# from collections import Counter
 from datetime import datetime
 from itertools import izip
 import numpy as np
 from formula_verificator import verify_formula_as_compliant
-from shared_variables import getUnicode_fromInt
+from shared_variables import get_unicode_from_int
 
 
 def prepare_testing_data(eventlog):
@@ -26,7 +26,7 @@ def prepare_testing_data(eventlog):
 
     lastcase = ''
     line = ''
-    firstLine = True
+    first_line = True
     lines = []
     timeseqs = []  # relative time since previous event
     timeseqs2 = []  # relative time since case start
@@ -39,12 +39,12 @@ def prepare_testing_data(eventlog):
     lasteventtime = None
 
     for row in spamreader:
-        t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")
+        t = time.strptime(row[2], "%Y/%m/%d %H:%M:%S")
         if row[0] != lastcase:  # check if new case is starting
             casestarttime = t
             lasteventtime = t
             lastcase = row[0]
-            if not firstLine:  # add case to list of cases
+            if not first_line:  # add case to list of cases
                 lines.append(line)
                 timeseqs.append(times)
                 timeseqs2.append(times2)
@@ -54,18 +54,18 @@ def prepare_testing_data(eventlog):
             times2 = []
             times3 = []
             numlines += 1
-        line += getUnicode_fromInt(row[1])  # add unicode represantation to case variable
+        line += get_unicode_from_int(row[1])  # add unicode represantation to case variable
         timesincelastevent = datetime.fromtimestamp(time.mktime(t)) - datetime.fromtimestamp(time.mktime(lasteventtime))
         timesincecasestart = datetime.fromtimestamp(time.mktime(t)) - datetime.fromtimestamp(time.mktime(casestarttime))
-        midnight = datetime.fromtimestamp(time.mktime(t)).replace(hour=0, minute=0, second=0, microsecond=0)
-        timesincemidnight = datetime.fromtimestamp(time.mktime(t)) - midnight
+        # midnight = datetime.fromtimestamp(time.mktime(t)).replace(hour=0, minute=0, second=0, microsecond=0)
+        # timesincemidnight = datetime.fromtimestamp(time.mktime(t)) - midnight
         timediff = 86400 * timesincelastevent.days + timesincelastevent.seconds
         timediff2 = 86400 * timesincecasestart.days + timesincecasestart.seconds
         times.append(timediff)
         times2.append(timediff2)
         times3.append(datetime.fromtimestamp(time.mktime(t)))
         lasteventtime = t
-        firstLine = False
+        first_line = False
 
     # add last case
     lines.append(line)
@@ -82,13 +82,7 @@ def prepare_testing_data(eventlog):
     print('divisor3: {}'.format(divisor3))
 
     elems_per_fold = int(round(numlines / 3))
-
     fold1and2lines = lines[:2 * elems_per_fold]
-
-    step = 1
-    sentences = []
-    softness = 0
-    next_chars = []
     fold1and2lines = map(lambda x: x + '!', fold1and2lines)
     maxlen = max(map(lambda x: len(x), fold1and2lines))
 
@@ -105,7 +99,6 @@ def prepare_testing_data(eventlog):
     print(indices_char)
 
     # we only need the third fold, because first two were used for training
-
     fold3 = lines[2 * elems_per_fold:]
     fold3_t = timeseqs[2 * elems_per_fold:]
     fold3_t2 = timeseqs2[2 * elems_per_fold:]
@@ -123,7 +116,7 @@ def prepare_testing_data(eventlog):
         target_indices_char, target_char_indices
 
 
-def selectFormulaVerifiedTraces(lines, lines_t, lines_t2, lines_t3, formula,  prefix=0):
+def select_formula_verified_traces(lines, lines_t, lines_t2, lines_t3, formula,  prefix=0):
     # select only lines with formula verified
     lines_v = []
     lines_t_v = []
@@ -143,33 +136,33 @@ def selectFormulaVerifiedTraces(lines, lines_t, lines_t2, lines_t3, formula,  pr
 # this one encodes the current sentence into the onehot encoding
 def encode(sentence, times, times3, maxlen, chars, char_indices, divisor, divisor2):
     num_features = len(chars) + 5
-    X = np.zeros((1, maxlen, num_features), dtype=np.float32)
+    x = np.zeros((1, maxlen, num_features), dtype=np.float32)
     leftpad = maxlen - len(sentence)
     times2 = np.cumsum(times)
     for t, char in enumerate(sentence):
         midnight = times3[t].replace(hour=0, minute=0, second=0, microsecond=0)
         timesincemidnight = times3[t] - midnight
-        multiset_abstraction = Counter(sentence[:t + 1])
+        # multiset_abstraction = Counter(sentence[:t + 1])
         for c in chars:
             if c == char:
-                X[0, t + leftpad, char_indices[c]] = 1
-        X[0, t + leftpad, len(chars)] = t + 1
-        X[0, t + leftpad, len(chars) + 1] = times[t] / divisor
-        X[0, t + leftpad, len(chars) + 2] = times2[t] / divisor2
-        X[0, t + leftpad, len(chars) + 3] = timesincemidnight.seconds / 86400
-        X[0, t + leftpad, len(chars) + 4] = times3[t].weekday() / 7
-    return X
+                x[0, t + leftpad, char_indices[c]] = 1
+        x[0, t + leftpad, len(chars)] = t + 1
+        x[0, t + leftpad, len(chars) + 1] = times[t] / divisor
+        x[0, t + leftpad, len(chars) + 2] = times2[t] / divisor2
+        x[0, t + leftpad, len(chars) + 3] = timesincemidnight.seconds / 86400
+        x[0, t + leftpad, len(chars) + 4] = times3[t].weekday() / 7
+    return x
 
 
 # modify to be able to get second best prediction
-def getSymbol(predictions, target_indices_char, ith_best=0):
+def get_symbol(predictions, target_indices_char, ith_best=0):
     i = np.argsort(predictions)[len(predictions) - ith_best - 1]
     return target_indices_char[i]
 
 
 # modify to be able to get second best prediction
-def getSymbolAmpl(predictions, target_indices_char, target_char_indices, start_of_the_cycle_symbol,
-                  stop_symbol_probability_amplifier_current, ith_best=0):
+def get_symbol_ampl(predictions, target_indices_char, target_char_indices, start_of_the_cycle_symbol,
+                    stop_symbol_probability_amplifier_current, ith_best=0):
     a_pred = list(predictions)
     if start_of_the_cycle_symbol in target_char_indices:
         place_of_starting_symbol = target_char_indices[start_of_the_cycle_symbol]
@@ -201,12 +194,3 @@ def amplify(s):
 
 # the match.group(0) finds the whole substring that contains 1+ cycles
 # the match.group(1) finds the substring that indicates the cycle
-
-
-
-
-
-
-
-
-

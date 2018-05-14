@@ -6,19 +6,19 @@ here the beam search (with breath-first-search) is implemented, to find complian
 Author: Anton Yeshchenko
 """
 from __future__ import division
-from Queue import Queue, PriorityQueue
+from Queue import PriorityQueue
 from datetime import timedelta
 from itertools import izip
+# noinspection PyProtectedMember
 from jellyfish._jellyfish import damerau_levenshtein_distance
 from keras.models import load_model
 from sklearn import metrics
 from inspect import getsourcefile
-from shared_variables import activateSettings
+from shared_variables import activate_settings, path_to_declare_model_file
 from formula_verificator import verify_formula_as_compliant
-from support_scripts.prepare_data import amplify, getSymbolAmpl, selectFormulaVerifiedTraces
+from support_scripts.prepare_data import amplify, get_symbol_ampl
 from support_scripts.prepare_data import encode
-from support_scripts.prepare_data import getSymbol
-from support_scripts.prepare_data import prepare_testing_data
+from support_scripts.prepare_data_resource import prepare_testing_data, select_declare_verified_traces
 
 import csv
 import numpy as np
@@ -27,7 +27,6 @@ import distance
 import os.path
 import sys
 
-
 current_path = os.path.abspath(getsourcefile(lambda: 0))
 current_dir = os.path.dirname(current_path)
 parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
@@ -35,34 +34,39 @@ parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
 sys.path.insert(0, parent_dir)
 
 
-def runExperiments(logIdentificator, formulaType):
+def run_experiments(log_identificator, formula_type):
+
+    # get variables from the shared variables file
     eventlog, \
         path_to_model_file, \
         beam_size, \
         prefix_size_pred_from, \
         prefix_size_pred_to, \
-        formula = activateSettings(logIdentificator, formulaType)
+        formula = activate_settings(log_identificator, formula_type)
 
     start_time = time.time()
 
+    # prepare the data
     lines, \
+        lines_id, \
+        lines_group, \
         lines_t, \
         lines_t2, \
         lines_t3, \
+        lines_t4, \
         maxlen, \
         chars, \
-        char_indices,\
+        chars_group, \
+        char_indices, \
+        char_indices_group, \
         divisor, \
         divisor2, \
         divisor3, \
         predict_size, \
         target_indices_char, \
-        target_char_indices = prepare_testing_data(eventlog)
-
-    # lines = lines[0:300]
-    # lines_t= lines_t[0:300]
-    # lines_t2=lines_t2[0:300]
-    # lines_t3=lines_t3[0:300]
+        target_indices_char_group,\
+        target_char_indices, \
+        target_char_indices_group = prepare_testing_data(eventlog)
 
     # this is the beam stack size, means how many "best" alternatives will be stored
     one_ahead_gt = []
@@ -75,14 +79,14 @@ def runExperiments(logIdentificator, formulaType):
     model = load_model(path_to_model_file)
 
     class NodePrediction:
-        def __init__(self, data, cropped_line, total_predicted_time, probability_of=0):
+        def __init__(self, data, crop_line, tot_predicted_time, probability_of=0):
             self.data = data
-            self.cropped_line = cropped_line
-            self.total_predicted_time = total_predicted_time
+            self.cropped_line = crop_line
+            self.total_predicted_time = tot_predicted_time
             self.probability_of = probability_of
 
     # make predictions
-    with open('output_files/results/'+formulaType+'/suffix_and_remaining_time3_%s' % eventlog, 'wb') as csvfile:
+    with open('output_files/final_experiments/results/LTL/%s' % eventlog, 'wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         spamwriter.writerow(["Prefix length",
                              "Groud truth",
@@ -98,16 +102,21 @@ def runExperiments(logIdentificator, formulaType):
         for prefix_size in range(prefix_size_pred_from, prefix_size_pred_to):
             print(prefix_size)
 
-            # lines = lines[13:]
-            # lines_t = lines_t[13:]
-            # lines_t2 = lines_t2[13:]
-            # lines_t3 = lines_t3[13:]
-            lines_s, lines_t_s, lines_t2_s, lines_t3_s = selectFormulaVerifiedTraces(lines,
-                                                                                     lines_t,
-                                                                                     lines_t2,
-                                                                                     lines_t3,
-                                                                                     formula,
-                                                                                     prefix_size)
+            lines_s, \
+                lines_id_s, \
+                lines_group_s, \
+                lines_t_s, \
+                lines_t2_s, \
+                lines_t3_s, \
+                lines_t4_s = select_declare_verified_traces(path_to_declare_model_file,
+                                                            lines,
+                                                            lines_id,
+                                                            lines_group,
+                                                            lines_t,
+                                                            lines_t2,
+                                                            lines_t3,
+                                                            lines_t4,
+                                                            prefix_size)
             print("prefix size: " + str(prefix_size))
             print("formulas verified: " + str(len(lines_s)) + " out of : " + str(len(lines)))
             counterr = 0
@@ -142,7 +151,7 @@ def runExperiments(logIdentificator, formulaType):
 
                 queue_next_steps_future = PriorityQueue()
                 start_of_the_cycle_symbol = " "
-                found_sattisfying_constraint = False
+                # found_sattisfying_constraint = False
 
                 current_beam_size = beam_size
                 current_prediction_premis = None
@@ -154,16 +163,16 @@ def runExperiments(logIdentificator, formulaType):
 
                         _, current_prediction_premis = queue_next_steps.get()
 
-                        if not found_sattisfying_constraint:
-                            if verify_formula_as_compliant(current_prediction_premis.cropped_line,
-                                                           formula,
-                                                           prefix_size):
-                                # the formula verified and we can just finish the predictions
-                                # beam size is 1 because predict only sequence of events
-                                current_beam_size = 1
-                                # overwrite new queue
-                                queue_next_steps_future = PriorityQueue()
-                                found_sattisfying_constraint = True
+                        # if not found_sattisfying_constraint:
+                        #     if verify_formula_as_compliant(current_prediction_premis.cropped_line,
+                        #                                    formula,
+                        #                                    prefix_size):
+                        #         # the formula verified and we can just finish the predictions
+                        #         # beam size is 1 because predict only sequence of events
+                        #         current_beam_size = 1
+                        #         # overwrite new queue
+                        #         queue_next_steps_future = PriorityQueue()
+                        #         found_sattisfying_constraint = True
 
                         enc = current_prediction_premis.data
                         temp_cropped_line = current_prediction_premis.cropped_line
@@ -185,9 +194,9 @@ def runExperiments(logIdentificator, formulaType):
                         cropped_times3.append(cropped_times3[-1] + timedelta(seconds=y_t))
 
                         for j in range(current_beam_size):
-                            temp_prediction = getSymbolAmpl(y_char, target_indices_char,
-                                                            target_char_indices, start_of_the_cycle_symbol,
-                                                            stop_symbol_probability_amplifier_current, j)
+                            temp_prediction = get_symbol_ampl(y_char, target_indices_char,
+                                                              target_char_indices, start_of_the_cycle_symbol,
+                                                              stop_symbol_probability_amplifier_current, j)
                             # end of case was just predicted, therefore, stop predicting further into the future
                             if temp_prediction == '!':
                                 if verify_formula_as_compliant(temp_cropped_line, formula, prefix_size):
@@ -211,9 +220,9 @@ def runExperiments(logIdentificator, formulaType):
                                                   temp_total_predicted_time,
                                                   current_prediction_premis.probability_of + np.log(probability_this))
                             queue_next_steps_future.put((-temp.probability_of, temp))
-                            # print str(counterr) + ' ' + str(i) + ' ' + str(k) \
-                            #       + ' ' + str(j) + ' ' + temp_cropped_line[prefix_size:]\
-                            #       + "     " + str(temp.probability_of)
+                            print 'INFORMATION: ' + str(counterr) + ' ' + str(i) + ' ' + str(k) + ' ' + str(j) + ' ' + \
+                                temp_cropped_line[prefix_size:] + "     " + str(temp.probability_of)
+
                     queue_next_steps = queue_next_steps_future
                     queue_next_steps_future = PriorityQueue()
 

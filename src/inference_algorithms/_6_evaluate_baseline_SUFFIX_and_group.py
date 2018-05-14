@@ -9,7 +9,6 @@ Author: Niek Tax
 from __future__ import division
 from keras.models import load_model
 import csv
-import copy
 import numpy as np
 import distance
 from itertools import izip
@@ -19,29 +18,22 @@ from sklearn import metrics
 import time
 from datetime import datetime, timedelta
 from collections import Counter
-from shared_variables import getInt_fromUnicode, activateSettings, path_to_declare_model_file
-from support_scripts.prepare_data_resource import selectDeclareVerifiedTraces, prepare_testing_data
-from formula_verificator import verify_with_data
-import logging
-logging.basicConfig(filename='baseline.log', level=logging.INFO)
+from shared_variables import get_int_from_unicode, activate_settings, path_to_declare_model_file
+from support_scripts.prepare_data_resource import select_declare_verified_traces, prepare_testing_data
+# import logging
+# logging.basicConfig(filename='baseline.log', level=logging.INFO)
 
 
-# noinspection PyShadowingNames,PyUnusedLocal
-def runExperiments(logIdentificator, formulaType):
-
-    logging.info("<<<<<<<<<<<<<<<<<<<<<<   Baseline    >>>>>>>>>>>>>>>>>>>>>>>")
+def run_experiments(log_identificator, formula_type):
 
     eventlog, \
         path_to_model_file, \
         beam_size, \
         prefix_size_pred_from, \
         prefix_size_pred_to, \
-        formula = activateSettings(logIdentificator, formulaType)
+        formula = activate_settings(log_identificator, formula_type)
 
     start_time = time.time()
-
-    violation_counter = 0
-    verification_counter = 0
 
     # prepare the data N.B. maxlen == predict_size
     lines, \
@@ -71,54 +63,46 @@ def runExperiments(logIdentificator, formulaType):
     # define helper functions
     # this one encodes the current sentence into the onehot encoding
     # noinspection PyUnusedLocal
-    def encode(sentence, sentence_group, times, times3, maxlen=maxlen):
+    def encode(sentence, sentence_group, times_enc, times3_enc, maxlen_enc=maxlen):
         num_features = len(chars)+len(chars_group)+5
-        X = np.zeros((1, maxlen, num_features), dtype=np.float32)
-        leftpad = maxlen-len(sentence)
-        times2 = np.cumsum(times)
-        for t, char in enumerate(sentence):
-            midnight = times3[t].replace(hour=0, minute=0, second=0, microsecond=0)
-            timesincemidnight = times3[t]-midnight
-            multiset_abstraction = Counter(sentence[:t+1])
+        x = np.zeros((1, maxlen_enc, num_features), dtype=np.float32)
+        leftpad = maxlen_enc-len(sentence)
+        times2_enc = np.cumsum(times_enc)
+        for v, char in enumerate(sentence):
+            midnight = times3_enc[v].replace(hour=0, minute=0, second=0, microsecond=0)
+            timesincemidnight = times3_enc[v]-midnight
+            multiset_abstraction = Counter(sentence[:v+1])
             for c in chars:
                 if c == char:
-                    X[0, t+leftpad, char_indices[c]] = 1
+                    x[0, v+leftpad, char_indices[c]] = 1
             for g in chars_group:
-                if g == sentence_group[t]:
-                    X[0, t+leftpad, len(char_indices)+char_indices_group[g]] = 1
-            X[0, t+leftpad, len(chars)+len(chars_group)] = t+1
-            X[0, t+leftpad, len(chars)+len(chars_group)+1] = times[t]/divisor
-            X[0, t+leftpad, len(chars)+len(chars_group)+2] = times2[t]/divisor2
-            X[0, t+leftpad, len(chars)+len(chars_group)+3] = timesincemidnight.seconds/86400
-            X[0, t+leftpad, len(chars)+len(chars_group)+4] = times3[t].weekday()/7
-        return X
+                if g == sentence_group[v]:
+                    x[0, v+leftpad, len(char_indices)+char_indices_group[g]] = 1
+            x[0, v+leftpad, len(chars)+len(chars_group)] = v+1
+            x[0, v+leftpad, len(chars)+len(chars_group)+1] = times_enc[v]/divisor
+            x[0, v+leftpad, len(chars)+len(chars_group)+2] = times2_enc[v]/divisor2
+            x[0, v+leftpad, len(chars)+len(chars_group)+3] = timesincemidnight.seconds/86400
+            x[0, v+leftpad, len(chars)+len(chars_group)+4] = times3_enc[v].weekday()/7
+        return x
 
     # modify to be able to get second best prediction
-    def getSymbol(predictions, ith_best=0):
-        i = np.argsort(predictions)[len(predictions) - ith_best - 1]
-        return target_indices_char[i]
+    def get_symbol(predictions, vth_best=0):
+        v = np.argsort(predictions)[len(predictions) - vth_best - 1]
+        return target_indices_char[v]
 
-    def getSymbolGroup(predictions, ith_best=0):
-        i = np.argsort(predictions)[len(predictions) - ith_best - 1]
-        return target_indices_char_group[i]
+    def get_symbol_group(predictions, vth_best=0):
+        v = np.argsort(predictions)[len(predictions) - vth_best - 1]
+        return target_indices_char_group[v]
 
     one_ahead_gt = []
-    one_ahead_gt_group = []
     one_ahead_pred = []
 
-    two_ahead_gt = []
-    two_ahead_pred = []
-
-    three_ahead_gt = []
-    three_ahead_pred = []
-
-    with open('output_files/results/baseline/'+formulaType+'/suffix_and_remaining_time0_%s' % eventlog, 'wb') as csvfile:
+    with open('output_files/final_experiments/results/baseline/%s' % eventlog, 'wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         spamwriter.writerow(["Prefix length", "Ground truth", "Predicted", "Levenshtein", "Damerau", "Jaccard",
                              "Ground truth times", "Predicted times", "RMSE", "MAE", "Median AE", "Ground Truth Group",
                              "Predicted Group", "Levenshtein Group"])
         for prefix_size in range(prefix_size_pred_from, prefix_size_pred_to):
-            logging.info("Prefix size: %s", prefix_size)
 
             lines_s,\
                 lines_id_s,\
@@ -126,22 +110,15 @@ def runExperiments(logIdentificator, formulaType):
                 lines_t_s, \
                 lines_t2_s, \
                 lines_t3_s,\
-                lines_t4_s = selectDeclareVerifiedTraces(path_to_declare_model_file,
-                                                         lines,
-                                                         lines_id,
-                                                         lines_group,
-                                                         lines_t,
-                                                         lines_t2,
-                                                         lines_t3,
-                                                         lines_t4)
-
-            logging.info("Traces verified: %s out of %s", str(len(lines_s)), str(len(lines)))
-            logging.info("Testing set: ")
-            for line, line_id, line_group in izip(lines_s, lines_id_s, lines_group_s):
-                lst = []
-                for activity, group in izip(line, line_group):
-                    lst.append((getInt_fromUnicode(activity), getInt_fromUnicode(group)))
-                logging.info("%s: %s", line_id, lst)
+                lines_t4_s = select_declare_verified_traces(path_to_declare_model_file,
+                                                            lines,
+                                                            lines_id,
+                                                            lines_group,
+                                                            lines_t,
+                                                            lines_t2,
+                                                            lines_t3,
+                                                            lines_t4,
+                                                            prefix_size)
 
             print(prefix_size)
             print("formulas verified: " + str(len(lines_s)) + " out of : " + str(len(lines)))
@@ -161,9 +138,7 @@ def runExperiments(logIdentificator, formulaType):
                 if len(times2) < prefix_size:
                     continue  # make no prediction for this case, since this case has ended already
                 ground_truth = ''.join(line[prefix_size:prefix_size+predict_size])
-                ground_truth_readable = ''.join(map(lambda x: str(getInt_fromUnicode(x)), line[prefix_size:prefix_size+predict_size]))
                 ground_truth_group = ''.join(line_group[prefix_size:prefix_size+predict_size])
-                ground_truth_group_readable = ''.join(map(lambda x: str(getInt_fromUnicode(x)), line_group[prefix_size:prefix_size+predict_size]))
                 ground_truth_t = times2[prefix_size-1]
                 case_end_time = times2[len(times2)-1]
                 ground_truth_t = case_end_time-ground_truth_t
@@ -177,14 +152,16 @@ def runExperiments(logIdentificator, formulaType):
                     y_char = y[0][0]
                     y_group = y[1][0]
                     y_t = y[2][0][0]
-                    prediction = getSymbol(y_char)  # undo one-hot encoding
-                    prediction_group = getSymbolGroup(y_group)  # undo one-hot encoding
+                    prediction = get_symbol(y_char)  # undo one-hot encoding
+                    prediction_group = get_symbol_group(y_group)  # undo one-hot encoding
                     cropped_line += prediction
                     cropped_line_group += prediction_group
+
                     # adds a fake timestamp to the list
                     t = time.strptime(cropped_times4[-1], "%Y-%m-%d %H:%M:%S")
                     new_timestamp = datetime.fromtimestamp(time.mktime(t)) + timedelta(0, 2000)
                     cropped_times4.append(new_timestamp.strftime("%Y-%m-%d %H:%M:%S"))
+
                     if y_t < 0:
                         y_t = 0
                     cropped_times.append(y_t)
@@ -192,26 +169,13 @@ def runExperiments(logIdentificator, formulaType):
                     if prediction == '!':
                         one_ahead_pred.append(total_predicted_time)
                         one_ahead_gt.append(ground_truth_t)
-                        if verify_with_data(path_to_declare_model_file, line_id, cropped_line, cropped_line_group, cropped_times4):
-                            lst = []
-                            for activity, group in izip(cropped_line, cropped_line_group):
-                                lst.append((getInt_fromUnicode(activity), getInt_fromUnicode(group)))
-                            logging.info("Predicted -> %s: %s - verified", line_id, lst)
-                            verification_counter += 1
-                        else:
-                            lst = []
-                            for activity, group in izip(cropped_line, cropped_line_group):
-                                lst.append((getInt_fromUnicode(activity), getInt_fromUnicode(group)))
-                            logging.info("Predicted -> %s: %s - violated", line_id, lst)
-                            violation_counter += 1
+                        print('! predicted, end case')
                         break
                     y_t = y_t * divisor3
                     cropped_times3.append(cropped_times3[-1] + timedelta(seconds=y_t))
                     total_predicted_time = total_predicted_time + y_t
                     predicted += prediction
-                    predicted_readable = ''.join(map(lambda x: str(getInt_fromUnicode(x)), predicted))
                     predicted_group += prediction_group
-                    predicted_group_readable = ''.join(map(lambda x: str(getInt_fromUnicode(x)), predicted_group))
                 output = []
                 if len(ground_truth) > 0:
                     output.append(prefix_size)
@@ -238,5 +202,3 @@ def runExperiments(logIdentificator, formulaType):
                     output.append(1 - distance.nlevenshtein(predicted_group, ground_truth_group))
                     spamwriter.writerow(output)
     print("TIME TO FINISH --- %s seconds ---" % (time.time() - start_time))
-    print("Number of non-conformant traces predicted: ", violation_counter)
-    print("Number of conformant traces predicted: ", verification_counter)

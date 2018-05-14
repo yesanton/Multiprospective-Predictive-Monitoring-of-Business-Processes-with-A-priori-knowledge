@@ -1,48 +1,40 @@
 import csv
-
-import time
-
+import json
 import datetime
 
-eventlog_in = "bpi_2014_detail_incident_non_processed.csv"
-eventlog_out = "bpi_14_detail_incident.csv"
+eventlog_in = "logs/10x5_1W.csv"
+eventlog_out = "converted_logs/10x5_1W.csv"
 
 CASE_ID = 0
-ACTIVITY_ID = 3
-TIMESTAMP_ID = 1
+ACTIVITY_ID = 1
+TIMESTAMP_ID = 2
 
 
 csvfile_in = open('%s' % eventlog_in, 'r')
-spamreader = csv.reader(csvfile_in, delimiter=';', quotechar='|')
+spamreader = csv.reader(csvfile_in, delimiter=',', quotechar='|')
 next(spamreader, None)  # skip the headers
 
 dictionary = {}
-#dictionary["a"] = 1
-
 give_number = 0
 
 
 with open('%s' % eventlog_out, 'wb') as csvfile_out:
     writer = csv.writer(csvfile_out, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-    writer.writerow(["CaseID","ActivityID","CompleteTimestamp"])
+    writer.writerow(["CaseID", "ActivityID", "CompleteTimestamp"])
 
     mark = True
 
     current_event = 0
     for row in spamreader:
-        timestamp = row[TIMESTAMP_ID] #timestamp in hospital log
-  #      split_time = timestamp.split("T")
-
- #       timestamp = split_time[0]+" "+ split_time[1].split("+")[0]
-
-        timestamp = datetime.datetime.strptime(timestamp, "%d-%m-%Y %H:%M:%S") #.%f")
-
-        timestamp = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+        timestamp = row[TIMESTAMP_ID].split(".")[0]  # timestamp in hospital log
+    #   split_time = timestamp.split("T")
+    #   timestamp = split_time[0]+" "+ split_time[1].split("+")[0]
+        timestamp = datetime.datetime.strptime(timestamp, "%Y/%m/%d %H:%M:%S")  # .%f")
+        timestamp = timestamp.strftime("%Y/%m/%d %H:%M:%S")
 
         if row[ACTIVITY_ID] not in dictionary:
             dictionary[row[ACTIVITY_ID]] = give_number
             give_number = give_number + 1
-
 
         output = []
         output.append(row[CASE_ID])
@@ -61,10 +53,5 @@ with open('%s' % eventlog_out, 'wb') as csvfile_out:
         else:
             trace_save.append(output)
 
-
-
-
-
-
-
-
+with open('%s' % 'dictionaries/10x5_1W_dictionary.txt', 'w') as file:
+    file.write(json.dumps(dictionary))

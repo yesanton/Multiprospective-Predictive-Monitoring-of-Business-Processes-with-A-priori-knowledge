@@ -7,8 +7,9 @@ Author: Anton Yeshchenko
 
 
 from py4j.java_gateway import JavaGateway
-from shared_variables import getInt_fromUnicode
-from py4j.java_collections import SetConverter, MapConverter, ListConverter
+from shared_variables import get_int_from_unicode
+from py4j.java_collections import ListConverter
+# from py4j.java_collections import SetConverter, MapConverter, ListConverter
 
 
 gateway = JavaGateway()
@@ -21,7 +22,8 @@ verificator_app = gateway.entry_point
 #
 # formula_help_desk1 = "( <>(\"6\") ) "
 # formula_help_desk2 = "( <>(\"2\") /\  ( <>(\"6\") ) )"
-# formula_help_desk3 = "( <>(\"7\") \\/  <> (\"9\") \\/  <> (\"3\") \\/  <> (\"4\") \\/  <> (\"5\") \\/  <> (\"1\") \\/  <> (\"2\") ) "
+# formula_help_desk3 = "( <>(\"7\") \\/  <> (\"9\") \\/  <> (\"3\") \\/  <> (\"4\") \\/
+# <> (\"5\") \\/  <> (\"1\") \\/  <> (\"2\") ) "
 # formula_help_desk4 = "( <>(\"1\") ) "
 #
 # formula_help_desk_cut_2_absence = "( !( <> (( \"7\" /\ X ( <> ( \"7\" ))))) )"
@@ -111,7 +113,8 @@ verificator_app = gateway.entry_point
 #
 # mar8BPI13_alternate_responce = "[]( ( \"10\" -> X(( !(\"10\") U \"3\" )))) " #from 10 to 3
 # # from 1 to 10
-# mar8BPI13_alternate_precendence = "( ( !( \"10\" ) U \"1\" ) ) /\ ( ( \"10\" -> X( ( !( \"10\" ) U \"1\" ) ) ) ) ) /\ ! (\"10\" )"
+# mar8BPI13_alternate_precendence = "( ( !( \"10\" ) U \"1\" ) ) /\ ( ( \"10\" ->
+# X( ( !( \"10\" ) U \"1\" ) ) ) ) ) /\ ! (\"10\" )"
 # mar8BPI13_existence = "<> ( \"4\" )"
 # mar8BPI13_precendence = "( ! (\"9\" ) U \"1\" ) \/ ([](!(\"9\"))) /\ ! (\"9\" )" #from 1 to 9
 # mar8BPI13_chain_precedence = "[]( ( X( \"5\"  ) -> \"3\" ) )/\ ! (\"5\"  )" #from 3 to 5
@@ -158,8 +161,8 @@ def verify_with_data(model_file, trace_id, activities, groups, times, prefix=0):
     times_java = gateway.jvm.java.util.ArrayList()
 
     for i in range(prefix, len(activities)):
-        activities_java.append(str(getInt_fromUnicode(activities[i])))
-        groups_java.append(str(getInt_fromUnicode(groups[i])))
+        activities_java.append(str(get_int_from_unicode(activities[i])))
+        groups_java.append(str(get_int_from_unicode(groups[i])))
         times_java.append(times[i])
     if not activities_java:
         return False
@@ -167,7 +170,8 @@ def verify_with_data(model_file, trace_id, activities, groups, times, prefix=0):
     return verificator_app.isTraceWithDataViolated(model_file, trace_id, activities_java, groups_java, times_java)
 
 
-def generateXLog(traces_id, activities, groups, times):
+# noinspection PyProtectedMember
+def generate_xlog(traces_id, activities, groups, times):
     # Convert lists to Java compatible format
     traces_id_java = ListConverter().convert(traces_id, gateway._gateway_client)
 
@@ -189,16 +193,15 @@ def generateXLog(traces_id, activities, groups, times):
     verificator_app.generateXLog(traces_id_java, activities_java, groups_java, times_java)
 
 
-def testAnalysis():
+def test_analysis():
     verificator_app.testAnalysis()
 
 
 def verify_formula_as_compliant(trace, formula, prefix=0):
     trace_new = gateway.jvm.java.util.ArrayList()
     for i in range(prefix, len(trace)):
-        trace_new.append(str(getInt_fromUnicode(trace[i])))
+        trace_new.append(str(get_int_from_unicode(trace[i])))
     if not trace_new:
         return False
-    ver = verificator_app.isTraceViolated(formula, trace_new) == False
-
+    ver = verificator_app.isTraceViolated(formula, trace_new) is False
     return ver

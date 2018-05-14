@@ -6,11 +6,11 @@ Author: Anton Yeshchenko
 """
 
 from __future__ import division
-from collections import Counter
+from Queue import PriorityQueue
 from datetime import datetime
 from itertools import izip
 from formula_verificator import verify_with_data, verify_formula_as_compliant
-from shared_variables import getUnicode_fromInt
+from shared_variables import get_unicode_from_int
 
 import copy
 import csv
@@ -20,14 +20,14 @@ import numpy as np
 
 
 def prepare_testing_data(eventlog):
-    csvfile = open('../data/%s' % eventlog, 'r')
+    csvfile = open('../data/final_experiments/%s' % eventlog, 'r')
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     next(spamreader, None)  # skip the headers
 
     lastcase = ''
     line = ''
     line_group = ''
-    firstLine = True
+    first_line = True
     lines_id = []
     lines = []
     lines_group = []
@@ -49,7 +49,7 @@ def prepare_testing_data(eventlog):
             casestarttime = t
             lasteventtime = t
             lastcase = row[0]
-            if not firstLine:
+            if not first_line:
                 lines.append(line)
                 lines_group.append(line_group)
                 timeseqs.append(times)
@@ -64,8 +64,8 @@ def prepare_testing_data(eventlog):
             times3 = []
             times4 = []
             numlines += 1
-        line += getUnicode_fromInt(row[1])
-        line_group += getUnicode_fromInt(row[3])
+        line += get_unicode_from_int(row[1])
+        line_group += get_unicode_from_int(row[3])
         timesincelastevent = datetime.fromtimestamp(time.mktime(t)) - datetime.fromtimestamp(time.mktime(lasteventtime))
         timesincecasestart = datetime.fromtimestamp(time.mktime(t)) - datetime.fromtimestamp(time.mktime(casestarttime))
         timediff = 86400 * timesincelastevent.days + timesincelastevent.seconds
@@ -75,7 +75,7 @@ def prepare_testing_data(eventlog):
         times3.append(datetime.fromtimestamp(time.mktime(t)))
         times4.append(row[2])
         lasteventtime = t
-        firstLine = False
+        first_line = False
 
     # add last case
     lines.append(line)
@@ -158,8 +158,8 @@ def prepare_testing_data(eventlog):
 
 
 # selects traces verified by a declare model
-def selectDeclareVerifiedTraces(path_to_declare_model_file, lines, lines_id, lines_group, lines_t, lines_t2, lines_t3,
-                                lines_t4, prefix=0):
+def select_declare_verified_traces(path_to_declare_model_file, lines, lines_id, lines_group, lines_t, lines_t2,
+                                   lines_t3, lines_t4, prefix=0):
     # select only lines with formula verified
     lines_v = []
     lines_id_v = []
@@ -189,8 +189,8 @@ def selectDeclareVerifiedTraces(path_to_declare_model_file, lines, lines_id, lin
 
 
 # selects traces verified by LTL formula
-def selectFormulaVerifiedTraces(lines, lines_id, lines_group, lines_t, lines_t2, lines_t3,
-                                lines_t4, formula, prefix=0):
+def select_formula_verified_traces(lines, lines_id, lines_group, lines_t, lines_t2, lines_t3,
+                                   lines_t4, formula, prefix=0):
     # select only lines with formula verified
     lines_v = []
     lines_id_v = []
@@ -224,7 +224,7 @@ def selectFormulaVerifiedTraces(lines, lines_id, lines_group, lines_t, lines_t2,
 def encode(sentence, sentence_group, times, times3, maxlen, chars, chars_group,
            char_indices, char_indices_group, divisor, divisor2):
     num_features = len(chars) + len(chars_group) + 5
-    X = np.zeros((1, maxlen, num_features), dtype=np.float32)
+    x = np.zeros((1, maxlen, num_features), dtype=np.float32)
     leftpad = maxlen - len(sentence)
     times2 = np.cumsum(times)
     for t, char in enumerate(sentence):
@@ -232,16 +232,16 @@ def encode(sentence, sentence_group, times, times3, maxlen, chars, chars_group,
         timesincemidnight = times3[t] - midnight
         for c in chars:
             if c == char:
-                X[0, t + leftpad, char_indices[c]] = 1
+                x[0, t + leftpad, char_indices[c]] = 1
         for g in chars_group:
             if g == sentence_group[t]:
-                X[0, t + leftpad, len(char_indices) + char_indices_group[g]] = 1
-        X[0, t + leftpad, len(chars) + len(chars_group)] = t + 1
-        X[0, t + leftpad, len(chars) + len(chars_group) + 1] = times[t] / divisor
-        X[0, t + leftpad, len(chars) + len(chars_group) + 2] = times2[t] / divisor2
-        X[0, t + leftpad, len(chars) + len(chars_group) + 3] = timesincemidnight.seconds / 86400
-        X[0, t + leftpad, len(chars) + len(chars_group) + 4] = times3[t].weekday() / 7
-    return X
+                x[0, t + leftpad, len(char_indices) + char_indices_group[g]] = 1
+        x[0, t + leftpad, len(chars) + len(chars_group)] = t + 1
+        x[0, t + leftpad, len(chars) + len(chars_group) + 1] = times[t] / divisor
+        x[0, t + leftpad, len(chars) + len(chars_group) + 2] = times2[t] / divisor2
+        x[0, t + leftpad, len(chars) + len(chars_group) + 3] = timesincemidnight.seconds / 86400
+        x[0, t + leftpad, len(chars) + len(chars_group) + 4] = times3[t].weekday() / 7
+    return x
 
 
 # modify to be able to get second best prediction
@@ -251,14 +251,24 @@ def encode(sentence, sentence_group, times, times3, maxlen, chars, chars_group,
 
 
 # modify to be able to get second best prediction
-def getSymbolAmpl(predictions, target_indices_char, target_char_indices, start_of_the_cycle_symbol,
-                  stop_symbol_probability_amplifier_current, ith_best=0):
+def get_symbol_ampl(predictions, target_indices_char, target_char_indices, start_of_the_cycle_symbol,
+                    stop_symbol_probability_amplifier_current, ith_best=0):
     a_pred = list(predictions)
     if start_of_the_cycle_symbol in target_char_indices:
         place_of_starting_symbol = target_char_indices[start_of_the_cycle_symbol]
         a_pred[place_of_starting_symbol] = a_pred[place_of_starting_symbol] / stop_symbol_probability_amplifier_current
     i = np.argsort(a_pred)[len(a_pred) - ith_best - 1]
     return target_indices_char[i]
+
+
+# modify to be able to get second best prediction
+def adjust_probabilities(predictions, target_char_indices, start_of_the_cycle_symbol,
+                         stop_symbol_probability_amplifier_current):
+    a_pred = list(predictions)
+    if start_of_the_cycle_symbol in target_char_indices:
+        place_of_starting_symbol = target_char_indices[start_of_the_cycle_symbol]
+        a_pred[place_of_starting_symbol] = a_pred[place_of_starting_symbol] / stop_symbol_probability_amplifier_current
+    return a_pred
 
 
 # find repetitions
@@ -277,3 +287,49 @@ def amplify(s):
         else:
             return 1, list_of_rep[-1][0][0]
     return 1, " "
+
+
+def create_queue(activites, resources):
+    queue = PriorityQueue()
+    # resources_standardized = standardize_list(activites, resources)
+    for activity_index in range(len(activites)):
+        for resource_index in range(len(resources)):
+            queue.put((-(np.log(activites[activity_index])+np.log(resources[resource_index])),
+                       [activity_index, resource_index]))
+    return queue
+
+
+def standardize_list(list1, list2):
+    len1 = float(len(list1))
+    len2 = float(len(list2))
+    weight = len2/len1
+    standardized_list = map(lambda x: weight * x, list2)
+    return standardized_list
+
+
+# from Queue import PriorityQueue
+# import numpy as np
+#
+#
+# def create_queue(activites, resources):
+#     queue = PriorityQueue()
+#     resources_standardized = standardize_list(activites, resources)
+#     for activity_index in range(len(activites)):
+#         for resource_index in range(len(resources)):
+#             queue.put((-(np.log(activites[activity_index])+np.log(resources_standardized[resource_index])),
+#                        [activity_index, resource_index]))
+#     return queue
+#
+#
+# def standardize_list(list1, list2):
+#     len1 = float(len(list1))
+#     len2 = float(len(list2))
+#     weight = len2/len1
+#     standardized_list = map(lambda x: weight * x, list2)
+#     return standardized_list
+#
+#
+# lst1 = [0.3, 0.1, 0.4, 0.2]
+# lst2 = [0.35, 0.20, 0.45]
+# lst2_stand = standardize_list(lst1, lst2)
+# q = create_queue(lst1, lst2)
