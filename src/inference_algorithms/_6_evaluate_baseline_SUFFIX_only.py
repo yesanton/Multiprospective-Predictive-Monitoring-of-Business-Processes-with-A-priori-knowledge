@@ -18,19 +18,26 @@ from sklearn import metrics
 import time
 from datetime import timedelta
 from collections import Counter
-from shared_variables import activate_settings, path_to_declare_model_file
+from shared_variables import activate_settings
 from support_scripts.prepare_data_resource import select_declare_verified_traces, prepare_testing_data
 
 
 # noinspection PyShadowingNames,PyUnusedLocal
-def run_experiments(log_identificator, formula_type):
+def run_experiments(log_identificator, formula_type, rnn_type):
 
     eventlog, \
-        path_to_model_file, \
+        path_to_model_file_cf, \
+        path_to_model_file_cfr, \
+        path_to_declare_model_file, \
         beam_size, \
         prefix_size_pred_from, \
         prefix_size_pred_to, \
         formula = activate_settings(log_identificator, formula_type)
+
+    if rnn_type == "CF":
+        path_to_model_file = path_to_model_file_cf
+    elif rnn_type == "CFR":
+        path_to_model_file = path_to_model_file_cfr
 
     start_time = time.time()
 
@@ -89,7 +96,7 @@ def run_experiments(log_identificator, formula_type):
     one_ahead_gt = []
     one_ahead_pred = []
 
-    with open('output_files/final_experiments/results/baseline/%s' % eventlog, 'wb') as csvfile:
+    with open('output_files/final_experiments/results/baseline/%s_%s.csv' % (eventlog[:-4], rnn_type), 'wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         spamwriter.writerow(["Prefix length", "Groud truth", "Predicted", "Levenshtein", "Damerau", "Jaccard",
                              "Ground truth times", "Predicted times", "RMSE", "MAE", "Median AE"])

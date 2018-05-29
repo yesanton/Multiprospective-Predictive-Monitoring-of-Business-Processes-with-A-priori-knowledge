@@ -35,7 +35,7 @@ import tensorflow as tf
 # noinspection PyUnusedLocal
 def train_with_data6():
 
-    eventlog = "5x5_1S.csv"
+    eventlog = "50x5_1S.csv"
 
     lines = []
     lines_group = []

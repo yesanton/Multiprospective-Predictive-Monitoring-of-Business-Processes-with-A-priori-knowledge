@@ -14,7 +14,7 @@ from jellyfish._jellyfish import damerau_levenshtein_distance
 from keras.models import load_model
 from sklearn import metrics
 from inspect import getsourcefile
-from shared_variables import activate_settings, path_to_declare_model_file
+from shared_variables import activate_settings
 from formula_verificator import verify_formula_as_compliant
 from support_scripts.prepare_data import amplify, get_symbol_ampl
 from support_scripts.prepare_data import encode
@@ -34,15 +34,21 @@ parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
 sys.path.insert(0, parent_dir)
 
 
-def run_experiments(log_identificator, formula_type):
+def run_experiments(log_identificator, formula_type, rnn_type):
 
-    # get variables from the shared variables file
     eventlog, \
-        path_to_model_file, \
+        path_to_model_file_cf, \
+        path_to_model_file_cfr, \
+        path_to_declare_model_file, \
         beam_size, \
         prefix_size_pred_from, \
         prefix_size_pred_to, \
         formula = activate_settings(log_identificator, formula_type)
+
+    if rnn_type == "CF":
+        path_to_model_file = path_to_model_file_cf
+    elif rnn_type == "CFR":
+        path_to_model_file = path_to_model_file_cfr
 
     start_time = time.time()
 
@@ -86,7 +92,7 @@ def run_experiments(log_identificator, formula_type):
             self.probability_of = probability_of
 
     # make predictions
-    with open('output_files/final_experiments/results/LTL/%s' % eventlog, 'wb') as csvfile:
+    with open('output_files/final_experiments/results/LTL/%s_%s.csv' % (eventlog[:-4], rnn_type), 'wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         spamwriter.writerow(["Prefix length",
                              "Groud truth",
@@ -151,7 +157,7 @@ def run_experiments(log_identificator, formula_type):
 
                 queue_next_steps_future = PriorityQueue()
                 start_of_the_cycle_symbol = " "
-                # found_sattisfying_constraint = False
+                found_sattisfying_constraint = False
 
                 current_beam_size = beam_size
                 current_prediction_premis = None
@@ -163,16 +169,17 @@ def run_experiments(log_identificator, formula_type):
 
                         _, current_prediction_premis = queue_next_steps.get()
 
-                        # if not found_sattisfying_constraint:
-                        #     if verify_formula_as_compliant(current_prediction_premis.cropped_line,
-                        #                                    formula,
-                        #                                    prefix_size):
-                        #         # the formula verified and we can just finish the predictions
-                        #         # beam size is 1 because predict only sequence of events
-                        #         current_beam_size = 1
-                        #         # overwrite new queue
-                        #         queue_next_steps_future = PriorityQueue()
-                        #         found_sattisfying_constraint = True
+                        if not found_sattisfying_constraint:
+                            if verify_formula_as_compliant(current_prediction_premis.cropped_line,
+                                                           formula,
+                                                           prefix_size):
+                                # the formula verified and we can just finish the predictions
+                                # beam size is 1 because predict only sequence of events
+                                current_beam_size = 1
+                                current_prediction_premis.probability_of = 0.0
+                                # overwrite new queue
+                                queue_next_steps_future = PriorityQueue()
+                                found_sattisfying_constraint = True
 
                         enc = current_prediction_premis.data
                         temp_cropped_line = current_prediction_premis.cropped_line

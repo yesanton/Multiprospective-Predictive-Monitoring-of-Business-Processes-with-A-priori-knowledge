@@ -14,7 +14,7 @@ from keras.models import load_model
 from sklearn import metrics
 from inspect import getsourcefile
 from datetime import datetime, timedelta
-from shared_variables import activate_settings, path_to_declare_model_file
+from shared_variables import activate_settings, get_int_from_unicode
 from formula_verificator import verify_with_data
 from support_scripts.prepare_data_resource import amplify, select_declare_verified_traces, \
                                                encode, prepare_testing_data, create_queue, adjust_probabilities
@@ -31,17 +31,25 @@ parent_dir = current_dir[:current_dir.rfind(os.path.sep)]
 sys.path.insert(0, parent_dir)
 
 
-def run_experiments(log_identificator, formula_type):
+def run_experiments(log_identificator, formula_type, rnn_type):
 
-    # get variables from the shared variables file
     eventlog, \
-        path_to_model_file, \
+        path_to_model_file_cf, \
+        path_to_model_file_cfr, \
+        path_to_declare_model_file, \
         beam_size, \
         prefix_size_pred_from, \
         prefix_size_pred_to, \
         formula = activate_settings(log_identificator, formula_type)
 
+    if rnn_type == "CF":
+        path_to_model_file = path_to_model_file_cf
+    elif rnn_type == "CFR":
+        path_to_model_file = path_to_model_file_cfr
+
     start_time = time.time()
+
+    beam_size = 10
 
     # prepare the data N.B. maxlen == predict_size
     lines, \
@@ -83,7 +91,7 @@ def run_experiments(log_identificator, formula_type):
             self.probability_of = probability_of
 
     # make predictions
-    with open('output_files/final_experiments/results/declare/%s' % eventlog, 'wb') as csvfile:
+    with open('output_files/final_experiments/results/declare/%s_%s.csv' % (eventlog[:-4], rnn_type), 'wb') as csvfile:
 
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         # headers for the new file
@@ -165,7 +173,7 @@ def run_experiments(log_identificator, formula_type):
 
                 queue_next_steps_future = PriorityQueue()
                 start_of_the_cycle_symbol = " "
-                # found_sattisfying_constraint = False
+                found_satisfying_constraint = False
 
                 current_beam_size = beam_size
                 current_prediction_premis = None
@@ -176,6 +184,27 @@ def run_experiments(log_identificator, formula_type):
                             break
 
                         _, current_prediction_premis = queue_next_steps.get()
+
+                        if not found_satisfying_constraint:
+                            if verify_with_data(path_to_declare_model_file,
+                                                current_prediction_premis.trace_id,
+                                                current_prediction_premis.cropped_line,
+                                                current_prediction_premis.cropped_line_group,
+                                                current_prediction_premis.cropped_times,
+                                                prefix_size):
+                                # the formula verified and we can just finish the predictions
+                                # beam size is 1 because predict only sequence of events
+                                activitie = map(lambda x: str(get_int_from_unicode(x)),
+                                                current_prediction_premis.cropped_line[prefix_size:])
+                                groupie = map(lambda x: str(get_int_from_unicode(x)),
+                                              current_prediction_premis.cropped_line_group[prefix_size:])
+
+                                print 'changed beam size  ' + str(activitie) + '  ' + str(groupie)
+                                current_prediction_premis.probability_of = 0.0
+                                current_beam_size = 1
+                                # overwrite new queue
+                                queue_next_steps_future = PriorityQueue()
+                                found_satisfying_constraint = True
 
                         enc = current_prediction_premis.data
                         current_trace_id = current_prediction_premis.trace_id
@@ -201,7 +230,6 @@ def run_experiments(log_identificator, formula_type):
                             y_t = 0
                         cropped_times.append(y_t)
 
-                        # in not reached, function :choose_next_top_descendant: will backtrack
                         y_t = y_t * divisor3
                         cropped_times3.append(cropped_times3[-1] + timedelta(seconds=y_t))
 
@@ -257,6 +285,10 @@ def run_experiments(log_identificator, formula_type):
                                                   current_prediction_premis.probability_of + probability_this)
 
                             queue_next_steps_future.put((temp.probability_of, temp))
+                            print 'INFORMATION: ' + str(counterr) + ' ' + str(i) + ' ' + str(k) + ' ' + str(j) + ' ' + \
+                                  temp_cropped_line[prefix_size:] + "     " + ground_truth + "     " + \
+                                  temp_cropped_line_group[prefix_size:] + "     " + ground_truth_group + "     " + \
+                                  str(temp.probability_of) + '   ' + str(current_beam_size)
 
                     queue_next_steps = queue_next_steps_future
                     queue_next_steps_future = PriorityQueue()

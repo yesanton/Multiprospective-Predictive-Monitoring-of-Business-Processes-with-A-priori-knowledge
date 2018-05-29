@@ -30,7 +30,7 @@ from shared_variables import get_unicode_from_int
 
 def train1():
 
-    eventlog = "5x5_1W.csv"
+    eventlog = "50x5_1W.csv"
 
     lines = []  # list of all the activity sequences
     timeseqs = []  # time sequences (differences between two events)

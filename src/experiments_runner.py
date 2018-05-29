@@ -16,8 +16,8 @@ Author; Anton Yeshchenko
 # from inference_algorithms import _6_evaluate_baseline_SUFFIX_only
 # from inference_algorithms import _11_cycl_pro_SUFFIX_only
 #
-# from inference_algorithms import _6_evaluate_baseline_SUFFIX_and_group
-# from inference_algorithms import _11_cycl_pro_SUFFIX_resource_LTL
+from inference_algorithms import _6_evaluate_baseline_SUFFIX_and_group
+from inference_algorithms import _11_cycl_pro_SUFFIX_resource_LTL
 # from inference_algorithms import _11_cycl_pro_SUFFIX_declare_smart_queue
 
 # from shared_variables import activateSettings, eventlog
@@ -26,10 +26,9 @@ Author; Anton Yeshchenko
 # from formula_verificator import verify_with_data
 # from support_scripts.generate_xeslog import generateXesLog
 
-# formula1 = "WEAK"
-# formula2 = "STRONG"
-# formula_used = formula1
-# logNumber = 4
+# formula_used = "WEAK"
+# formula_used = "STRONG"
+# logNumber = 11
 
 # train()
 # train_with_data()
@@ -41,16 +40,68 @@ Author; Anton Yeshchenko
 # _10_cycl_back_SUFFIX_only.runExperiments(logNumber,formula_used)
 # _11_cycl_pro_SUFFIX_only.run_experiments(logNumber, formula_used)
 # _11_cycl_pro_SUFFIX_resource_declare.run_experiments(logNumber, formula_used)
-
-# _6_evaluate_baseline_SUFFIX_only.run_experiments(logNumber, formula_used)
-# _11_cycl_pro_SUFFIX_only.run_experiments(logNumber, formula_used)
 #
-# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(logNumber, formula_used)
-# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(logNumber, formula_used)
-# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(logNumber, formula_used)
+# _6_evaluate_baseline_SUFFIX_only.run_experiments(12, "STRONG", "CF")
+# _6_evaluate_baseline_SUFFIX_only.run_experiments(13, "WEAK", "CF")
+# _6_evaluate_baseline_SUFFIX_only.run_experiments(14, "STRONG", "CF")
+# _6_evaluate_baseline_SUFFIX_only.run_experiments(15, "WEAK", "CF")
+# _6_evaluate_baseline_SUFFIX_only.run_experiments(16, "STRONG", "CF")
+# _6_evaluate_baseline_SUFFIX_only.run_experiments(17, "WEAK", "CF")
+# _6_evaluate_baseline_SUFFIX_only.run_experiments(18, "STRONG", "CF")
+# _6_evaluate_baseline_SUFFIX_only.run_experiments(19, "WEAK", "CF")
+# _6_evaluate_baseline_SUFFIX_only.run_experiments(20, "STRONG", "CF")
 
-# generateXesLog(eventlog)
-# verify_with_data()
+# run again
+# _11_cycl_pro_SUFFIX_only.run_experiments(12, "STRONG", "CF")
+
+# _11_cycl_pro_SUFFIX_only.run_experiments(13, "WEAK", "CF")
+# _11_cycl_pro_SUFFIX_only.run_experiments(14, "STRONG", "CF")
+# _11_cycl_pro_SUFFIX_only.run_experiments(15, "WEAK", "CF")
+# _11_cycl_pro_SUFFIX_only.run_experiments(16, "STRONG", "CF")
+# _11_cycl_pro_SUFFIX_only.run_experiments(17, "WEAK", "CF")
+# _11_cycl_pro_SUFFIX_only.run_experiments(18, "STRONG", "CF")
+# _11_cycl_pro_SUFFIX_only.run_experiments(19, "WEAK", "CF")
+# _11_cycl_pro_SUFFIX_only.run_experiments(20, "STRONG", "CF")
+
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(12, "STRONG", "CFR")
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(13, "WEAK", "CFR")
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(14, "STRONG", "CFR")
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(15, "WEAK", "CFR")
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(16, "STRONG", "CFR")
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(17, "WEAK", "CFR")
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(18, "STRONG", "CFR")
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(19, "WEAK", "CFR")
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(20, "STRONG", "CFR")
+
+# run again
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(12, "STRONG", "CFR")
+
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(13, "WEAK", "CFR")
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(14, "STRONG", "CFR")
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(15, "WEAK", "CFR")
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(16, "STRONG", "CFR")
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(17, "WEAK", "CFR")
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(18, "STRONG", "CFR")
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(19, "WEAK", "CFR")
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(20, "STRONG", "CFR")
+
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(12, "STRONG", "CFR")
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(13, "WEAK", "CFR")
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(14, "STRONG", "CFR")
+# run again
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(15, "WEAK", "CFR")
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(16, "STRONG", "CFR")
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(17, "WEAK", "CFR")
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(18, "STRONG", "CFR")
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(19, "WEAK", "CFR")
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(20, "STRONG", "CFR")
+
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(10, "STRONG", "CFR")
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(11, "WEAK", "CFR")
+
+_6_evaluate_baseline_SUFFIX_and_group.run_experiments(21, "STRONG", "CFR")
+_11_cycl_pro_SUFFIX_resource_LTL.run_experiments(21, "STRONG", "CFR")
+# _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(21, "STRONG", "CFR")
 
 # from train1 import train1
 # from train2 import train2
@@ -68,7 +119,7 @@ Author; Anton Yeshchenko
 # from train_with_data6 import train_with_data6
 # from train_with_data7 import train_with_data7
 # from train_with_data8 import train_with_data8
-#
+
 # train1()
 # train2()
 # train3()
