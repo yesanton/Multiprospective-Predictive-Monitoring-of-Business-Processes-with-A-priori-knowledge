@@ -357,6 +357,6 @@ def activate_settings(log_number, formula_type):
         beam_size, prefix_size_pred_from, prefix_size_pred_to, formula
 
 
-eventlog = "BPI2017_50k.csv"
+eventlog = "Hospital_log.csv"
 # path_to_declare_model_file = '/home/kaur/Documents/Incremental-Predictive-Monitoring-of-Business-Processes-with-A-' \
 #                              'priori-knowledge/src/declare_models/final_experiments/10x20_3W.xml'

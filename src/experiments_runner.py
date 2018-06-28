@@ -16,13 +16,13 @@ Author; Anton Yeshchenko
 # from inference_algorithms import _6_evaluate_baseline_SUFFIX_only
 # from inference_algorithms import _11_cycl_pro_SUFFIX_only
 #
-from inference_algorithms import _6_evaluate_baseline_SUFFIX_and_group
-from inference_algorithms import _11_cycl_pro_SUFFIX_resource_LTL
+# from inference_algorithms import _6_evaluate_baseline_SUFFIX_and_group
+# from inference_algorithms import _11_cycl_pro_SUFFIX_resource_LTL
 # from inference_algorithms import _11_cycl_pro_SUFFIX_declare_smart_queue
 
 # from shared_variables import activateSettings, eventlog
 # from train import train
-# from train_with_data import train_with_data
+from train_with_data import train_with_data
 # from formula_verificator import verify_with_data
 # from support_scripts.generate_xeslog import generateXesLog
 
@@ -31,7 +31,7 @@ from inference_algorithms import _11_cycl_pro_SUFFIX_resource_LTL
 # logNumber = 11
 
 # train()
-# train_with_data()
+train_with_data()
 # _6_evaluate_beseline_SUFFIX_only.runExperiments()
 # _9_cycl_SUFFIX_only.py.runExperiments()
 # _10_cycl_back_SUFFIX_only.runExperiments()
@@ -99,8 +99,8 @@ from inference_algorithms import _11_cycl_pro_SUFFIX_resource_LTL
 # _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(10, "STRONG", "CFR")
 # _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(11, "WEAK", "CFR")
 
-_6_evaluate_baseline_SUFFIX_and_group.run_experiments(21, "STRONG", "CFR")
-_11_cycl_pro_SUFFIX_resource_LTL.run_experiments(21, "STRONG", "CFR")
+# _6_evaluate_baseline_SUFFIX_and_group.run_experiments(21, "STRONG", "CFR")
+# _11_cycl_pro_SUFFIX_resource_LTL.run_experiments(21, "STRONG", "CFR")
 # _11_cycl_pro_SUFFIX_declare_smart_queue.run_experiments(21, "STRONG", "CFR")
 
 # from train1 import train1
