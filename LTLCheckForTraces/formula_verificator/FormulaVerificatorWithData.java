@@ -15,8 +15,10 @@ import java.util.Date;
 
 public class FormulaVerificatorWithData {
 
+    // the plugin for checking the conformance of a trace
     DeclareAnalyzerSingleTracePlugin analyzer = new DeclareAnalyzerSingleTracePlugin();
 
+    // this is just for testing purposes
     public void analyze() throws Exception {
         String logFile = "/media/sf_SharedFolder/newlog.xes.gz";
         String modelFile = "/media/sf_SharedFolder/newlog_model.xml";
@@ -31,6 +33,7 @@ public class FormulaVerificatorWithData {
         }
     }
 
+    // reads the declare model 
     private static DeclareMap getModel(String fileName) {
         AssignmentViewBroker broker = XMLBrokerFactory.newAssignmentBroker(fileName);
         AssignmentModel model = broker.readAssignment();
@@ -38,6 +41,8 @@ public class FormulaVerificatorWithData {
         return map;
     }
 
+    // returns whether the trace is conformant
+    // analyzer does the actual analyzing and returns a boolean -> true if trace is conformant
     public boolean verifyTrace(String modelFile,
                                String traceId,
                                ArrayList<String> activities,
