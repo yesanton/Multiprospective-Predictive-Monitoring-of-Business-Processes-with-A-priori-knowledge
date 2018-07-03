@@ -21,9 +21,9 @@ Every csv file should be converted into the suitable format(only numerical value
 
 Baseline 2 uses apriori knowledge in the form of LTL rules which are expressed in the src/shared_variables.py file. 
 
-The proposed approach uses apriori knowledge in the form of MP-Declare model, wchich are held in a separate file. The creation of the models can be done by following the structure found in the models in src/declare_models/.
+The proposed approach uses apriori knowledge in the form of MP-Declare rules, wchich are held in a separate file. The creation of the models can be done by following the structure found in the models in src/declare_models/.
 
-The specification of the variables is done in the file src/shared_variables.py.
+The specification of the variables used for the experiments is done in the file src/shared_variables.py.
 
-The file src/experiments_runner.py is used to run the the inference algorithms, wchich output the results to the folder output_files/.
+The file src/experiments_runner.py is used to run the the inference algorithms, which output the results to the folder output_files/.
 
