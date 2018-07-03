@@ -3,7 +3,7 @@ this file is built based on the code found in evaluate_suffix_and_remaining_time
 
 here the beam search (with breath-first-search) is implemented, to find compliant prediction
 
-Author: Anton Yeshchenko
+The code is expanded to also consider the Resource attribute
 """
 from __future__ import division
 from Queue import PriorityQueue
