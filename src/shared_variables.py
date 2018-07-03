@@ -3,7 +3,6 @@ This file was created in order to bring
 common variables and functions into one file to make
 code more clear
 
-Author: Anton Yeshchenko
 """
 
 ascii_offset = 161
