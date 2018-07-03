@@ -2,7 +2,7 @@
 This script prepares data in the format for the testing
 algorithms to run
 
-Author: Anton Yeshchenko
+The script is expanded to the resource attribute
 """
 
 from __future__ import division
