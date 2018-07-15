@@ -21,7 +21,6 @@ import numpy as np
 import copy
 import csv
 import time
-from itertools import izip
 from datetime import datetime
 from shared_variables import get_unicode_from_int, eventlog
 
@@ -179,8 +178,8 @@ def train():
     fold1_t4 = timeseqs4[:elems_per_fold]
     with open('output_files/folds/fold1.csv', 'wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for row, timeseq in izip(fold1, fold1_t):
-            spamwriter.writerow([unicode(s).encode("utf-8") + '#{}'.format(t) for s, t in izip(row, timeseq)])
+        for row, timeseq in zip(fold1, fold1_t):
+            spamwriter.writerow([unicode(s).encode("utf-8") + '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     fold2 = lines[elems_per_fold:2*elems_per_fold]
     fold2_t = timeseqs[elems_per_fold:2*elems_per_fold]
@@ -189,15 +188,15 @@ def train():
     fold2_t4 = timeseqs4[elems_per_fold:2*elems_per_fold]
     with open('output_files/folds/fold2.csv', 'wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for row, timeseq in izip(fold2, fold2_t):
-            spamwriter.writerow([unicode(s).encode("utf-8") + '#{}'.format(t) for s, t in izip(row, timeseq)])
+        for row, timeseq in zip(fold2, fold2_t):
+            spamwriter.writerow([unicode(s).encode("utf-8") + '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     fold3 = lines[2*elems_per_fold:]
     fold3_t = timeseqs[2*elems_per_fold:]
     with open('output_files/folds/fold3.csv', 'wb') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for row, timeseq in izip(fold3, fold3_t):
-            spamwriter.writerow([unicode(s).encode("utf-8") + '#{}'.format(t) for s, t in izip(row, timeseq)])
+        for row, timeseq in zip(fold3, fold3_t):
+            spamwriter.writerow([unicode(s).encode("utf-8") + '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     lines = fold1 + fold2
     lines_t = fold1_t + fold2_t
@@ -219,7 +218,7 @@ def train():
     next_chars_t2 = []
     next_chars_t3 = []
     next_chars_t4 = []
-    for line, line_t, line_t2, line_t3, line_t4 in izip(lines, lines_t, lines_t2, lines_t3, lines_t4):
+    for line, line_t, line_t2, line_t3, line_t4 in zip(lines, lines_t, lines_t2, lines_t3, lines_t4):
         for i in range(0, len(line), step):
             if i == 0:
                 continue

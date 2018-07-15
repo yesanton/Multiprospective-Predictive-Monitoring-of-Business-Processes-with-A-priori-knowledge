@@ -1,0 +1,7 @@
+./StackEntryPoint.java
+./formula_verificator/FormulaVerificator.java
+./formula_verificator/form/SimpleFormula.java
+./formula_verificator/form/Formula.java
+./formula_verificator/Tester.java
+./formula_verificator/XLogReader.java
+./formula_verificator/FormulaVerificatorWithData.java
