@@ -15,7 +15,15 @@
 
 ### How to run the algorithms:
 
-It is necessary to first start the Java server found in LTLCheckForTraces/StackEntryPoint.java. The server contains the code for checking the compliance with a single trace and the specified apriori knowledge. The proposed approach uses the DeclareAnalyzer plugin implemented for Prom. 
+It is necessary to first start the Java server found in LTLCheckForTraces/StackEntryPoint.java. 
+
+// In ubuntu
+go to folder 
+/Multiprospective-Predictive-Monitoring-of-Business-Processes-with-A-priori-knowledge/LTLCheckForTraces/out/artifacts/TryToCompile_jar
+and run
+java -jar TryToCompile.jar
+
+The server contains the code for checking the compliance with a single trace and the specified apriori knowledge. The proposed approach uses the DeclareAnalyzer plugin implemented for Prom. 
 
 Every csv file should be converted into the suitable format(only numerical values) using the files src/support_scripts/csv_converter.py and src/support_scripts/csv_converter_group.py accordingly. The scripts also create dictionaries which map the numerical values to actual values.
 
