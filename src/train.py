@@ -189,7 +189,7 @@ def train():
 
     spamwriter = csv.writer(open('output_files/folds/fold1.csv', 'w'))
     for row, timeseq in zip(fold1, fold1_t):
-        spamwriter.writerow([s + '#{}'.format(t) for s, t in zip(row, timeseq)])
+        spamwriter.writerow([s + str(t) for s, t in zip(row, timeseq)])
 
     fold2 = lines[elems_per_fold:2*elems_per_fold]
     fold2_t = timeseqs[elems_per_fold:2*elems_per_fold]
