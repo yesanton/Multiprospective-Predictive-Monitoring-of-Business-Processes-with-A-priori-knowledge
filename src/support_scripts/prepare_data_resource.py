@@ -6,7 +6,7 @@ The script is expanded to the resource attribute
 """
 
 from __future__ import division
-from Queue import PriorityQueue
+from queue import PriorityQueue
 from datetime import datetime
 
 from formula_verificator import verify_with_data, verify_formula_as_compliant
