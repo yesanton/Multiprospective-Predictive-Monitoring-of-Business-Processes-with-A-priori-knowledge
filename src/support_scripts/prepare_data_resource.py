@@ -6,9 +6,6 @@ The script is expanded to the resource attribute
 """
 
 from __future__ import division
-<<<<<<< HEAD
-from queue import PriorityQueue
-=======
 import sys
 is_py2 = sys.version[0] == '2'
 if is_py2:
