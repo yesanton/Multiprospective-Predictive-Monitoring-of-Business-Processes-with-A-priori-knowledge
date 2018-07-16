@@ -13,7 +13,6 @@ if is_py2:
 else:
     import queue as PriorityQueue
 
->>>>>>> 533be484c2d9fc3a35cdbc969524e75538292a21
 from datetime import datetime
 
 from formula_verificator import verify_with_data, verify_formula_as_compliant
