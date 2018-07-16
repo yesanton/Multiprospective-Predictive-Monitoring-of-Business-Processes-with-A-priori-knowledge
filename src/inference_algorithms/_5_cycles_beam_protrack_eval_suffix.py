@@ -10,7 +10,7 @@ from __future__ import division
 import csv
 from Queue import Queue, PriorityQueue
 from datetime import timedelta
-from itertools import izip
+
 
 import distance
 from jellyfish._jellyfish import damerau_levenshtein_distance
@@ -85,7 +85,7 @@ with open('../output_files/results/suffix_and_remaining_time5_%s' % eventlog, 'w
         print("prefix size: " + str(prefix_size))
         print("formulas verifited: " + str(len(lines_s)) + " out of : " + str(len(lines)))
         counterr = 0
-        for line, times, times2, times3 in izip(lines_s, lines_t_s, lines_t2_s, lines_t3_s):
+        for line, times, times2, times3 in zip(lines_s, lines_t_s, lines_t2_s, lines_t3_s):
             times.append(0)
             cropped_line = ''.join(line[:prefix_size])
             cropped_times = times[:prefix_size]

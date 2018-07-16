@@ -11,7 +11,7 @@ from keras.models import load_model
 import csv
 import numpy as np
 import distance
-from itertools import izip
+from itertools import zip
 # noinspection PyProtectedMember
 from jellyfish._jellyfish import damerau_levenshtein_distance
 from sklearn import metrics
@@ -129,7 +129,7 @@ def run_experiments(log_identificator, formula_type, rnn_type):
 
             print(prefix_size)
             print("formulas verified: " + str(len(lines_s)) + " out of : " + str(len(lines)))
-            for line, line_id, line_group, times, times2, times3, times4 in izip(lines_s,
+            for line, line_id, line_group, times, times2, times3, times4 in zip(lines_s,
                                                                                  lines_id_s,
                                                                                  lines_group_s,
                                                                                  lines_t_s,

@@ -12,7 +12,7 @@ import csv
 import copy
 import numpy as np
 import distance
-from itertools import izip
+
 from jellyfish._jellyfish import damerau_levenshtein_distance
 import unicodecsv
 from sklearn import metrics
@@ -172,7 +172,7 @@ three_ahead_pred = []
 # lines_t_v = []
 # lines_t2_v = []
 # lines_t3_v = []
-# for line, times, times2, times3 in izip(lines, lines_t, lines_t2, lines_t3):
+# for line, times, times2, times3 in zip(lines, lines_t, lines_t2, lines_t3):
 #     if verify_formula_as_compliant(line):
 #         lines_v.append(line)
 #         lines_t_v.append(times)
@@ -196,7 +196,7 @@ with open('../output_files/results/suffix_and_remaining_time0_%s' % eventlog, 'w
     spamwriter.writerow(["Prefix length", "Groud truth", "Predicted", "Levenshtein", "Damerau", "Jaccard", "Ground truth times", "Predicted times", "RMSE", "MAE", "Median AE"])
     for prefix_size in range(prefix_size_pred_from, prefix_size_pred_to):
         print(prefix_size)
-        for line, times, times2, times3 in izip(lines, lines_t, lines_t2, lines_t3):
+        for line, times, times2, times3 in zip(lines, lines_t, lines_t2, lines_t3):
             times.append(0)
             cropped_line = ''.join(line[:prefix_size])
             cropped_times = times[:prefix_size]

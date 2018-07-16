@@ -7,7 +7,7 @@ from __future__ import division
 
 import csv
 from datetime import timedelta
-from itertools import izip
+
 
 import distance
 import numpy as np
@@ -69,7 +69,7 @@ def run_experiments(log_identificator, formula_type):
                                                                                      formula,  prefix_size)
             print("prefix size: " + str(prefix_size))
             print("formulas verifited: " + str(len(lines_s)) + " out of : " + str(len(lines)))
-            for line, times, times2, times3 in izip(lines_s, lines_t_s, lines_t2_s, lines_t3_s):
+            for line, times, times2, times3 in zip(lines_s, lines_t_s, lines_t2_s, lines_t3_s):
                 prediction_end_reached = False
                 times.append(0)
                 cropped_line = ''.join(line[:prefix_size])

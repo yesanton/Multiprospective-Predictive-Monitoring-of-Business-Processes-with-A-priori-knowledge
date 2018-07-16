@@ -10,7 +10,7 @@ from __future__ import division
 
 import csv
 from datetime import timedelta
-from itertools import izip
+
 
 import distance
 from jellyfish._jellyfish import damerau_levenshtein_distance
@@ -64,7 +64,7 @@ with open('../output_files/results/suffix_and_remaining_time1_%s' % eventlog, 'w
     spamwriter.writerow(["Prefix length", "Groud truth", "Predicted", "Levenshtein", "Damerau", "Jaccard", "Ground truth times", "Predicted times", "RMSE", "MAE", "Median AE"])
     for prefix_size in range(prefix_size_pred_from, prefix_size_pred_to):
         print(prefix_size)
-        for line, times, times2, times3 in izip(lines, lines_t, lines_t2, lines_t3):
+        for line, times, times2, times3 in zip(lines, lines_t, lines_t2, lines_t3):
             prediction_end_reached = False
             times.append(0)
             cropped_line = ''.join(line[:prefix_size])

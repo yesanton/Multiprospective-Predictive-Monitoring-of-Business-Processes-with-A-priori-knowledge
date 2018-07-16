@@ -12,7 +12,7 @@ import csv
 import copy
 import numpy as np
 import distance
-from itertools import izip
+
 from jellyfish._jellyfish import damerau_levenshtein_distance
 import unicodecsv
 from sklearn import metrics
@@ -223,7 +223,7 @@ with open('output_files/results/next_activity_and_time_%s' % eventlog, 'wb') as 
     spamwriter.writerow(["Prefix length", "Groud truth", "Predicted", "Levenshtein", "Damerau", "Jaccard", "Ground truth times", "Predicted times", "RMSE", "MAE", "Median AE"])
     for prefix_size in range(2,maxlen):
         print(prefix_size)
-        for line, times, times3 in izip(lines, lines_t, lines_t3):
+        for line, times, times3 in zip(lines, lines_t, lines_t3):
             times.append(0)
             cropped_line = ''.join(line[:prefix_size])
             cropped_times = times[:prefix_size]

@@ -7,7 +7,7 @@ Author: Kaur Jarvpold
 """
 from __future__ import division
 from Queue import PriorityQueue
-from itertools import izip
+
 # noinspection PyProtectedMember
 from jellyfish._jellyfish import damerau_levenshtein_distance
 from keras.models import load_model
@@ -133,7 +133,7 @@ def run_experiments(log_identificator, formula_type, rnn_type):
             print("prefix size: " + str(prefix_size))
             print("formulas verified: " + str(len(lines_s)) + " out of : " + str(len(lines)))
             counterr = 0
-            for line, line_id, line_group, times, times2, times3, times4 in izip(lines_s,
+            for line, line_id, line_group, times, times2, times3, times4 in zip(lines_s,
                                                                                  lines_id_s,
                                                                                  lines_group_s,
                                                                                  lines_t_s,

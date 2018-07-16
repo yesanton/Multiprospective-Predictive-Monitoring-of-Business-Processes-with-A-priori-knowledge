@@ -13,7 +13,7 @@ import csv
 import copy
 import numpy as np
 import distance
-from itertools import izip
+
 from jellyfish._jellyfish import damerau_levenshtein_distance
 import unicodecsv
 from sklearn import metrics
@@ -183,7 +183,7 @@ def runExperiments(logIdentificator, formulaType):
             print("prefix size: " + str(prefix_size))
             print("formulas verifited: " + str(len(lines_s)) + " out of : " + str(len(lines)))
 
-            for line, times, times2, times3 in izip(lines_s, lines_t_s, lines_t2_s, lines_t3_s):
+            for line, times, times2, times3 in zip(lines_s, lines_t_s, lines_t2_s, lines_t3_s):
                 times.append(0)
                 cropped_line = ''.join(line[:prefix_size])
                 cropped_times = times[:prefix_size]

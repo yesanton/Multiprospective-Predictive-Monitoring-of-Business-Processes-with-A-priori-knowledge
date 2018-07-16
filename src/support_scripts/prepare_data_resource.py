@@ -8,7 +8,7 @@ The script is expanded to the resource attribute
 from __future__ import division
 from Queue import PriorityQueue
 from datetime import datetime
-from itertools import izip
+
 from formula_verificator import verify_with_data, verify_formula_as_compliant
 from shared_variables import get_unicode_from_int
 
@@ -168,7 +168,7 @@ def select_declare_verified_traces(path_to_declare_model_file, lines, lines_id, 
     lines_t2_v = []
     lines_t3_v = []
     lines_t4_v = []
-    for line, line_id, line_group, times, times2, times3, times4 in izip(lines,
+    for line, line_id, line_group, times, times2, times3, times4 in zip(lines,
                                                                          lines_id,
                                                                          lines_group,
                                                                          lines_t,
@@ -200,7 +200,7 @@ def select_formula_verified_traces(lines, lines_id, lines_group, lines_t, lines_
     lines_t3_v = []
     lines_t4_v = []
 
-    for line, line_id, line_group, times, times2, times3, times4 in izip(lines,
+    for line, line_id, line_group, times, times2, times3, times4 in zip(lines,
                                                                          lines_id,
                                                                          lines_group,
                                                                          lines_t,

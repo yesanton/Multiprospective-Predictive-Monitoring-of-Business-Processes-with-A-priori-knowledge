@@ -8,7 +8,7 @@ Author: Anton Yeshchenko
 import csv
 import time
 from datetime import datetime
-from itertools import izip
+
 
 from formula_verificator import generateXLog
 
