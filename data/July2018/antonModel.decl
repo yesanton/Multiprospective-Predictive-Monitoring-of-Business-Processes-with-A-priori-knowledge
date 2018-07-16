@@ -1,0 +1,25 @@
+activity A
+bind A: attribute1, attribute2, attribute3, attribute4, attribute5
+activity B
+bind B: attribute1, attribute2, attribute3, attribute4, attribute5
+activity C
+bind C: attribute1, attribute2, attribute3, attribute4, attribute5
+activity D
+bind D: attribute1, attribute2, attribute3, attribute4, attribute5
+activity E
+bind E: attribute1, attribute2, attribute3, attribute4, attribute5
+activity F
+bind F: attribute1, attribute2, attribute3, attribute4, attribute5
+activity G
+bind G: attribute1, attribute2, attribute3, attribute4, attribute5
+activity H
+bind H: attribute1, attribute2, attribute3, attribute4, attribute5
+attribute1: a1, b1, c1, d1
+attribute2: a2, b2, c2, d2
+attribute3: a3, b3, c3, d3
+attribute4: a4, b4, c4, d4
+attribute5: a5, b5, c5, d5
+Existence[A] |A.attribute1 is a1
+Response[A, F] |A.attribute1 is a1 |same attribute1
+Precedence[H, C] |A.attribute1 is d1 |B.attribute3 is d3
+NotResponse[D, E] |A.attribute1 is a1 |different attribute1

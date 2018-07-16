@@ -27,6 +27,8 @@ from shared_variables import get_unicode_from_int, eventlog
 
 # this part of the src opens the file, reads it into three following variables
 
+where_to_look_for_dataset = "../data/July2018"
+
 def train():
     lines = []  # list of all the activity sequences
     timeseqs = []  # time sequences (differences between two events)
@@ -42,12 +44,16 @@ def train():
     casestarttime = None
     lasteventtime = None
 
-    csvfile = open('../data/final_experiments/%s' % eventlog, 'r')
+    csvfile = open((where_to_look_for_dataset + '/%s') % eventlog, 'r')
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     next(spamreader, None)  # skip the headers
 
     for row in spamreader:  # the rows are "CaseID,ActivityID,CompleteTimestamp"
-        t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")  # creates a datetime object from row[2]
+        try:
+            t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")  # creates a datetime object from row[2]
+
+        except ValueError as e:
+            t = time.strptime(row[2], "%Y/%m/%d %H:%M:%S")  # creates a datetime object from row[2]
         if row[0] != lastcase:  # 'lastcase' is to save the last executed case for the loop
             casestarttime = t
             lasteventtime = t
@@ -96,11 +102,11 @@ def train():
     fold2 = lines[elems_per_fold:2*elems_per_fold]
     lines = fold1 + fold2
 
-    lines = map(lambda x: x+'!', lines)  # put delimiter symbol
-    maxlen = max(map(lambda x: len(x), lines))  # find maximum line size
+    lines = [x+"!" for x in lines]  # put delimiter symbol
+    maxlen = max([len(x) for x in  lines])  # find maximum line size
 
     # next lines here to get all possible characters for events and annotate them with numbers
-    chars = map(lambda x: set(x), lines)  # remove duplicate activities from each separate case
+    chars = [set(x) for x in lines] # remove duplicate activities from each separate case
     chars = list(set().union(*chars))  # creates a list of all the unique activities in the data set
     chars.sort()  # sorts the chars in alphabetical order
     target_chars = copy.copy(chars)
@@ -109,7 +115,7 @@ def train():
     char_indices = dict((c, i) for i, c in enumerate(chars))
     target_char_indices = dict((c, i) for i, c in enumerate(target_chars))
 
-    csvfile = open('../data/final_experiments/%s' % eventlog, 'r')
+    csvfile = open(where_to_look_for_dataset + '/%s' % eventlog, 'r')
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     next(spamreader, None)  # skip the headers
     lastcase = ''
@@ -128,7 +134,11 @@ def train():
     casestarttime = None
     lasteventtime = None
     for row in spamreader:
-        t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")
+        try:
+            t = time.strptime(row[2], "%Y-%m-%d %H:%M:%S")  # creates a datetime object from row[2]
+
+        except ValueError as e:
+            t = time.strptime(row[2], "%Y/%m/%d %H:%M:%S")  # creates a datetime object from row[2]
         # new case starts
         if row[0] != lastcase:
             casestarttime = t
@@ -176,27 +186,27 @@ def train():
     fold1_t2 = timeseqs2[:elems_per_fold]
     fold1_t3 = timeseqs3[:elems_per_fold]
     fold1_t4 = timeseqs4[:elems_per_fold]
-    with open('output_files/folds/fold1.csv', 'wb') as csvfile:
+    with open('output_files/folds/fold1.csv', 'w') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         for row, timeseq in zip(fold1, fold1_t):
-            spamwriter.writerow([unicode(s).encode("utf-8") + '#{}'.format(t) for s, t in zip(row, timeseq)])
+            spamwriter.writerow([s + '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     fold2 = lines[elems_per_fold:2*elems_per_fold]
     fold2_t = timeseqs[elems_per_fold:2*elems_per_fold]
     fold2_t2 = timeseqs2[elems_per_fold:2*elems_per_fold]
     fold2_t3 = timeseqs3[elems_per_fold:2*elems_per_fold]
     fold2_t4 = timeseqs4[elems_per_fold:2*elems_per_fold]
-    with open('output_files/folds/fold2.csv', 'wb') as csvfile:
+    with open('output_files/folds/fold2.csv', 'w') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         for row, timeseq in zip(fold2, fold2_t):
-            spamwriter.writerow([unicode(s).encode("utf-8") + '#{}'.format(t) for s, t in zip(row, timeseq)])
+            spamwriter.writerow([s+ '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     fold3 = lines[2*elems_per_fold:]
     fold3_t = timeseqs[2*elems_per_fold:]
-    with open('output_files/folds/fold3.csv', 'wb') as csvfile:
+    with open('output_files/folds/fold3.csv', 'w') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
         for row, timeseq in zip(fold3, fold3_t):
-            spamwriter.writerow([unicode(s).encode("utf-8") + '#{}'.format(t) for s, t in zip(row, timeseq)])
+            spamwriter.writerow([s + '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     lines = fold1 + fold2
     lines_t = fold1_t + fold2_t
@@ -208,7 +218,7 @@ def train():
     sentences = []
     softness = 0
     next_chars = []
-    lines = map(lambda x: x+'!', lines)
+    lines = [x+"!" for x in lines]
 
     sentences_t = []
     sentences_t2 = []
