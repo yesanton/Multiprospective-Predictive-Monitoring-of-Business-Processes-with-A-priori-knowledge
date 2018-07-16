@@ -12,7 +12,7 @@ from inference_algorithms import _6_evaluate_baseline_SUFFIX_and_group
 from inference_algorithms import _11_cycl_pro_SUFFIX_resource_LTL
 from inference_algorithms import _11_cycl_pro_SUFFIX_declare_smart_queue
 
-from shared_variables import activateSettings, eventlog
+from shared_variables import eventlog, activate_settings
 from train import train
 from train_with_data import train_with_data
 
