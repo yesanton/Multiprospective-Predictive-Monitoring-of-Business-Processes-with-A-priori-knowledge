@@ -11,7 +11,6 @@ from keras.models import load_model
 import csv
 import numpy as np
 import distance
-from itertools import zip
 # noinspection PyProtectedMember
 from jellyfish._jellyfish import damerau_levenshtein_distance
 from sklearn import metrics
