@@ -186,27 +186,25 @@ def train():
     fold1_t2 = timeseqs2[:elems_per_fold]
     fold1_t3 = timeseqs3[:elems_per_fold]
     fold1_t4 = timeseqs4[:elems_per_fold]
-    with open('output_files/folds/fold1.csv', 'w') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for row, timeseq in zip(fold1, fold1_t):
-            spamwriter.writerow([s + '#{}'.format(t) for s, t in zip(row, timeseq)])
+
+    spamwriter = csv.writer(open('output_files/folds/fold1.csv', 'w'))
+    for row, timeseq in zip(fold1, fold1_t):
+        spamwriter.writerow([s + '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     fold2 = lines[elems_per_fold:2*elems_per_fold]
     fold2_t = timeseqs[elems_per_fold:2*elems_per_fold]
     fold2_t2 = timeseqs2[elems_per_fold:2*elems_per_fold]
     fold2_t3 = timeseqs3[elems_per_fold:2*elems_per_fold]
     fold2_t4 = timeseqs4[elems_per_fold:2*elems_per_fold]
-    with open('output_files/folds/fold2.csv', 'w') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for row, timeseq in zip(fold2, fold2_t):
-            spamwriter.writerow([s+ '#{}'.format(t) for s, t in zip(row, timeseq)])
+    spamwriter = csv.writer(open('output_files/folds/fold2.csv', 'w'))
+    for row, timeseq in zip(fold2, fold2_t):
+        spamwriter.writerow([s+ '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     fold3 = lines[2*elems_per_fold:]
     fold3_t = timeseqs[2*elems_per_fold:]
-    with open('output_files/folds/fold3.csv', 'w') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for row, timeseq in zip(fold3, fold3_t):
-            spamwriter.writerow([s + '#{}'.format(t) for s, t in zip(row, timeseq)])
+    spamwriter = csv.writer(open('output_files/folds/fold3.csv', 'w'))
+    for row, timeseq in zip(fold3, fold3_t):
+        spamwriter.writerow([s + '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     lines = fold1 + fold2
     lines_t = fold1_t + fold2_t
