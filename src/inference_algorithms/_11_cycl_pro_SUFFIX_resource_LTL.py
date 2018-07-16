@@ -273,8 +273,8 @@ def run_experiments(log_identificator, formula_type, rnn_type):
                                                   current_prediction_premis.probability_of + np.log(probability_this))
 
                             queue_next_steps_future.put((-temp.probability_of, temp))
-                            print 'INFORMATION: ' + str(counterr) + ' ' + str(i) + ' ' + str(k) + ' ' + str(j) + ' ' + \
-                                  temp_cropped_line[prefix_size:] + "     " + str(temp.probability_of)
+                            print ('INFORMATION: ' + str(counterr) + ' ' + str(i) + ' ' + str(k) + ' ' + str(j) + ' ' + \
+                                  temp_cropped_line[prefix_size:] + "     " + str(temp.probability_of))
 
                     queue_next_steps = queue_next_steps_future
                     queue_next_steps_future = PriorityQueue()

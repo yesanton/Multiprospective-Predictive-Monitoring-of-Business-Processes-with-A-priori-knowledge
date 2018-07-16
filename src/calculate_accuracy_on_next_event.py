@@ -269,8 +269,8 @@ with open('output_files/table_all_results.csv', 'wb') as csvfile:
                     print key, ' === ', string.join(res[key], '   ')
 
 
-            print 'total', ' === ', string.join(res['total'])
-            print 'damerau', ' === ', string.join(res['damerau'])
+            print ('total', ' === ', string.join(res['total']))
+            print ('damerau', ' === ', string.join(res['damerau']))
 
             output = []
             output.append('ALL')
@@ -278,7 +278,7 @@ with open('output_files/table_all_results.csv', 'wb') as csvfile:
                 output.append(i)
             spamwriter.writerow(output)
 
-            print 'average trace lenght === ', string.join(averageTraceLengths, '  ')
+            print ('average trace lenght === ', string.join(averageTraceLengths, '  '))
 
             output = []
             output.append('av trace lengths')
@@ -287,7 +287,7 @@ with open('output_files/table_all_results.csv', 'wb') as csvfile:
             spamwriter.writerow(output)
 
 
-            print 'average trace length ground truth === ', res['average trace lenght ground truth']
+            print ('average trace length ground truth === ', res['average trace lenght ground truth'])
 
 
             output = []
@@ -295,10 +295,10 @@ with open('output_files/table_all_results.csv', 'wb') as csvfile:
             output.append(res['average trace lenght ground truth'])
             spamwriter.writerow(output)
 
-            print 'number of totaly wrong traces === ', res['wrong']
-            print 'absolute === ', res['abs_err']
+            print ('number of totaly wrong traces === ', res['wrong'])
+            print ('absolute === ', res['abs_err'])
            # print 'BLEU SCORE === ', res['bleu']
-            print 'number of traces ===', res['traces']
+            print ('number of traces ===', res['traces'])
 
             output = []
             averageTraceLengths = []

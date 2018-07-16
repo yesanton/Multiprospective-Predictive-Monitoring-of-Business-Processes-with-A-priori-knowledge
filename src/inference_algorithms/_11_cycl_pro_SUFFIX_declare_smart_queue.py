@@ -199,7 +199,7 @@ def run_experiments(log_identificator, formula_type, rnn_type):
                                 groupie = map(lambda x: str(get_int_from_unicode(x)),
                                               current_prediction_premis.cropped_line_group[prefix_size:])
 
-                                print 'changed beam size  ' + str(activitie) + '  ' + str(groupie)
+                                print ('changed beam size  ' + str(activitie) + '  ' + str(groupie))
                                 current_prediction_premis.probability_of = 0.0
                                 current_beam_size = 1
                                 # overwrite new queue
@@ -248,7 +248,7 @@ def run_experiments(log_identificator, formula_type, rnn_type):
                                                     temp_cropped_times,
                                                     prefix_size):
                                     stop_symbol_probability_amplifier_current = 1
-                                    print '! predicted, end case'
+                                    print ('! predicted, end case')
                                     queue_next_steps = PriorityQueue()
                                     break
                                 else:
@@ -285,10 +285,10 @@ def run_experiments(log_identificator, formula_type, rnn_type):
                                                   current_prediction_premis.probability_of + probability_this)
 
                             queue_next_steps_future.put((temp.probability_of, temp))
-                            print 'INFORMATION: ' + str(counterr) + ' ' + str(i) + ' ' + str(k) + ' ' + str(j) + ' ' + \
+                            print ('INFORMATION: ' + str(counterr) + ' ' + str(i) + ' ' + str(k) + ' ' + str(j) + ' ' + \
                                   temp_cropped_line[prefix_size:] + "     " + ground_truth + "     " + \
                                   temp_cropped_line_group[prefix_size:] + "     " + ground_truth_group + "     " + \
-                                  str(temp.probability_of) + '   ' + str(current_beam_size)
+                                  str(temp.probability_of) + '   ' + str(current_beam_size))
 
                     queue_next_steps = queue_next_steps_future
                     queue_next_steps_future = PriorityQueue()
@@ -296,7 +296,7 @@ def run_experiments(log_identificator, formula_type, rnn_type):
                 counterr += 1
 
                 if current_prediction_premis is None:
-                    print "Cannot find any trace that is compliant with formula given current beam size"
+                    print ("Cannot find any trace that is compliant with formula given current beam size")
                     break
 
                 output = []
