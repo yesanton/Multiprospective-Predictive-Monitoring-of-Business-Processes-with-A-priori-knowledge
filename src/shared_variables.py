@@ -12,7 +12,7 @@ prefix_size_pred_from = None
 
 
 def get_unicode_from_int(ch):
-    return unichr(int(ch) + ascii_offset)
+    return chr(int(ch) + ascii_offset)
 
 
 def get_int_from_unicode(unch):
