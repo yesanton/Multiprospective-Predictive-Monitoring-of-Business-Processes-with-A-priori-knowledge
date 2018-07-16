@@ -19,7 +19,6 @@ from train_with_data import train_with_data
 # formula_used = "WEAK"
 # formula_used = "STRONG"
 # logNumber = 11
-
 train()
 # train_with_data()
 
