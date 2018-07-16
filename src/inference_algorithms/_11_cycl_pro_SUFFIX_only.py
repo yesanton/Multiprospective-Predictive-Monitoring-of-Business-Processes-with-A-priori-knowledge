@@ -227,8 +227,8 @@ def run_experiments(log_identificator, formula_type, rnn_type):
                                                   temp_total_predicted_time,
                                                   current_prediction_premis.probability_of + np.log(probability_this))
                             queue_next_steps_future.put((-temp.probability_of, temp))
-                            print 'INFORMATION: ' + str(counterr) + ' ' + str(i) + ' ' + str(k) + ' ' + str(j) + ' ' + \
-                                temp_cropped_line[prefix_size:] + "     " + str(temp.probability_of)
+                            print ('INFORMATION: ' + str(counterr) + ' ' + str(i) + ' ' + str(k) + ' ' + str(j) + ' ' + \
+                                temp_cropped_line[prefix_size:] + "     " + str(temp.probability_of))
 
                     queue_next_steps = queue_next_steps_future
                     queue_next_steps_future = PriorityQueue()
@@ -236,7 +236,7 @@ def run_experiments(log_identificator, formula_type, rnn_type):
                 counterr += 1
 
                 if current_prediction_premis is None:
-                    print "Cannot find any trace that is compliant with formula given current beam size"
+                    print ("Cannot find any trace that is compliant with formula given current beam size")
                     break
 
                 output = []
