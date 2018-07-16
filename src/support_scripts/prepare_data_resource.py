@@ -6,7 +6,17 @@ The script is expanded to the resource attribute
 """
 
 from __future__ import division
+<<<<<<< HEAD
 from queue import PriorityQueue
+=======
+import sys
+is_py2 = sys.version[0] == '2'
+if is_py2:
+    import Queue as PriorityQueue
+else:
+    import queue as PriorityQueue
+
+>>>>>>> 533be484c2d9fc3a35cdbc969524e75538292a21
 from datetime import datetime
 
 from formula_verificator import verify_with_data, verify_formula_as_compliant
