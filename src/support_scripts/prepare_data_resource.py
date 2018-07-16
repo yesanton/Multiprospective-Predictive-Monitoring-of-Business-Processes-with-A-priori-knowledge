@@ -313,7 +313,7 @@ def standardize_list(list1, list2):
     return standardized_list
 
 
-# from Queue import PriorityQueue
+# from queue import PriorityQueue
 # import numpy as np
 #
 #

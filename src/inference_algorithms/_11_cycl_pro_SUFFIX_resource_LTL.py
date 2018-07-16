@@ -6,7 +6,7 @@ here the beam search (with breath-first-search) is implemented, to find complian
 The code is expanded to also consider the Resource attribute
 """
 from __future__ import division
-from Queue import PriorityQueue
+from queue import PriorityQueue
 
 # noinspection PyProtectedMember
 from jellyfish._jellyfish import damerau_levenshtein_distance

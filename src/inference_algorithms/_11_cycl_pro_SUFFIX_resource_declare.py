@@ -6,7 +6,7 @@ here the beam search (with breath-first-search) is implemented, to find complian
 Author: Anton Yeshchenko
 """
 from __future__ import division
-from Queue import PriorityQueue
+from queue import PriorityQueue
 
 from jellyfish._jellyfish import damerau_levenshtein_distance
 from keras.models import load_model

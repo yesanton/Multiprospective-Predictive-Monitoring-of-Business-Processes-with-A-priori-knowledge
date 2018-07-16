@@ -6,7 +6,7 @@ here the beam search algorithm is implemented with a modified queueing algorithm
 Author: Kaur Jarvpold
 """
 from __future__ import division
-from Queue import PriorityQueue
+from queue import PriorityQueue
 
 # noinspection PyProtectedMember
 from jellyfish._jellyfish import damerau_levenshtein_distance
