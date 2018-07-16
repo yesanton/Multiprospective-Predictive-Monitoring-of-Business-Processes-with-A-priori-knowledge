@@ -167,7 +167,7 @@ with open('../output_files/results/suffix_and_remaining_time2_%s' % eventlog, 'w
                 queue_next_steps_future = PriorityQueue()
 
             if current_prediction_premis == None:
-                print "Cannot find any trace that is compliant with formula given current beam size";
+                print ("Cannot find any trace that is compliant with formula given current beam size")
                 break
 
             output = []

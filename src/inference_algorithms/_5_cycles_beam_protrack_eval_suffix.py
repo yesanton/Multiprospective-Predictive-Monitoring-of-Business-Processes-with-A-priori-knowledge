@@ -187,7 +187,7 @@ with open('../output_files/results/suffix_and_remaining_time5_%s' % eventlog, 'w
             counterr += 1
 
             if current_prediction_premis == None:
-                print "Cannot find any trace that is compliant with formula given current beam size";
+                print ("Cannot find any trace that is compliant with formula given current beam size")
                 break
 
             output = []

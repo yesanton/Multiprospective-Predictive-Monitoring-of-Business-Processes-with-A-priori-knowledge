@@ -261,12 +261,12 @@ with open('output_files/table_all_results.csv', 'wb') as csvfile:
                     spamwriter.writerow(output)
 
 
-            print "For event log : ", eventlog, "  mode ", mode
-            print "Unmod pred  --  backtracking  --  protracking -- cycles -- cycles#back -- cycles#pro"
+            print ("For event log : ", eventlog, "  mode ", mode)
+            print ("Unmod pred  --  backtracking  --  protracking -- cycles -- cycles#back -- cycles#pro")
             for key in res:
                 if not (key == 'total' or key == 'damerau' or key == 'average trace lenght ground truth'
                         or key == 'traces' or key == "wrong" or key == 'abs_err' or key == 'bleu'):
-                    print key, ' === ', string.join(res[key], '   ')
+                    print(key, ' === ', string.join(res[key], '   '))
 
 
             print ('total', ' === ', string.join(res['total']))

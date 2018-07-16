@@ -157,7 +157,7 @@ def run_experiments(log_identificator, formula_type):
                     if prediction_end_reached:
                         prediction_end_reached = False
                     if search_tree_root is None:
-                        print "Cannot find any trace that is compliant with formula given current beam size"
+                        print ("Cannot find any trace that is compliant with formula given current beam size")
                         break
 
                 output = []

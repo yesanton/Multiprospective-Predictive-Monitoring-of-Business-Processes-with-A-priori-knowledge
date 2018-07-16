@@ -164,7 +164,7 @@ with open('../output_files/results/suffix_and_remaining_time4_%s' % eventlog, 'w
                 if prediction_end_reached:
                     prediction_end_reached = False;
                 if search_tree_root == None:
-                    print "Cannot find any trace that is compliant with formula given current beam size";
+                    print ("Cannot find any trace that is compliant with formula given current beam size")
                     break
 
             output = []

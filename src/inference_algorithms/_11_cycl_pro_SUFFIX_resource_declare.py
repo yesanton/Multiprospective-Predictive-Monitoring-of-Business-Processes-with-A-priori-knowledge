@@ -295,7 +295,7 @@ def run_experiments(log_identificator, formula_type):
                 counterr += 1
 
                 if current_prediction_premis is None:
-                    print "Cannot find any trace that is compliant with formula given current beam size"
+                    print ("Cannot find any trace that is compliant with formula given current beam size")
                     break
 
                 output = []
