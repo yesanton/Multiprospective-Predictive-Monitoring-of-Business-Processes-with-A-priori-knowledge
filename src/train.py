@@ -23,10 +23,11 @@ import copy
 import csv
 import time
 from datetime import datetime
-from shared_variables import get_unicode_from_int, eventlog
+
 
 
 # this part of the src opens the file, reads it into three following variables
+from src.shared_variables import eventlog, get_unicode_from_int
 
 where_to_look_for_dataset = "../data/July2018"
 
@@ -190,7 +191,7 @@ def train():
 
     spamwriter = csv.writer(open('output_files/folds/fold1.csv', 'w'))
     for row, timeseq in zip(fold1, fold1_t):
-        spamwriter.writerow([s + '#{}'.format(t) for s, t in zip(list(row), timeseq)])
+        spamwriter.writerow([s + '#{}'.format(t) for s, t in zip(row, timeseq)])
 
     fold2 = lines[elems_per_fold:2*elems_per_fold]
     fold2_t = timeseqs[elems_per_fold:2*elems_per_fold]
